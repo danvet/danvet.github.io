@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>New Modeset Code</title>
+  <meta name="description" content="drm/i915.ko is gearing up to gain a new modeset code, to finally move away from the crtc helper code (in drm/drm_crtc_helper.c) used by (up to now) all kms d...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://yourdomain.com/2012/08/19/new-modeset-code.html">
+  <link rel="alternate" type="application/rss+xml" title="stuff by danvet" href="http://yourdomain.com/feed.xml">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">stuff by danvet</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">New Modeset Code</h1>
+    <p class="post-meta"><time datetime="2012-08-19T23:04:00+02:00" itemprop="datePublished">Aug 19, 2012</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">danvet</span></span></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    drm/i915.ko is gearing up to gain a new modeset code, to finally move away from the crtc helper code (in drm/drm_crtc_helper.c) used by (up to now) all kms drivers. As a quick reference I'll detail the motivation and design of the new code a bit here (mostly stitched together from patchbomb announcements and commits introducing the new concepts).<br /><a name='more'></a><br />The crtc helper code has the fundamental assumption that encoders and crtcs can be enabled/disabled in any order, as long as we take care of depencies (which means that enabled encoders need an enabled crtc to feed them data, essentially).<br /><br />Our hw works differently. We already have tons of ugly cases where crtc code enables encoder hw (or <code>encoder-&gt;mode_set</code> enables stuff that should only be enabled in <code>enocder-&gt;commit</code>) to work around these issues. But on the disable side we can't pull off similar tricks - there we actually need to rework the modeset sequence that controls all this. And this is also the real motivation why I've finally undertaken this rewrite: eDP on my shiny new Ivybridge Ultrabook is broken, and it's broken due to the wrong disable sequence ...<br /><br />The new code introduces a few interfaces and concepts:<br /><ul><li>Add new encoder-&gt;enable/disable functions which are directly called from the   crtc-&gt;enable/disable function. This ensures that the encoder's can be   enabled/disabled at a very specific in the modeset sequence, controlled by our   platform specific code (instead of the crtc helper code calling them at a time it deems convenient).</li><li>Rework the dpms code - our code has mostly 1:1 connector:encoder mappings and   does support cloning on only a few encoders, so we can simplify things quite a   bit.</li><li>Also only ever disable/enable the entire output pipeline. This ensures   that we obey the right sequence of enabling/disabling things, trying to be clever here mostly just complicates the code and results in bugs. For cloneable   encoders this requires a bit of special handling to ensure that outputs can   still be disabled individually, but it simplifies the common case. </li><li>Add infrastructure to read out the current hw state. No amount of careful   ordering will help us if we brick the hw on the initial modeset setup. Which could   happen if we just randomly disable things, oblivious to the state set up by   the bios. Hence we need to be able to read that out. As a benefit, we grow a   few generic functions useful to cross-check our modeset code with actual hw   state.</li></ul>With all this in place, we can copy&amp;paste the crtc helper code into the drm/i915 driver and start to rework it:<br /><ul><li>As detailed above, the new code only disables/enables an entire output pipe. As a preparation for global mode-changes (e.g. reassigning shared resources) it keeps track of which pipes need to be touched by a set of bitmasks.</li><li>To ensure that we correctly disable the current display pipes, we need to know the currently active connector/encoder/crtc linking. The old crtc helper simply overwrote these links with the new setup, the new code stages the new links in <code>-&gt;new_*</code> pointers. Those get commited to the real linking pointers once the old output configuration has been torn down, before the <code>-&gt;mode_set</code> callbacks are called.</li><li>Finally the code adds tons of self-consistency checks by employing the new hw state readout functions to cross-check the actual hw state with what the datastructure think it should be. These checks are done both after every modeset and after the hw state has been read out and sanitized at boot/resume time. All these checks greatly helped in tracking down regressions and bugs in the new code.</li></ul>With this new basis, a lot of cleanups and improvements to the code are now possible (besides the DP fixes that ultimately made me write this), but not yet done:<br /><ul><li>I think we should create <code>struct intel_mode</code> and use it as the adjusted mode   everywhere to store little pieces like <code>needs_tvclock</code>, pipe dithering values or   dp link parameters.  That would still be a layering violation, but at least we   wouldn't need to recompute these kinds of things in intel_display.c.   Especially the port bpc computation needed for selecting the pipe bpc and   dithering settings in intel_display.c is rather gross.</li><li>In a related rework we could implement <code>-&gt;mode_valid</code> in terms of   <code>-&gt;mode_fixup</code> in a generic way - I've hunted down too many bugs where -&gt;mode_valid   did the right thing, but <code>-&gt;mode_fixup</code> didn't. Or vice versa, resulting in   funny bugs for user-supplied modes.</li><li>Ditch the idea to rework the hdp handling in the common crtc   helper code and just move things to i915.ko. Which would rid us of the   <code>-&gt;detect</code> crtc helper dependencies.</li><li>LVDS wire pair and pll enabling is all done in the <code>crtc-&gt;mode_set</code> function currently. We should be able to move this to   the crtc_enable callbacks (or in the case of the LVDS wire pair enabling, into some encoder callback).</li></ul> Last, but not least, this new code should also help in enabling a few neat features: The hw state readout code prepares (but there are still big pieces missing) for fastboot, i.e. avoiding the inital modeset at boot-up and just taking over the configuration left behind by the bios. We also should be able to extend the configuration checks in the beginning of the modeset sequence and make better decisions about shared resources (which is the entire point behind the atomic/global modeset ioctl). 
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">stuff by danvet</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>stuff by danvet</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/danvet"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">danvet</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/danvet"><span class="icon icon--twitter"><svg viewBox="0 0 16 16"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span><span class="username">danvet</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
