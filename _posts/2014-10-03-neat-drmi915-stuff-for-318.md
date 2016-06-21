@@ -10,7 +10,7 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-40754006597438371
 blogger_orig_url: http://blog.ffwll.ch/2014/10/neat-drmi915-stuff-for-318.html
 ---
 
-Since Dave Airlie moved the feature cut-off of the drm-next tree roughly one month ahead it is already time for our regular look at what's ahead. Even though <a href="http://blog.ffwll.ch/2014/08/neat-stuff-for-317.html">the 3.17 features</a> aren't even released yet.
+Since Dave Airlie moved the feature cut-off of the drm-next tree roughly one month ahead it is already time for our regular look at what's ahead. Even though [the 3.17 features](http://blog.ffwll.ch/2014/08/neat-stuff-for-317.html) aren't even released yet.
 
 
 

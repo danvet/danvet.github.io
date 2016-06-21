@@ -10,7 +10,7 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-90290482827587806
 blogger_orig_url: http://blog.ffwll.ch/2015/01/update-for-atomic-display-updates.html
 ---
 
-Another kernel release is imminent and a lot of things happened since my last big blog post about <a href="http://blog.ffwll.ch/2014/11/atomic-modeset-support-for-kms-drivers.html">atomic modeset</a>. Read on for what new shiny things 3.20 will bring this area.
+Another kernel release is imminent and a lot of things happened since my last big blog post about [atomic modeset](http://blog.ffwll.ch/2014/11/atomic-modeset-support-for-kms-drivers.html). Read on for what new shiny things 3.20 will bring this area.
 
 <!--more-->
 

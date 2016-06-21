@@ -10,7 +10,7 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-81068851027883277
 blogger_orig_url: http://blog.ffwll.ch/2016/01/vt-switching-with-atomic-modeset.html
 ---
 
-First the title is a slight lie, this really is about compositor switching and not necessarily about using Linux VTs for that. But I hope that the title draws in the right folks and tempts them to read this. Since with atomic there's a bit a problem if you want to switch between different compositors - maybe you have X running and hack on wayland-mutter, or kwin and mutter or just a DE and a login manager&nbsp; - and expect it to not end up in a modern arts project like <a href="https://twitter.com/__damien__/status/676741658940186625">this</a>.
+First the title is a slight lie, this really is about compositor switching and not necessarily about using Linux VTs for that. But I hope that the title draws in the right folks and tempts them to read this. Since with atomic there's a bit a problem if you want to switch between different compositors - maybe you have X running and hack on wayland-mutter, or kwin and mutter or just a DE and a login manager&nbsp; - and expect it to not end up in a modern arts project like [this](https://twitter.com/__damien__/status/676741658940186625).
 
 <!--more-->
 

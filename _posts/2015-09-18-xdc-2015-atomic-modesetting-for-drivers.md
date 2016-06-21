@@ -9,4 +9,4 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-52891304864909760
 blogger_orig_url: http://blog.ffwll.ch/2015/09/xdc-2015-atomic-modesetting-for-drivers.html
 ---
 
-I've done a talk at <a href="http://www.x.org/wiki/Events/XDC2015/">XDC 2015</a> about atomic modesetting with a focus for driver writers. Most of the talk is an overview of how an atomic modeset looks and how to implement the different parts in a driver backend. Anyway, for all those who missed it, there's a <a href="https://www.youtube.com/watch?v=kl9suFgbTc8">video</a> and <a href="http://people.freedesktop.org/~danvet/presentations/xdc-2015.pdf">slides</a>.
+I've done a talk at [slides](http://www.x.org/wiki/Events/XDC2015/">XDC 2015</a> about atomic modesetting with a focus for driver writers. Most of the talk is an overview of how an atomic modeset looks and how to implement the different parts in a driver backend. Anyway, for all those who missed it, there's a <a href="https://www.youtube.com/watch?v=kl9suFgbTc8">video</a> and <a href="http://people.freedesktop.org/~danvet/presentations/xdc-2015.pdf).

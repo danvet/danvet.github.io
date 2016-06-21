@@ -14,4 +14,4 @@ blogger_orig_url: http://blog.ffwll.ch/2016/04/should-xorg-foundation-join-spi-v
 
 
 
-<a href="http://keithp.com/blogs/x.org-election/">In</a> <a href="https://phoronix.com/scan.php?page=news_item&amp;px=Xorg-2016-Elections-Start">case</a> you <a href="http://blog.ffwll.ch/2016/04/xorg-foundation-election-vote-now.html?showComment=1461317453899#c781631829836255757">missed</a> <a href="http://www.xorg-foundation.org/wiki/BoardOfDirectors/Elections/2016/">it</a>: Please vote now on <a href="https://members.x.org/login.php">https://members.x.org/login.php</a>!
+[https://members.x.org/login.php](http://keithp.com/blogs/x.org-election/">In</a> <a href="https://phoronix.com/scan.php?page=news_item&amp;px=Xorg-2016-Elections-Start">case</a> you <a href="http://blog.ffwll.ch/2016/04/xorg-foundation-election-vote-now.html?showComment=1461317453899#c781631829836255757">missed</a> <a href="http://www.xorg-foundation.org/wiki/BoardOfDirectors/Elections/2016/">it</a>: Please vote now on <a href="https://members.x.org/login.php)!

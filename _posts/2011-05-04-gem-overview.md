@@ -110,7 +110,7 @@ interface:
 
 - currently KMS has no generic support for overlays (there are driver-specific
   ioctls in i915 and vmgfx, though). Jesse Barnes has posted an RFC to remedy
-  this: <a href="http://www.mail-archive.com/dri-devel@lists.freedesktop.org/msg10415.html">http://www.mail-archive.com/dri-devel@lists.freedesktop.org/msg10415.html</a>
+  this: [http://www.mail-archive.com/dri-devel@lists.freedesktop.org/msg10415.html](http://www.mail-archive.com/dri-devel@lists.freedesktop.org/msg10415.html)
 
 ### GEM and PRIME
 

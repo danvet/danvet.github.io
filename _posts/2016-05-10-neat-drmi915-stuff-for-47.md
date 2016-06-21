@@ -9,7 +9,7 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-31420012045923030
 blogger_orig_url: http://blog.ffwll.ch/2016/05/neat-drmi915-stuff-for-47.html
 ---
 
-The <a href="http://blog.ffwll.ch/2016/03/neat-drmi915-stuff-for-46.html">4.6 release</a> is almost out of the door, it's time to look at what's in store for 4.7.
+The [4.6 release](http://blog.ffwll.ch/2016/03/neat-drmi915-stuff-for-46.html) is almost out of the door, it's time to look at what's in store for 4.7.
 
 <!--more-->
 

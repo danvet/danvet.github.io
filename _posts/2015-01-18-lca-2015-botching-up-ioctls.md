@@ -13,4 +13,4 @@ So I'm stuck somewhere on an airport and jetlagged on my return trip from my ver
 
 
 
-Also done a presentation about <a href="http://blog.ffwll.ch/2013/11/botching-up-ioctls.html">botching up ioctls</a>. Compared to my blog post a bunch more details on technical issues and some overall comments on what's really important to avoid a v2 ioctl because v1 ended up being unsalvageable. <a href="http://people.freedesktop.org/~danvet/presentations/lca-2015.pdf">Slides</a> and <a href="https://www.youtube.com/watch?v=WnqXHs_tGR4">video</a> (curtesy the LCA video team).
+Also done a presentation about [video](http://blog.ffwll.ch/2013/11/botching-up-ioctls.html">botching up ioctls</a>. Compared to my blog post a bunch more details on technical issues and some overall comments on what's really important to avoid a v2 ioctl because v1 ended up being unsalvageable. <a href="http://people.freedesktop.org/~danvet/presentations/lca-2015.pdf">Slides</a> and <a href="https://www.youtube.com/watch?v=WnqXHs_tGR4) (curtesy the LCA video team).

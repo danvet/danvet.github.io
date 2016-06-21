@@ -10,7 +10,7 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-66615393457790753
 blogger_orig_url: http://blog.ffwll.ch/2013/07/drmi915-branches-explained.html
 ---
 
-Since I've <a href="http://blog.ffwll.ch/2012/01/new-drm-intel-next-git-tree.html">started maintaining the drm/i915 over a year ago</a> I've fined-tuned the branching model a lot. So I think it's time for an update, especially since <a href="http://lists.freedesktop.org/archives/intel-gfx/2013-July/029648.html">Sedat Dilek poked me about it</a>.
+Since I've [Sedat Dilek poked me about it](http://blog.ffwll.ch/2012/01/new-drm-intel-next-git-tree.html">started maintaining the drm/i915 over a year ago</a> I've fined-tuned the branching model a lot. So I think it's time for an update, especially since <a href="http://lists.freedesktop.org/archives/intel-gfx/2013-July/029648.html).
 
 
 
@@ -40,8 +40,8 @@ Now if you're a developer and wonder on which branch you should base your patche
 
 
 
-Addendum: All these branches can be found in the <a href="http://cgit.freedesktop.org/drm-intel/">drm-intel git repository</a>.
+Addendum: All these branches can be found in the [drm-intel git repository](http://cgit.freedesktop.org/drm-intel/).
 
 
 
-<b>Update:</b> The <a href="http://blog.ffwll.ch/2014/02/new-drmi915-git-repository.html">drm-intel repository move</a>, so I've updated the link. 
+<b>Update:</b> The [drm-intel repository move](http://blog.ffwll.ch/2014/02/new-drmi915-git-repository.html), so I've updated the link. 

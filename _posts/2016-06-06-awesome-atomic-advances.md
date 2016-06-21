@@ -10,7 +10,7 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-63084580498282560
 blogger_orig_url: http://blog.ffwll.ch/2016/06/awesome-atomic-advances.html
 ---
 
-Also, silly titles. Atomic has taken of for real, right now there's 17 drivers supporting <a href="http://blog.ffwll.ch/2015/08/atomic-modesetting-design-overview.html">atomic modesetting</a> merged into the DRM subsystem. And still a pile of them each release pending for review&amp;merging. But it's not just new drivers, there's also been a steady stream of small improvements over the past year, I think it's time for an update.
+Also, silly titles. Atomic has taken of for real, right now there's 17 drivers supporting [atomic modesetting](http://blog.ffwll.ch/2015/08/atomic-modesetting-design-overview.html) merged into the DRM subsystem. And still a pile of them each release pending for review&amp;merging. But it's not just new drivers, there's also been a steady stream of small improvements over the past year, I think it's time for an update.
 
 
 
@@ -40,13 +40,13 @@ Another big gap in the original atomic infrastructure that's finally getting clo
 
 
 
-But even more important than making the code prettier for atomic drivers and removing boilerplate with better helpers and libraries is in my opinion explaing it all, and making sure all drivers work the same. Over the past few months there's been massive <a href="https://01.org/linuxgraphics/gfx-docs/drm/"><b>improvements to the driver interface documentation</b></a>. One of the big items there is certainly <a href="https://01.org/linuxgraphics/gfx-docs/drm/gpu.html#modeset-helper-reference-for-common-vtables">documenting the expected behaviour, return codes and special cases of every driver callback</a>. But there is lots more improved than just this example, so go and read them! And of course, when you spot an inconsistency or typo, just send in a patch to fix it. And it's not just contents, but also presentation: Hopefully in 4.8 Jani Nikula's <a href="https://www.mail-archive.com/linux-kernel@vger.kernel.org/msg1158589.html">sphinx-based documentation toolchain</a> - the above links are already generated using that for a peek at all the new pretty.
+But even more important than making the code prettier for atomic drivers and removing boilerplate with better helpers and libraries is in my opinion explaing it all, and making sure all drivers work the same. Over the past few months there's been massive [sphinx-based documentation toolchain](https://01.org/linuxgraphics/gfx-docs/drm/"><b>improvements to the driver interface documentation</b></a>. One of the big items there is certainly <a href="https://01.org/linuxgraphics/gfx-docs/drm/gpu.html#modeset-helper-reference-for-common-vtables">documenting the expected behaviour, return codes and special cases of every driver callback</a>. But there is lots more improved than just this example, so go and read them! And of course, when you spot an inconsistency or typo, just send in a patch to fix it. And it's not just contents, but also presentation: Hopefully in 4.8 Jani Nikula's <a href="https://www.mail-archive.com/linux-kernel@vger.kernel.org/msg1158589.html) - the above links are already generated using that for a peek at all the new pretty.
 
 
 
 
 
-The flip side is testing, and on that front Collabora's effort to&nbsp; convert all the kernel mode-setting tests in <a href="https://cgit.freedesktop.org/xorg/app/intel-gpu-tools/">intel-gpu-tools</a> to be generic and useful on any DRM is progressing nicely. For a bit more details read up on <a href="http://blog.tomeuvizoso.net/2016/04/validating-changes-to-kms-drivers-with.html">Tomeu Vizoso's blog on validating changes to KMS drivers</a>.
+The flip side is testing, and on that front Collabora's effort to&nbsp; convert all the kernel mode-setting tests in [Tomeu Vizoso's blog on validating changes to KMS drivers](https://cgit.freedesktop.org/xorg/app/intel-gpu-tools/">intel-gpu-tools</a> to be generic and useful on any DRM is progressing nicely. For a bit more details read up on <a href="http://blog.tomeuvizoso.net/2016/04/validating-changes-to-kms-drivers-with.html).
 
 
 

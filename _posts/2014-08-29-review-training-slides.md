@@ -13,4 +13,4 @@ We currently have a large influx of new people contributing to i915 - for the cu
 
 
 
-<a href="http://people.freedesktop.org/~danvet/presentations/review-training-public.pdf">Upstream Review Training Slides</a>
+[Upstream Review Training Slides](http://people.freedesktop.org/~danvet/presentations/review-training-public.pdf)

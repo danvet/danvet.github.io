@@ -11,7 +11,7 @@ blogger_orig_url: http://blog.ffwll.ch/2012/11/i915gem-crashcourse-part-2.html
 ---
 
 
-After the <a href="http://blog.ffwll.ch/2012/10/i915gem-crashcourse.html">previous installement</a> this part will cover command submission to the gpu. See the <a href="http://blog.ffwll.ch/2013/01/i915gem-crashcourse-overview.html">i915/GEM crashcourse overview</a> for links to the other parts of this series.  
+After the [i915/GEM crashcourse overview](http://blog.ffwll.ch/2012/10/i915gem-crashcourse.html">previous installement</a> this part will cover command submission to the gpu. See the <a href="http://blog.ffwll.ch/2013/01/i915gem-crashcourse-overview.html) for links to the other parts of this series.  
 <!--more-->
 
 ## Command Submission and Relocations 
@@ -53,4 +53,4 @@ If a batchbuffer then uses an object which is still busy on a different engine, 
   
 Note that a big difference of GEM compared to a lot of other gpu execution management frameworks and kernel drivers is that GEM does not expose explicit sync objects/gpu fences to userspace. A synchronization point is always only implicitly attached to a buffer object, which is the only thing userspace deals with. In practice the difference is not big, since userspace can have equally fine-grained control over synchronization by keeping onto all the batchbuffer objects - keeping them around until the gpu is done with them won't waste any memory anyway. But the big upside is that when sharing buffers across processes, e.g. with DRI2 on X or generally when using a compositor, there's no need to also share a sync object: Any required sync state comes attached to the buffer object, and the kernel simply Does The Right Thing. 
  
-This concludes the part about command submission, active object retiring and synchronization. In the next installment we will take a <a href="http://blog.ffwll.ch/2012/11/i915gem-crashcourse-part-3.html">closer look at how the kernel manages the GTT</a>, what happens when we run out of space in the GTT and how the i915.ko currently handles out-of-memory conditions.
+This concludes the part about command submission, active object retiring and synchronization. In the next installment we will take a [closer look at how the kernel manages the GTT](http://blog.ffwll.ch/2012/11/i915gem-crashcourse-part-3.html), what happens when we run out of space in the GTT and how the i915.ko currently handles out-of-memory conditions.

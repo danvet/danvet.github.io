@@ -11,7 +11,7 @@ blogger_orig_url: http://blog.ffwll.ch/2013/09/more-drmi915-testsuite-infrastruc
 ---
 
 
-So after the recent <a href="http://blog.ffwll.ch/2013/08/recent-drmi915-testsuite-improvements.html">overview over our kernel test infrastructure</a> I've had to write a bunch multithreaded testcases. And since I'm rather lazily I've opted to create a few more helpers that hide all the little details when forking and joining processes. While at I think it's also a good time to explain a bit the infrastructure we have to help running the kernel testsuite on simulated hardware and a few other generally useful things in our testsuite helper library. 
+So after the recent [overview over our kernel test infrastructure](http://blog.ffwll.ch/2013/08/recent-drmi915-testsuite-improvements.html) I've had to write a bunch multithreaded testcases. And since I'm rather lazily I've opted to create a few more helpers that hide all the little details when forking and joining processes. While at I think it's also a good time to explain a bit the infrastructure we have to help running the kernel testsuite on simulated hardware and a few other generally useful things in our testsuite helper library. 
 <!--more-->
 
 ## Multithreaded Tests 
@@ -29,7 +29,7 @@ Two special considerations apply: Skipping a testcase from within a child proces
 
 Another piece of annoying boilerplate code is handling cleanup tasks after the test is done. We have a lot of little things that needs to be reset again, like re-enabling prefaulting when a testcase disabled it or re-enabling the kernel console after a test put it into graphics mode for a modesettting test. libc has <code>atexit()</code> handlers, but that's not good enough since our testcases tend to die a lot through signals. To fix this <code>igt_install_exit_handler</code> will install special signaler handlers (which re-raises the signal after processing all the exit handlers) besides a normal <code>atexit()</code> handler. 
 
-The nice thing is that this plays well together with all the other testsuite helpers, especially for multi-threaded tests. For children the exit handlers get automatically reset, but it's still possible that they have their own exit handling code, e.g. if each child process has it's own helper process to clean up. One strange thing encountered though is that if a child process receives a signal right after forking it seemingly can get lost when our special re-raising handler is registered. We duct-tape over that by disabling the exit handling temporarily across the fork. See the <a href="http://cgit.freedesktop.org/xorg/app/intel-gpu-tools/commit/?id=a031a1bf93b828585e7147f06145fc5030814547">relevant patch</a>, explanations what exactly might be going on highly welcome. 
+The nice thing is that this plays well together with all the other testsuite helpers, especially for multi-threaded tests. For children the exit handlers get automatically reset, but it's still possible that they have their own exit handling code, e.g. if each child process has it's own helper process to clean up. One strange thing encountered though is that if a child process receives a signal right after forking it seemingly can get lost when our special re-raising handler is registered. We duct-tape over that by disabling the exit handling temporarily across the fork. See the [relevant patch](http://cgit.freedesktop.org/xorg/app/intel-gpu-tools/commit/?id=a031a1bf93b828585e7147f06145fc5030814547), explanations what exactly might be going on highly welcome. 
 
 
 ## Helper Processes for Auxiliary Tasks

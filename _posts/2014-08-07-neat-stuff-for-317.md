@@ -10,7 +10,7 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-32237993582815835
 blogger_orig_url: http://blog.ffwll.ch/2014/08/neat-stuff-for-317.html
 ---
 
-So with the <a href="http://blog.ffwll.ch/2014/06/neat-drmi915-stuff-for-316.html">3.16 kernel</a> out of the door it's time to look at what's queued up for the Intel graphics driver in 3.17.
+So with the [3.16 kernel](http://blog.ffwll.ch/2014/06/neat-drmi915-stuff-for-316.html) out of the door it's time to look at what's queued up for the Intel graphics driver in 3.17.
 
 <!--more-->
 

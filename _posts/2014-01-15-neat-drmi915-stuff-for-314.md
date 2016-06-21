@@ -10,7 +10,7 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-77222455168336005
 blogger_orig_url: http://blog.ffwll.ch/2014/01/neat-drmi915-stuff-for-314.html
 ---
 
-<a href="http://blog.ffwll.ch/search/label/Kernel%20RelNotes">Kernel v3.13</a> is nearing its release, so it's time at our regular look at what the next version will bring to the Intel gfx driver.
+[Kernel v3.13](http://blog.ffwll.ch/search/label/Kernel%20RelNotes) is nearing its release, so it's time at our regular look at what the next version will bring to the Intel gfx driver.
 
 <!--more-->
 
@@ -30,4 +30,4 @@ For platform support the big thing is that we've removed the prelimary hardware 
 
 
 
-One last piece new in 3.14 is the <b>deprecation of the legacy UMS support</b>. We've kept this code on live support since a few years already, but now it's getting in the way of some of the plans for improving the driver load and teardown code. So long-term we want this gone. For now there's still a kernel config option to keep the code around. Another new&amp;nifty <b>kernel option disables the legacy fbdev support</b>. This is not something for your regular desktop linux system yet since the boot splash and a bunch of other things rely on it. And you also need to manually make sure that the vga driver doesn't load. But it does allow us to rip out all the legacy linux framebuffer support code, which is beneficial for embedded systems. And with efforts like <a href="http://dvdhrm.wordpress.com/2012/08/11/kmscon-linux-kmsdrm-based-virtual-console/">David Herrmann's kmscon</a> also where the future is heading towards in general.
+One last piece new in 3.14 is the <b>deprecation of the legacy UMS support</b>. We've kept this code on live support since a few years already, but now it's getting in the way of some of the plans for improving the driver load and teardown code. So long-term we want this gone. For now there's still a kernel config option to keep the code around. Another new&amp;nifty <b>kernel option disables the legacy fbdev support</b>. This is not something for your regular desktop linux system yet since the boot splash and a bunch of other things rely on it. And you also need to manually make sure that the vga driver doesn't load. But it does allow us to rip out all the legacy linux framebuffer support code, which is beneficial for embedded systems. And with efforts like [David Herrmann's kmscon](http://dvdhrm.wordpress.com/2012/08/11/kmscon-linux-kmsdrm-based-virtual-console/) also where the future is heading towards in general.

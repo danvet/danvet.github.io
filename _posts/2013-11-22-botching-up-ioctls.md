@@ -14,7 +14,7 @@ One clear insight kernel graphics hackers gained in the past few years is that t
 
 
 
-To avoid repeating all the same mistakes again I've written up some of the lessons learned while botching the job for the drm/i915 driver. Most of these only cover technicalities and not the big-picture issues like what the <a href="http://blog.ffwll.ch/2011/01/on-getting-your-api-right.html">command submission ioctl exactly should look like</a>. Learning these lessons is probably something every GPU driver has to do on its own.
+To avoid repeating all the same mistakes again I've written up some of the lessons learned while botching the job for the drm/i915 driver. Most of these only cover technicalities and not the big-picture issues like what the [command submission ioctl exactly should look like](http://blog.ffwll.ch/2011/01/on-getting-your-api-right.html). Learning these lessons is probably something every GPU driver has to do on its own.
 
 
 

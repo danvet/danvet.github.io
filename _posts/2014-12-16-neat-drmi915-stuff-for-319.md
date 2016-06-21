@@ -10,7 +10,7 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-60579119547925251
 blogger_orig_url: http://blog.ffwll.ch/2014/12/neat-drmi915-stuff-for-319.html
 ---
 
-So <a href="http://blog.ffwll.ch/2014/10/neat-drmi915-stuff-for-318.html">kernel version 3.18</a> is out the door and it's time for our regular look at what's in the next merge window.
+So [kernel version 3.18](http://blog.ffwll.ch/2014/10/neat-drmi915-stuff-for-318.html) is out the door and it's time for our regular look at what's in the next merge window.
 
 <!--more-->First looking at new hardware the big item is <b>basic Skylake support</b>. There are still a few smalls things missing, but mostly it's there now. This has been contributed by Damien, Satheeshakrishna and a lot of other folks. Looking at other platforms there has also been a lot of <b>changes for vlv/chv</b>: <b>Improved</b> <b>backlight code</b>, completely <b>refactored interrupt handling</b> to bring it in line with other platforms, <b>rewritten panel power sequencing</b> code, all from Ville. Rodrigo contributed <b>PSR support</b> for vlv/chv together with a lot of other fixes for PSR. Unfortunately it's not yet again enabled by default.
 

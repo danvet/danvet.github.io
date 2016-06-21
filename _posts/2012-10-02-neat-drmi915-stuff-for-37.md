@@ -14,7 +14,7 @@ Now that the upstream merge window has started and my last drm-intel-next pull r
 
 <!--more-->
 
-The big ticket item is the <b><a href="http://blog.ffwll.ch/2012/08/new-modeset-code.html">modeset-rework</a></b>. On top of that we have some <b>eDP fixes</b> that required the new modeset infrastructure to work properly. Unfortunately the Haswell DP and eDP support did not make it - we've had patches for 3.6, but they've been too ugly to merge. Paulo Zanoni reworked all these patches on top of the new modeset code, unfortunately the new patches missed 3.7.  Also, thanks to these eDP fixes I could finally merge <b>CADL support</b>, this should help to light up the backlight on some obnoxious platforms with a BIOS that tries to get in the way of the kms driver ...
+The big ticket item is the <b>[modeset-rework](http://blog.ffwll.ch/2012/08/new-modeset-code.html)</b>. On top of that we have some <b>eDP fixes</b> that required the new modeset infrastructure to work properly. Unfortunately the Haswell DP and eDP support did not make it - we've had patches for 3.6, but they've been too ugly to merge. Paulo Zanoni reworked all these patches on top of the new modeset code, unfortunately the new patches missed 3.7.  Also, thanks to these eDP fixes I could finally merge <b>CADL support</b>, this should help to light up the backlight on some obnoxious platforms with a BIOS that tries to get in the way of the kms driver ...
 
 
 

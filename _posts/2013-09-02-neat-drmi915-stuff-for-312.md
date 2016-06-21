@@ -10,7 +10,7 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-75766497327907010
 blogger_orig_url: http://blog.ffwll.ch/2013/09/neat-drmi915-stuff-for-312.html
 ---
 
-So <a href="http://blog.ffwll.ch/2013/06/neat-drmi915-stuff-for-311.html">kernel 3.11</a> will be released soonish and it's time for our regular look at what the next merge window will bring in for the intel GPU driver.
+So [kernel 3.11](http://blog.ffwll.ch/2013/06/neat-drmi915-stuff-for-311.html) will be released soonish and it's time for our regular look at what the next merge window will bring in for the intel GPU driver.
 
 <!--more-->
 
@@ -30,7 +30,7 @@ Looking at general improvements we've finally moved the <b>gpu error state into 
 
 
 
-Under the hood there has been lots of improvements to the codebase. Damien Lespiau, based on work from Paulo Zanoni finally <b>converted our HDMI infoframe code</b> over to the common helpers introduced into the kernel half a year ago. Code sharing, especially for sink handling code is always nice. Also in our display code we've rid ourselves of the last remnants of the old crtc helper based modesetting code. This completes the <a href="http://blog.ffwll.ch/2012/08/new-modeset-code.html">massive modesetting rework</a> started in kernel 3.8.
+Under the hood there has been lots of improvements to the codebase. Damien Lespiau, based on work from Paulo Zanoni finally <b>converted our HDMI infoframe code</b> over to the common helpers introduced into the kernel half a year ago. Code sharing, especially for sink handling code is always nice. Also in our display code we've rid ourselves of the last remnants of the old crtc helper based modesetting code. This completes the [massive modesetting rework](http://blog.ffwll.ch/2012/08/new-modeset-code.html) started in kernel 3.8.
 
 
 

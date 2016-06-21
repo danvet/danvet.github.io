@@ -10,11 +10,11 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-23071604524689782
 blogger_orig_url: http://blog.ffwll.ch/2015/04/community-code-of-conduct-for-intel-gfx.html
 ---
 
-[This is a cross-post from the <a href="http://lists.freedesktop.org/archives/intel-gfx/2015-April/063766.html">mail I just sent out to intel-gfx</a>.] 
+[This is a cross-post from the [mail I just sent out to intel-gfx](http://lists.freedesktop.org/archives/intel-gfx/2015-April/063766.html).] 
 
 
 
-Code of conducts seem to be in the news a bit recently, and I realized that I've never really documented how we run things. It's different from the kernel's overall <a href="https://www.kernel.org/doc/Documentation/CodeOfConflict">CodeOfConflict</a> and also differs from the official <a href="https://01.org/linuxgraphics/community">Intel/OTC one</a> in small details about handling issues. And for completeness there's also the <a href="http://www.x.org/wiki/XorgFoundation/Policies/Harassment/">Xorg Foundation event policy</a>. Anyway, I think this is worth clarifying and here it goes.
+Code of conducts seem to be in the news a bit recently, and I realized that I've never really documented how we run things. It's different from the kernel's overall [Xorg Foundation event policy](https://www.kernel.org/doc/Documentation/CodeOfConflict">CodeOfConflict</a> and also differs from the official <a href="https://01.org/linuxgraphics/community">Intel/OTC one</a> in small details about handling issues. And for completeness there's also the <a href="http://www.x.org/wiki/XorgFoundation/Policies/Harassment/). Anyway, I think this is worth clarifying and here it goes.
 
 <!--more-->
 
@@ -26,7 +26,7 @@ Which doesn't mean we want to sacrifice quality to be nice. Striving for technic
 
 
 
-Unfortunately things go south occasionally. So if you feel threatened, personally abused or otherwise uncomfortable, even and especially when you didn't participate in a discussion yourself, then please raise this in private with the drm/i915 maintainers (currently Daniel Vetter and Jani Nikula, see <a href="https://www.kernel.org/doc/linux/MAINTAINERS">MAINTAINERS</a> for contact information). And the "in private" part is important: Humans screw up, disciplining minor fumbles by tarnishing someones google-able track record forever is out of proportion.
+Unfortunately things go south occasionally. So if you feel threatened, personally abused or otherwise uncomfortable, even and especially when you didn't participate in a discussion yourself, then please raise this in private with the drm/i915 maintainers (currently Daniel Vetter and Jani Nikula, see [MAINTAINERS](https://www.kernel.org/doc/linux/MAINTAINERS) for contact information). And the "in private" part is important: Humans screw up, disciplining minor fumbles by tarnishing someones google-able track record forever is out of proportion.
 
 
 
@@ -58,5 +58,5 @@ Let's keep it at that.
 
 
 
-And in case you have a problem with an individual drm/i915 maintainer and don't want to raise it with the other one there's the <a href="http://www.x.org/wiki/BoardOfDirectors/">Xorg BoD</a>, <a href="http://www.linuxfoundation.org/programs/advisory-councils/tab">linux foundation TAB</a> and the drm upstream maintainer Dave Airlie.
+And in case you have a problem with an individual drm/i915 maintainer and don't want to raise it with the other one there's the [linux foundation TAB](http://www.x.org/wiki/BoardOfDirectors/">Xorg BoD</a>, <a href="http://www.linuxfoundation.org/programs/advisory-councils/tab) and the drm upstream maintainer Dave Airlie.
 

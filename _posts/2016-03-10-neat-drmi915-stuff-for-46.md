@@ -10,7 +10,7 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-61531992260470728
 blogger_orig_url: http://blog.ffwll.ch/2016/03/neat-drmi915-stuff-for-46.html
 ---
 
-The <a href="http://blog.ffwll.ch/2016/01/neat-drmi915-stuff-for-45.html">4.5 release </a>is close, it's time to look at what's in store for the next kernel's merge window in the Intel graphics driver.
+The [4.5 release ](http://blog.ffwll.ch/2016/01/neat-drmi915-stuff-for-45.html)is close, it's time to look at what's in store for the next kernel's merge window in the Intel graphics driver.
 
 <!--more-->
 

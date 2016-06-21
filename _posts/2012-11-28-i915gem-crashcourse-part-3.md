@@ -11,7 +11,7 @@ blogger_orig_url: http://blog.ffwll.ch/2012/11/i915gem-crashcourse-part-3.html
 ---
 
 
-In previous installments of this series we've looked at <a href="http://blog.ffwll.ch/2012/10/i915gem-crashcourse.html">how the gpu can access memory</a> and <a href="http://blog.ffwll.ch/2012/11/neat-drmi915-stuff-for-38.html">how to submit a workload to the gpu</a>. Now we will look at some of the corner cases in more detail. See the <a href="http://blog.ffwll.ch/2013/01/i915gem-crashcourse-overview.html">i915/GEM crashcourse overview</a> for links to the other parts of this series.  
+In previous installments of this series we've looked at [i915/GEM crashcourse overview](http://blog.ffwll.ch/2012/10/i915gem-crashcourse.html">how the gpu can access memory</a> and <a href="http://blog.ffwll.ch/2012/11/neat-drmi915-stuff-for-38.html">how to submit a workload to the gpu</a>. Now we will look at some of the corner cases in more detail. See the <a href="http://blog.ffwll.ch/2013/01/i915gem-crashcourse-overview.html) for links to the other parts of this series.  
  <!--more--> 
 
 ## GEM Memory Management Details

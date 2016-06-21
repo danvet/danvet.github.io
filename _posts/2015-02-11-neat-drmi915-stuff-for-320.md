@@ -10,7 +10,7 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-74616464825208341
 blogger_orig_url: http://blog.ffwll.ch/2015/02/neat-drmi915-stuff-for-320.html
 ---
 
-<a href="http://blog.ffwll.ch/2014/12/neat-drmi915-stuff-for-319.html">Linux 3.19</a> was just released and my usual overview of what the next merge window will bring is more than overdue. The big thing overall is certainly all the work around <a href="http://blog.ffwll.ch/2015/01/update-for-atomic-display-updates.html">atomic display updates</a>, but read on for what else all has been done.
+[atomic display updates](http://blog.ffwll.ch/2014/12/neat-drmi915-stuff-for-319.html">Linux 3.19</a> was just released and my usual overview of what the next merge window will bring is more than overdue. The big thing overall is certainly all the work around <a href="http://blog.ffwll.ch/2015/01/update-for-atomic-display-updates.html), but read on for what else all has been done.
 
 <!--more-->
 
@@ -18,7 +18,7 @@ Let's first start with all the driver internal rework to support atomic. The big
 
 
 
-On the modeset side Ander Conselvan de Oliveira has done a lot of the necessary work already. Unfortunately converting the modeset code is much more involved for mainly two reaons: First there's a lot more derived state that needs to be handled, and the existing code already has structures and code for this. Conceptually the code has been prepared for an atomic world since the <a href="http://blog.ffwll.ch/2012/08/new-modeset-code.html">big display rewrite</a> and the introduction of <a href="http://blog.ffwll.ch/2013/07/precomputing-crtc-configuration-in.html">CRTC configuration structures</a>. But <b>converting the i915 modeset code to the new DRM atomic structures and interface</b> is still a lot of work. Most of these refactorings have landed in 3.20. The other hold-up is shared resources and the software state to handle that. This is mostly for handling display PLLs, but also other shared resources like the display FIFO buffers. Patches to handle this are still in-flight.
+On the modeset side Ander Conselvan de Oliveira has done a lot of the necessary work already. Unfortunately converting the modeset code is much more involved for mainly two reaons: First there's a lot more derived state that needs to be handled, and the existing code already has structures and code for this. Conceptually the code has been prepared for an atomic world since the [CRTC configuration structures](http://blog.ffwll.ch/2012/08/new-modeset-code.html">big display rewrite</a> and the introduction of <a href="http://blog.ffwll.ch/2013/07/precomputing-crtc-configuration-in.html). But <b>converting the i915 modeset code to the new DRM atomic structures and interface</b> is still a lot of work. Most of these refactorings have landed in 3.20. The other hold-up is shared resources and the software state to handle that. This is mostly for handling display PLLs, but also other shared resources like the display FIFO buffers. Patches to handle this are still in-flight.
 
 
 

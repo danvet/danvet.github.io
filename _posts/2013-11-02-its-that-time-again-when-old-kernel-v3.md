@@ -10,7 +10,7 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-24957106842943388
 blogger_orig_url: http://blog.ffwll.ch/2013/11/its-that-time-again-when-old-kernel-v3.html
 ---
 
-It's that time again when the old <a href="http://blog.ffwll.ch/2013/11/its-that-time-again-when-old-kernel-v3.html">kernel v3.12</a> will be released shortly and we'll take a look at what's in store for the Intel GFX driver in 3.13.
+It's that time again when the old [kernel v3.12](http://blog.ffwll.ch/2013/11/its-that-time-again-when-old-kernel-v3.html) will be released shortly and we'll take a look at what's in store for the Intel GFX driver in 3.13.
 
 <!--more-->
 

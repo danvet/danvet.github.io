@@ -11,7 +11,7 @@ blogger_orig_url: http://blog.ffwll.ch/2012/11/neat-drmi915-stuff-for-38.html
 ---
 
 
-So <a href="http://blog.ffwll.ch/2012/10/neat-drmi915-stuff-for-37.html">kernel 3.7</a> hasn't even shipped yet, but we're already lining up all the ducks for 3.8. And since feature wise I don't expect anything massive any more on top (since the feature merge period will close rsn) I've figured I might do the overview as well a bit earlier: 
+So [kernel 3.7](http://blog.ffwll.ch/2012/10/neat-drmi915-stuff-for-37.html) hasn't even shipped yet, but we're already lining up all the ducks for 3.8. And since feature wise I don't expect anything massive any more on top (since the feature merge period will close rsn) I've figured I might do the overview as well a bit earlier: 
 <!--more-->
  Now really big part is that <b>Haswell display support</b> is finally in decent shape - big kudos to Paulo Zanoni for this awesome work. As I've said already in my 3.7 overview, one of the reasons for the reworked modeset code is the Haswell display block, specifically how the new DP DDI encoders work. Paulo has split up the major parts into three blocks: First laying the ground with the basic DP code, then using that infrastructure to enable eDP panels. The tricky part was getting external displayport connectors to work, since on earlier platforms we have two independant encoders for DP and HDMI modes each, but now on Haswell the encoding part is actually shared. Which required some decent code-reorganization in our DP/HDMI encoder code to extract the output-specific functions into DP/HDMI-specific connectors, and then merge the DP and HDMI encoders into a <b>unified DDI encoder for Haswell</b>. Earlier platforms still have a separate encoder for DP and HDMI. 
  
