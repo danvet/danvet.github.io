@@ -30,7 +30,7 @@ tends to boil down to "we've promised this to the customer ...". So if you're in
 such a situation, read on below on how to most efficiently wrestle git to
 forklift the history of an entire subsystem onto an older kernel release. 
 
-<a name='more'></a>
+<!--more-->
 
 First we want to look at how to forklift git history at a high-level. The naive
 approach would be to use git rebase. But rebasing linearizes the history, which

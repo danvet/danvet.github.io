@@ -29,7 +29,7 @@ those requirements haven't really been clear and a lot of emotional discussions
 ensued. With this we should now have solid guidelines and can go back to coding
 instead of blowing through so much time and energy on waging flamewars. 
 
-<a name='more'></a>
+<!--more-->
 
 ## Why?
 

@@ -14,7 +14,9 @@ Since Dave Airlie moved the feature cut-off of the drm-next tree roughly one mon
 
 
 
-<a name='more'></a>On the modeset side of things we now have the final pieces for <b>plane rotation support</b> from Sonika Jindal and Ville. The DisplayPort code has also seen lots of improvements, with updated training values in preparation of the latest eDP standard (Sonika Jindal) and support for <b>DP training</b> pattern 3 (Ville). DSI panels now support burst mode (Shobhit) and hdmi conformance has been improved with some fixes from Clint Taylor.
+<!--more-->
+
+On the modeset side of things we now have the final pieces for <b>plane rotation support</b> from Sonika Jindal and Ville. The DisplayPort code has also seen lots of improvements, with updated training values in preparation of the latest eDP standard (Sonika Jindal) and support for <b>DP training</b> pattern 3 (Ville). DSI panels now support burst mode (Shobhit) and hdmi conformance has been improved with some fixes from Clint Taylor.
 
 
 

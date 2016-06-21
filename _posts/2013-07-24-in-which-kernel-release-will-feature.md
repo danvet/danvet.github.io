@@ -13,7 +13,7 @@ blogger_orig_url: http://blog.ffwll.ch/2013/07/in-which-kernel-release-will-feat
 So I get asked this question quite often and since I'm a terribly lazy person
 I'm just going to write this down once and then link to it ...
 
-<a name='more'></a>
+<!--more-->
 
 So the first thing to know is when future kernel releases will happen. In the
 past few years this has settled to a new version roughly every 2½ months, so

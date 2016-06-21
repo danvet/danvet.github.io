@@ -11,7 +11,9 @@ blogger_orig_url: http://blog.ffwll.ch/2015/12/neat-drmi915-stuff-for-44.html
 
 Due to vacations, conferences and other things I'm way later than usual and <a href="http://blog.ffwll.ch/2015/09/neat-drmi915-stuff-for-43.html">4.3 has been released</a> a while ago. More than overdue to take a look at what's in store in the next kernel release.
 
-<a name='more'></a>First looking at overall infrastructure work on the display side there's a lot of <b>atomic conversion</b> progress again. One feature that's now on solid fundations is <b>fastboot, built on top of atomic infrastructure</b> with patches from Maarten. Unfortunately we had to disable it again due to some backligh issues early in 4.4-rc. The other big piece is reworking the watermark update code (Ville&amp;Matt), which unfortunately ran into regression roadblocks already in the development cycle and had to be reverted partially. Another piece of infrastructure building on top of atomic is <b>validation&amp;adjusting the display clock</b> - some ULT chips can't drive all DP screens and the driver now detects that, and it should also downclock when less bandwidth is needed. This was implemented by Mika Kahola and Ville.
+<!--more-->
+
+First looking at overall infrastructure work on the display side there's a lot of <b>atomic conversion</b> progress again. One feature that's now on solid fundations is <b>fastboot, built on top of atomic infrastructure</b> with patches from Maarten. Unfortunately we had to disable it again due to some backligh issues early in 4.4-rc. The other big piece is reworking the watermark update code (Ville&amp;Matt), which unfortunately ran into regression roadblocks already in the development cycle and had to be reverted partially. Another piece of infrastructure building on top of atomic is <b>validation&amp;adjusting the display clock</b> - some ULT chips can't drive all DP screens and the driver now detects that, and it should also downclock when less bandwidth is needed. This was implemented by Mika Kahola and Ville.
 
 
 

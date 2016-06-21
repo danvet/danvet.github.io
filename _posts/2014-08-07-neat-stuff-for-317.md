@@ -12,7 +12,7 @@ blogger_orig_url: http://blog.ffwll.ch/2014/08/neat-stuff-for-317.html
 
 So with the <a href="http://blog.ffwll.ch/2014/06/neat-drmi915-stuff-for-316.html">3.16 kernel</a> out of the door it's time to look at what's queued up for the Intel graphics driver in 3.17.
 
-<a name='more'></a>
+<!--more-->
 
 This release features the <b>universal plane</b> support from Matt Roper, all enabled already by default. This is prep work for atomic modesetting and pageflipping support: Since a while we support additional (overlay) planes in the DRM core and the i915 driver, but there have always been two implicit planes directly attached to the CRTC: The primary plane used by the SetCrtc and PageFlip functions, and the optional cursor support. But with the atomic ioctl these implicit planes it's easier to handle everything as an explicit plane, so Matt's patches split them away into separate real plane objects. This is a nice cleanup of the kms api in general since a lot of SoC hardware has unified plane hardware, where cursor, primary plane and any overlays are fully interchangeable. So we already expose this to userspace, if it sets the corresponding feature flag.
 

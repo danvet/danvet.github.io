@@ -12,7 +12,7 @@ blogger_orig_url: http://blog.ffwll.ch/2012/10/i915gem-crashcourse.html
 
 
 This is the first part in a short tour of the Intel hardware and what the GEM (graphics execution manager) in the i915 does. See the <a href="http://blog.ffwll.ch/2013/01/i915gem-crashcourse-overview.html">overview</a> for links to the other parts. 
-<a name='more'></a>
+<!--more-->
 GEM essentially deals with graphics buffer objects (which can contain textures, renderbuffers, shaders or all kinds of other state objects and data used by the gpu) and how to run a given workload on the gpu, commonly called command submission (CS), but in the i915.ko driver done with the execbuf ioctl (since the gpu commands themselves reside in a buffer object on Intel hardware). 
 
 

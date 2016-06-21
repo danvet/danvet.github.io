@@ -14,7 +14,9 @@ blogger_orig_url: http://blog.ffwll.ch/2013/06/neat-drmi915-stuff-for-311.html
 
 
 
- <a name='more'></a>The big item is surely that <b>ValleyView</b> (now called <b>Baytrail</b>) support is now solid enough that we've lifted the preliminary hardware support tag for it and enabled it by default. Support for this SoC platform should be fairly complete now with rc6, render turbo and all outputs (with the exception of MIPI/DSI panels all nicely working now. Most of the code is from Jesse Barnes with a bunch of patches from Ville Syrjälä and also from the Bangalore display guys.
+<!--more-->
+
+The big item is surely that <b>ValleyView</b> (now called <b>Baytrail</b>) support is now solid enough that we've lifted the preliminary hardware support tag for it and enabled it by default. Support for this SoC platform should be fairly complete now with rc6, render turbo and all outputs (with the exception of MIPI/DSI panels all nicely working now. Most of the code is from Jesse Barnes with a bunch of patches from Ville Syrjälä and also from the Bangalore display guys.
 
 
 

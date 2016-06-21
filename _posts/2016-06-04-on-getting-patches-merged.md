@@ -25,7 +25,7 @@ doing and guide you through the maze the first few times.
 I've been pinged about this a few times recently on IRC, so I figured I'll type
 up my recommended best practices.
 
-<a name='more'></a>
+<!--more-->
 
 The crucial bit is that such unstructured developer communities run entirely on
 mutual trust, and patches get reviewed through a market of favours as in "I

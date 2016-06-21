@@ -12,7 +12,7 @@ blogger_orig_url: http://blog.ffwll.ch/2015/06/neat-drmi915-stuff-for-42.html
 
 The <a href="http://blog.ffwll.ch/2015/04/neat-drmi915-stuff-for-41.html">4.1 kernel release</a> is still a few weeks off and hence a bit early to talk about 4.2. But the drm subsystem feature cut-off already passed and I'm going on vacation for 2 weeks, so here we go.
 
-<a name='more'></a>
+<!--more-->
 
 First things first: No, i915 does not yet support atomic modesets. But a lot of progress has been made again towards enabling it. As I explained last time around the trouble is that the intel driver has grown its own almost-atomic modeset infrastructure over the past few years. And now we need to convert that to the slightly different proper atomic support infrastructure merged into the drm core, which means lots and lots of small changes all over the driver. A big part merged in this release is the <b>removal of the -&gt;new_config</b> pointer by Ander, Matt &amp; Maarten. This was the old i915-specific pointer to the staged new configuration. Removing it required switching all the CRTC code over to handling the staged configuration stored in the struct drm_atomic_state to be compatible with the atomic core. Unfortunately we still need to do the same for encoder/connector states and for plane states, so there's still lots of shuffling pending for 4.2.
 

@@ -12,7 +12,9 @@ blogger_orig_url: http://blog.ffwll.ch/2014/06/neat-drmi915-stuff-for-316.html
 
 Linus decided to have a bit fun with the 3.16 merge window and the <a href="http://blog.ffwll.ch/2014/04/neat-drmi915-stuff-for-315.html">3.15 release</a>, so I'm a bit late with our regular look at the new stuff for the Intel graphics driver.
 
-<a name='more'></a>First things first, Baytrail/Valleyview has finally gained support for <b>MIPI DSI panels</b>! Which means no more ugly hacks to get machines like the ASUS T100 going for users and no more promises we can't keep from developers - it landed for real this time around. Baytrail has also seen a lot of polish work in e.g. the infoframe handling, power domain reset, ...
+<!--more-->
+
+First things first, Baytrail/Valleyview has finally gained support for <b>MIPI DSI panels</b>! Which means no more ugly hacks to get machines like the ASUS T100 going for users and no more promises we can't keep from developers - it landed for real this time around. Baytrail has also seen a lot of polish work in e.g. the infoframe handling, power domain reset, ...
 
 
 

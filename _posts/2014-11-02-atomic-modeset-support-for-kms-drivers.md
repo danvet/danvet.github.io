@@ -12,7 +12,7 @@ blogger_orig_url: http://blog.ffwll.ch/2014/11/atomic-modeset-support-for-kms-dr
 
 
 So I've just reposted my <a href="http://article.gmane.org/gmane.comp.video.dri.devel/117376">atomic modeset helper series</a>, and since the main goal of all that work was to ensure a smooth and simple transition for existing drivers to the promised atomic land it's time to elaborate a bit. The big problem is that the existing helper libraries and callbacks to driver backends don't really fit the new semantics, so some shuffling was required to avoid long-term pain. So if you are a driver writer and just interested in the details then read for what needs to be done to support atomic modeset updates using these new helper libraries.
-<a name='more'></a>
+<!--more-->
 
 ### Phase 1: Reworking the Driver Backend Functions for Planes
 

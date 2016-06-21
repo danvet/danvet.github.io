@@ -12,9 +12,9 @@ blogger_orig_url: http://blog.ffwll.ch/2013/11/its-that-time-again-when-old-kern
 
 It's that time again when the old <a href="http://blog.ffwll.ch/2013/11/its-that-time-again-when-old-kernel-v3.html">kernel v3.12</a> will be released shortly and we'll take a look at what's in store for the Intel GFX driver in 3.13.
 
+<!--more-->
 
-
-<a name='more'></a>Formerly known as Valleyview, now called <b>Baytrail</b> has seen a lot of improvements. Jesse Barnes has crawled through bugzilla and fixed a lot of little issues all over the place. Chon Ming Lee also provided a few patches to initialize the chip without the VBIOS' help. Jani Nikula has provided the first cut at <b>MIPI DSI support</b>, but that's still all rather preliminary and still a bit of work to do.
+Formerly known as Valleyview, now called <b>Baytrail</b> has seen a lot of improvements. Jesse Barnes has crawled through bugzilla and fixed a lot of little issues all over the place. Chon Ming Lee also provided a few patches to initialize the chip without the VBIOS' help. Jani Nikula has provided the first cut at <b>MIPI DSI support</b>, but that's still all rather preliminary and still a bit of work to do.
 
 
 

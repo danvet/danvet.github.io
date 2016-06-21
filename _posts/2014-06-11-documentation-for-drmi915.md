@@ -30,7 +30,7 @@ fuzz to integrate.
 Below the break some more details about documentation requirements relevant for
 developers.
 
-<a name='more'></a>
+<!--more-->
 
 So from now on I expect reasonable documentation for new, big kernel features
 and for new additions to the i-g-t library.

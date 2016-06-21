@@ -14,7 +14,9 @@ Since I've <a href="http://blog.ffwll.ch/2012/01/new-drm-intel-next-git-tree.htm
 
 
 
-<a name='more'></a>There are two main branches I merge patches into, namely <b>drm-intel-fixes</b> and <b>drm-intel-next-queued</b>. drm-intel-fixes contains bugfixes for the current -rc upstream kernels, whereas drm-intel-next-queued (commonly shortened to dinq) is for feature work. The first special thing is that contrary to subsystem trees I don't close dinq while the upstream merge window is open - stalling QA and our own driver feature and review work for usually more than 2 weeks is a bit too disruptive. But the linux-next tree maintained by upstream forbids this, hence why I also have the for-linux-next branch: Usually it's a copy of the drm-intel-next-queued branch safe when the merge window is open, then it's a copy of the drm-intel-fixes branch. This way we can keep the process in our team going without upsetting Stephen Rothwell. 
+<!--more-->
+
+There are two main branches I merge patches into, namely <b>drm-intel-fixes</b> and <b>drm-intel-next-queued</b>. drm-intel-fixes contains bugfixes for the current -rc upstream kernels, whereas drm-intel-next-queued (commonly shortened to dinq) is for feature work. The first special thing is that contrary to subsystem trees I don't close dinq while the upstream merge window is open - stalling QA and our own driver feature and review work for usually more than 2 weeks is a bit too disruptive. But the linux-next tree maintained by upstream forbids this, hence why I also have the for-linux-next branch: Usually it's a copy of the drm-intel-next-queued branch safe when the merge window is open, then it's a copy of the drm-intel-fixes branch. This way we can keep the process in our team going without upsetting Stephen Rothwell. 
 
 Usually once the merge-window opens I have a mix of feature work (which then obviously missed the deadline) and bugfixes oustanding (i.e. not yet merged to Dave Airlie's drm branches). Therefore I split out the bugfixes from dinq into -fixes and rebase  the remaining feature work in dinq on top of that.
 

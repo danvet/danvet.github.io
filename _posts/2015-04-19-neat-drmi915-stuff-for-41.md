@@ -12,7 +12,7 @@ blogger_orig_url: http://blog.ffwll.ch/2015/04/neat-drmi915-stuff-for-41.html
 
 With <a href="http://blog.ffwll.ch/2015/02/neat-drmi915-stuff-for-320.html">Linux kernel v3.20^W v4.0</a> already out there door my overview of what's in 4.1 for drm/i915 is way overdue.
 
-<a name='more'></a>
+<!--more-->
 
 First looking at the modeset side of the driver the big overall thing is all the work to convert i915 to atomic. In this release there's code from Ander Conselvan de Oliveira to have a<b> struct drm_atomic_state allocated for all the legacy modeset code paths</b> in the driver. With that we can switch the internals to start using atomic state objects and gradually convert over everything to atomic on the modeset side. Matt Roper on the other hand was busy to prepare the plane code to land the atomic watermark update code. Damien has <b>reworked the initial plane configuration code</b> used for fastboot, which also needs to be adapted to the atomic world.
 

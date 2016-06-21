@@ -12,7 +12,7 @@ blogger_orig_url: http://blog.ffwll.ch/2016/03/neat-drmi915-stuff-for-46.html
 
 The <a href="http://blog.ffwll.ch/2016/01/neat-drmi915-stuff-for-45.html">4.5 release </a>is close, it's time to look at what's in store for the next kernel's merge window in the Intel graphics driver.
 
-<a name='more'></a>
+<!--more-->
 
 Headline features for sure are that <b>FBC and PSR are enabled by default</b>. And this time around I'm really hopeful that it will stick, since Paulo&amp;Rodrigo have done a stellar job hunting down all the corner cases, writing testcases for them all and in general making sure we have a really solid foundation for display power saving features. There's still some oddball cornercases, which means it's not yet enabled everywhere and on all platforms, but like I said: Looking really good, and the culmination of over 1 year of effort to get the code infrastructure fixed up and solid.
 

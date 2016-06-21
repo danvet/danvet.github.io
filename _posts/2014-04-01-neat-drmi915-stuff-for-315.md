@@ -14,7 +14,9 @@ So the release of the <a href="https://www.blogger.com/%3Cdegasus%3E%20but%20whe
 
 
 
-<a name='more'></a>The first big thing is Ben Widawsky's support for <b>per-process address spaces</b>. Since a long time we've already supported the per-process gtt page tables the hardware provides, but only with one address space. With Ben's work we can now manage multiple address spaces and switch between them, at least on Ivybridge and Haswell. Support for Baytrail and Broadwell for this feature is still in progress. This finally allows multiple different users to use the gpu concurrently without accidentally leaking information between applications. Unfortunately there have been a few issues with the code still so we had to disable this for 3.15 by default.
+<!--more-->
+
+The first big thing is Ben Widawsky's support for <b>per-process address spaces</b>. Since a long time we've already supported the per-process gtt page tables the hardware provides, but only with one address space. With Ben's work we can now manage multiple address spaces and switch between them, at least on Ivybridge and Haswell. Support for Baytrail and Broadwell for this feature is still in progress. This finally allows multiple different users to use the gpu concurrently without accidentally leaking information between applications. Unfortunately there have been a few issues with the code still so we had to disable this for 3.15 by default.
 
 
 

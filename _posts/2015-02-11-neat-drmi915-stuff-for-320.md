@@ -12,7 +12,7 @@ blogger_orig_url: http://blog.ffwll.ch/2015/02/neat-drmi915-stuff-for-320.html
 
 <a href="http://blog.ffwll.ch/2014/12/neat-drmi915-stuff-for-319.html">Linux 3.19</a> was just released and my usual overview of what the next merge window will bring is more than overdue. The big thing overall is certainly all the work around <a href="http://blog.ffwll.ch/2015/01/update-for-atomic-display-updates.html">atomic display updates</a>, but read on for what else all has been done.
 
-<a name='more'></a>
+<!--more-->
 
 Let's first start with all the driver internal rework to support atomic. The big thing with atomic is that it requires a clean split between code that checks display updates and the code that commits a new display state to the hardware. The corallary from that is that any derived state that's computed in the validation code and needed int the commit code must be stored somewhere in the state object. Gustavo Padovan and Matt Roper have done all that work to <b>support atomic plane updates</b>. This is the code that's now in 3.20 as a tech preview. The big things missing for proper atomic plane updates is async commit support (which has already landed for 3.21) and support to adjust watermark settings on the fly. Patches for from Ville have been around for a long time, but need to be rebased, reviewed and extended for recently added platforms.
 

@@ -12,7 +12,7 @@ blogger_orig_url: http://blog.ffwll.ch/2014/01/neat-drmi915-stuff-for-314.html
 
 <a href="http://blog.ffwll.ch/search/label/Kernel%20RelNotes">Kernel v3.13</a> is nearing its release, so it's time at our regular look at what the next version will bring to the Intel gfx driver.
 
-<a name='more'></a>
+<!--more-->
 
 This time around there was a lot of infrastructure work for improved power management. Imre Deak implemented code to <b>manage display power wells</b> in a more generic way so that the current Haswell support is also ready for other platforms. Unfortunately new platform support hasn't landed yet. But for Haswell we now have working <b>runtime D3</b> support, contributed by Paulo Zanoni. For Baytrail/Valleyview Deepak S provided improvements to the <b>GT power well&nbsp; force-wake </b>code - on these mobile platforms it is split up between the render engine and more auxiliary engines like the blitter and the video decode hardware.
 

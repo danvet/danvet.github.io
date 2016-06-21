@@ -19,4 +19,4 @@ github_username:  danvet
 
 # Build settings
 markdown: kramdown
-excerpt_separator: <a name='more'>
+excerpt_separator: <!--more-->

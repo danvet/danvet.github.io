@@ -16,7 +16,9 @@ testsuite. And then shockingly noticed that I've never done a big pompous blog
 post to announce what we've started about one-a-half years ago. So besides just
 describing the new infrastructure for writing testcases (apparently every decent
 hacker must reinvent a testframework at least once ...) I'll also recap a bit
-what's been going on in the past.  <a name='more'></a>
+what's been going on in the past.
+
+<!--more-->
 
 ## What Has Happened Thus Far ...
 

@@ -14,7 +14,7 @@ Also, silly titles. Atomic has taken of for real, right now there's 17 drivers s
 
 
 
-<a name='more'></a>
+<!--more-->
 
 It seems small, but a big improvement made over the past few months is that <b>most driver callbacks used by the helper libraries are now optional</b>. Which means tons and tons of dummy functions and boilerplate code can be removed from drivers, leading to less clutter and easier to understand driver code. Aside: Not all drivers have been decluttered, doing that is great starter project for contributing a first few patches to the DRM subsystem. Many thanks to Boris Brezillion, Noralf Trønnes and many others for making this happen.
 

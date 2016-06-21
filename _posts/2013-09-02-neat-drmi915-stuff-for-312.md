@@ -12,7 +12,7 @@ blogger_orig_url: http://blog.ffwll.ch/2013/09/neat-drmi915-stuff-for-312.html
 
 So <a href="http://blog.ffwll.ch/2013/06/neat-drmi915-stuff-for-311.html">kernel 3.11</a> will be released soonish and it's time for our regular look at what the next merge window will bring in for the intel GPU driver.
 
-<a name='more'></a>
+<!--more-->
 
 For Haswell enabling there are two new power saving features in 3.12: The first is <b>pc8+ support</b> from Paulo Zanoni. This is a new, deeper system sleep state for the new Haswell ULT platforms where the PCH is integrated onto the same package - pc stands for "package C state". Since waking up from this will still be much faster than waking from a full resume this will help for always-on use-cases like tablets. This support required a lot of changes in many parts of the driver since we're essentially doing part of what the firmware has done for us at suspend/resume time, but now we do this ourselves at runtime. Most of the changes have been to setup/restore additional reference clocks and to improve our handling of interrupts - the added benefit of this power saving mode compared to full device (or even system suspend) is that hotplugging still works.
 

@@ -11,7 +11,9 @@ blogger_orig_url: http://blog.ffwll.ch/2016/05/neat-drmi915-stuff-for-47.html
 
 The <a href="http://blog.ffwll.ch/2016/03/neat-drmi915-stuff-for-46.html">4.6 release</a> is almost out of the door, it's time to look at what's in store for 4.7.
 
-<a name='more'></a>Let's first look at the epic saga called atomic support. In 4.7 the <b>atomic watermark update support for Ironlake through Broadwell</b> from Matt Roper, Ville Syrjälä and others finally landed. This took about 3 attempts to get merged because there's lots of small little corner cases that caused regressions each time around, but it's finally done. And it's an absolutely key piece for atomic support, since Intel hardware does not support atomic updates of the watermark settings for the display fetch fifos. And if those values are wrong tearings and other ugly things will result. We still need corresponding support for other platforms, but this is a really big step. But that's not the only atomic work: Maarten Lankhorst made the <b>hardware state checker atomic</b>, and there's been tons of smaller things all over to move the driver towards the shiny new.
+<!--more-->
+
+Let's first look at the epic saga called atomic support. In 4.7 the <b>atomic watermark update support for Ironlake through Broadwell</b> from Matt Roper, Ville Syrjälä and others finally landed. This took about 3 attempts to get merged because there's lots of small little corner cases that caused regressions each time around, but it's finally done. And it's an absolutely key piece for atomic support, since Intel hardware does not support atomic updates of the watermark settings for the display fetch fifos. And if those values are wrong tearings and other ugly things will result. We still need corresponding support for other platforms, but this is a really big step. But that's not the only atomic work: Maarten Lankhorst made the <b>hardware state checker atomic</b>, and there's been tons of smaller things all over to move the driver towards the shiny new.
 
 
 

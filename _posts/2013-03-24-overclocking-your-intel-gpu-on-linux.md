@@ -17,7 +17,7 @@ So after a bit of irc discusssions yesterday it turns out that you can overclock
 intel gpus by quite a margin. Which makes some sense now that the gfx
 performance of intel chips isn't something to be completely ashamed of.
 
-<a name='more'></a>
+<!--more-->
 
 You need a few ingredients:
 

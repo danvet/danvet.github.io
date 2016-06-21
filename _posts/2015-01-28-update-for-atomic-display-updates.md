@@ -12,7 +12,7 @@ blogger_orig_url: http://blog.ffwll.ch/2015/01/update-for-atomic-display-updates
 
 Another kernel release is imminent and a lot of things happened since my last big blog post about <a href="http://blog.ffwll.ch/2014/11/atomic-modeset-support-for-kms-drivers.html">atomic modeset</a>. Read on for what new shiny things 3.20 will bring this area.
 
-<a name='more'></a>
+<!--more-->
 
 ### Atomic IOCTL and Properties
 

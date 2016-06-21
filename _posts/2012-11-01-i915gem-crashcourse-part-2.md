@@ -12,7 +12,7 @@ blogger_orig_url: http://blog.ffwll.ch/2012/11/i915gem-crashcourse-part-2.html
 
 
 After the <a href="http://blog.ffwll.ch/2012/10/i915gem-crashcourse.html">previous installement</a> this part will cover command submission to the gpu. See the <a href="http://blog.ffwll.ch/2013/01/i915gem-crashcourse-overview.html">i915/GEM crashcourse overview</a> for links to the other parts of this series.  
-<a name='more'></a>
+<!--more-->
 
 ## Command Submission and Relocations 
 

@@ -12,7 +12,7 @@ blogger_orig_url: http://blog.ffwll.ch/2012/08/new-modeset-code.html
 
 drm/i915.ko is gearing up to gain a new modeset code, to finally move away from the crtc helper code (in drm/drm_crtc_helper.c) used by (up to now) all kms drivers. As a quick reference I'll detail the motivation and design of the new code a bit here (mostly stitched together from patchbomb announcements and commits introducing the new concepts).
 
-<a name='more'></a>
+<!--more-->
 
 The crtc helper code has the fundamental assumption that encoders and crtcs can be enabled/disabled in any order, as long as we take care of depencies (which means that enabled encoders need an enabled crtc to feed them data, essentially).
 

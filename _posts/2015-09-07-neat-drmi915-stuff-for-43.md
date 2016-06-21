@@ -14,7 +14,7 @@ blogger_orig_url: http://blog.ffwll.ch/2015/09/neat-drmi915-stuff-for-43.html
 
 
 
-<a name='more'></a>
+<!--more-->
 
 
 

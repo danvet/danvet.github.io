@@ -14,7 +14,9 @@ So kernel <a href="http://blog.ffwll.ch/2013/02/neat-drmi915-stuff-for-39.html">
 
 
 
-<a name='more'></a>For enthusiast (i.e. people who like to see their hw burn down in flames ...) the <b><a href="http://blog.ffwll.ch/2013/03/overclocking-your-intel-gpu-on-linux.html">improved overclocking</a></b> support is certainly the interesting bit. Thanks to Ben Widawsky's patches we now correctly detect the gpu turbo limit and set the non-turbo frequency as the default limit to avoid hanging systems right on boot. So GPU overclocking should now work on Sandybridge and Ivybridge - apparently something changed on Haswell. Related is Chris Wilson's patch to <b>tune the Haswell turbo support</b> properly - Haswell has new frequency domains and so needs a different control table to ramp up the ring frequency when the GPU is busy.
+<!--more-->
+
+For enthusiast (i.e. people who like to see their hw burn down in flames ...) the <b><a href="http://blog.ffwll.ch/2013/03/overclocking-your-intel-gpu-on-linux.html">improved overclocking</a></b> support is certainly the interesting bit. Thanks to Ben Widawsky's patches we now correctly detect the gpu turbo limit and set the non-turbo frequency as the default limit to avoid hanging systems right on boot. So GPU overclocking should now work on Sandybridge and Ivybridge - apparently something changed on Haswell. Related is Chris Wilson's patch to <b>tune the Haswell turbo support</b> properly - Haswell has new frequency domains and so needs a different control table to ramp up the ring frequency when the GPU is busy.
 
 
 

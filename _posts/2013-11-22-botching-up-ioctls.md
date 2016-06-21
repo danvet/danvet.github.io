@@ -18,7 +18,7 @@ To avoid repeating all the same mistakes again I've written up some of the lesso
 
 
 
-<a name='more'></a>
+<!--more-->
 
 
 

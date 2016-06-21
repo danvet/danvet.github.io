@@ -9,9 +9,15 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-15963416277631595
 blogger_orig_url: http://blog.ffwll.ch/2011/01/on-getting-your-api-right.html
 ---
 
-Ben Widawsky is writing hardware contexts support for the i915 drm module. The resulting API <a href="http://lists.freedesktop.org/archives/intel-gfx/2010-December/009059.html">discussion</a> showed that things are not simple and probably in need of an iteration or two. Now linux kernel rules mandate that an ioctl once merged must be supported (almost) forever. So one can still see all the evolutionary steps of gpu command submission:
+Ben Widawsky is writing hardware contexts support for the i915 drm module. The
+resulting API <a
+href="http://lists.freedesktop.org/archives/intel-gfx/2010-December/009059.html">discussion</a>
+showed that things are not simple and probably in need of an iteration or two.
+Now linux kernel rules mandate that an ioctl once merged must be supported
+(almost) forever. So one can still see all the evolutionary steps of gpu command
+submission. Read on for a bit of a history trip.
 
-
+<!--more-->
 
 <b>cmdbuffer:</b> The kernel simply copies the commands given by userspace into the hardware ringbuffer. Bad, because the kernel needs to copy everything. And it can't use hardware features to check the commands because commands in the ringbuffer are assumed to be trusted.
 

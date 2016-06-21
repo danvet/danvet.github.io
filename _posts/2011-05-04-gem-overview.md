@@ -13,7 +13,7 @@ blogger_orig_url: http://blog.ffwll.ch/2011/05/gem-overview.html
 This is the script of a short intro I've given at the Linaro@UDS memory
 management summit in Budapest in spring 2011. Yep, it's a bit old ...
 
-<a name='more'></a>
+<!--more-->
 
 The core idea of GEM is to identify graphic buffer objects with 32bit ids. The
 reason being "X runs out of open fds" (KDE easily reaches a few thousand).

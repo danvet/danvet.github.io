@@ -12,7 +12,7 @@ blogger_orig_url: http://blog.ffwll.ch/2016/01/vt-switching-with-atomic-modeset.
 
 First the title is a slight lie, this really is about compositor switching and not necessarily about using Linux VTs for that. But I hope that the title draws in the right folks and tempts them to read this. Since with atomic there's a bit a problem if you want to switch between different compositors - maybe you have X running and hack on wayland-mutter, or kwin and mutter or just a DE and a login manager&nbsp; - and expect it to not end up in a modern arts project like <a href="https://twitter.com/__damien__/status/676741658940186625">this</a>.
 
-<a name='more'></a>
+<!--more-->
 
 Now the trouble with atomic modesetting and switching between different compositors is that atomic display updates are incremental for two reasons:
 

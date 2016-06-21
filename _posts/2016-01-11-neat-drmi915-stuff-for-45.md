@@ -12,7 +12,7 @@ blogger_orig_url: http://blog.ffwll.ch/2016/01/neat-drmi915-stuff-for-45.html
 
 <a href="http://blog.ffwll.ch/2015/12/neat-drmi915-stuff-for-44.html">Kernel version 4.4</a> is released, it's time for our regular look at what's in store for the Intel graphics driver in the next release.
 
-<a name='more'></a>
+<!--more-->
 
 Overall this cycle has seen lots and lots of bugfixes, and the reason for that is that we're rebuilding our CI infrastructure after it went up in a poof of smoke last summer. Really big thanks to the entire team for the effort invested! And that's why this overview is a bit different and we'll start with bugfix efforts before delving into the few feature additions:
 

@@ -10,13 +10,15 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-81233787696385238
 blogger_orig_url: http://blog.ffwll.ch/2012/01/new-drm-intel-next-git-tree.html
 ---
 
-[This is a verbatim copy of the announcement that went out to intel-gfx &amp; Co. today.]
+[This is a verbatim copy of the announcement that went out to intel-gfx &amp;
+Co. today.]
 
+Because Keith is routinely really busy with all kinds of things, notably
+gathering fixes for drm-intel-fixes, the patch merge process for the next
+release cycle sometimes falls behind. To support him and improve things I've
+been volunteered to take over handling the -next tree.
 
-
-Because Keith is routinely really busy with all kinds of things, notably gathering fixes for drm-intel-fixes, the patch merge process for the next release cycle sometimes falls behind. To support him and improve things I've been volunteered to take over handling the -next tree.
-
-
+<!--more-->
 
 The main aim is to shift the drm/i915 -next merge process massively ahead with the goals to:
 

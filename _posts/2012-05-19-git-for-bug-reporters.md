@@ -15,6 +15,8 @@ happily compile kernels from sources, but have no idea about git. Unfortunately
 there doesn't seem to be a quick how-to tailored to the needs of bug reporters,
 so let's fix that.
 
+<!--more-->
+
 	$ git clone --depth 1 --no-checkout --no-single-branch &lt;git-repo-path&gt;
 
 This clones the git repository, but avoids downloading the entire history. It

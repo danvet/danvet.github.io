@@ -16,7 +16,7 @@ Now that my kernel modesetting lockig rework has <a href="http://cgit.freedeskto
 The aim of this locking rework is that ioctls which a compositor should be might call for every frame (set_cursor, page_flip, addfb, rmfb and getfb/create_handle) should not be able to block on kms background activities like output detection. And since each EDID read takes about 25ms (in the best case), that always means we'll drop at least one frame. 
 
 The solution is to add per-crtc locking for these ioctls, and restrict background activities to only use the global lock. Change-the-world type of events (modeset, dpms, ...) need to grab all locks. 
-<a name='more'></a>
+<!--more-->
 Two tricky parts arose in the conversion: 
 
 <ul><li>A lot of current code assumes that a kms fb object can't disappear while holding the global lock, since the current code serializes fb destruction with it. Hence proper lifetime management using the already created refcounting for fbs need to be instantiated for all ioctls and interfaces/users. </li><li>The rmfb ioctl removes the to-be-deleted fb from all active users. But unconditionally taking the global kms lock to do so introduces an unacceptable potential stall point. And obviously changing the userspace abi isn't on the table, either. Hence this conversion opportunistically checks whether the rmfb ioctl holds the very last reference, which guarantees that the fb isn't in active use on any crtc or plane (thanks to the conversion to the new lifetime rules using proper refcounting). Only if this is not the case will the code go through the slowpath and grab all modeset locks. Sane compositors will never hit this path and so avoid the stall, but userspace relying on these semantics will also not break.  </li></ul>
