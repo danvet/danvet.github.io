@@ -108,7 +108,9 @@ interface:
 - as mentioned above there newly is a generic ioctl to create an object suitable
   as a dumb scanout (plus some support to mmap it).
 
-- currently KMS has no generic support for overlays (there are driver-specific ioctls in i915 and vmgfx, though). Jesse Barnes has posted an RFC to remedy this: <a href="http://www.mail-archive.com/dri-devel@lists.freedesktop.org/msg10415.html">http://www.mail-archive.com/dri-devel@lists.freedesktop.org/msg10415.html</a>
+- currently KMS has no generic support for overlays (there are driver-specific
+  ioctls in i915 and vmgfx, though). Jesse Barnes has posted an RFC to remedy
+  this: <a href="http://www.mail-archive.com/dri-devel@lists.freedesktop.org/msg10415.html">http://www.mail-archive.com/dri-devel@lists.freedesktop.org/msg10415.html</a>
 
 ### GEM and PRIME
 

@@ -43,4 +43,7 @@ And now hardware context support adds its own complications. And likely requires
 
 
 
-And for anyone forced to design an API, read these <a href="http://ozlabs.org/~rusty/index.cgi/tech/2008-03-30.html">two</a> <a href="http://ozlabs.org/~rusty/index.cgi/tech/2008-04-01.html">posts</a> by Rusty Russells.
+And for anyone forced to design an API, read these <a
+href="http://ozlabs.org/~rusty/index.cgi/tech/2008-03-30.html">two</a> <a
+href="http://ozlabs.org/~rusty/index.cgi/tech/2008-04-01.html">posts</a> by
+Rusty Russells.
