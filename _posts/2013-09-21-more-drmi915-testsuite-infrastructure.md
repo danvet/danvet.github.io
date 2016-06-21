@@ -11,7 +11,14 @@ blogger_orig_url: http://blog.ffwll.ch/2013/09/more-drmi915-testsuite-infrastruc
 ---
 
 
-So after the recent [overview over our kernel test infrastructure](http://blog.ffwll.ch/2013/08/recent-drmi915-testsuite-improvements.html) I've had to write a bunch multithreaded testcases. And since I'm rather lazily I've opted to create a few more helpers that hide all the little details when forking and joining processes. While at I think it's also a good time to explain a bit the infrastructure we have to help running the kernel testsuite on simulated hardware and a few other generally useful things in our testsuite helper library. 
+After the recent [overview over our kernel test
+infrastructure](/2013/08/recent-drmi915-testsuite-improvements.html)
+I've had to write a bunch multithreaded testcases. And since I'm rather lazily
+I've opted to create a few more helpers that hide all the little details when
+forking and joining processes. While at I think it's also a good time to explain
+a bit the infrastructure we have to help running the kernel testsuite on
+simulated hardware and a few other generally useful things in our testsuite
+helper library. 
 <!--more-->
 
 ## Multithreaded Tests 

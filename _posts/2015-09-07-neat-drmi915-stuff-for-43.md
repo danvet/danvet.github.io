@@ -10,7 +10,9 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-56318451111078532
 blogger_orig_url: http://blog.ffwll.ch/2015/09/neat-drmi915-stuff-for-43.html
 ---
 
-[Kernel 4.2](http://blog.ffwll.ch/2015/06/neat-drmi915-stuff-for-42.html) is released already and the 4.3 merge window in full swing, time to look at what's in it for the intel graphics driver.
+[Kernel 4.2](/2015/06/neat-drmi915-stuff-for-42.html) is
+released already and the 4.3 merge window in full swing, time to look at what's
+in it for the intel graphics driver.
 
 
 

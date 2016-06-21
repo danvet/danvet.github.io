@@ -11,9 +11,29 @@ blogger_orig_url: http://blog.ffwll.ch/2013/07/precomputing-crtc-configuration-i
 ---
 
 
-Like I've briefly mentioned when explaining the [kernel 3.7](http://blog.ffwll.ch/2012/08/new-modeset-code.html">new modeset code</a> merged into <a href="http://blog.ffwll.ch/2012/10/neat-drmi915-stuff-for-37.html) one of the goals was to facility atomic modesetting and fastboot. Now the big new requirement for both atomic modesetting and fastboot is that we precompute the entire output configuration before we start touching the hardware. And this includes things like pll settings, internal link configuration and watermarks. For atomic modesetting we need this to be able to decide up-front whether a configuration requested by userspace works, or whether we don't have enough bandwidth, display plls or lack some other resource. For fastboot we need to be able to compute and track the full display hardware state in software so that we can compare a requested configuration from userspace with the boot-up state taken over from the BIOS. Otherwise we might end up with suboptimal settings inherited from the firmware or worse, we'd try to reuse some resources still in use by the firmware configuration (like when the BIOS and the linux driver would pick different display plls). 
+Like I've briefly mentioned when explaining the [new modeset
+code](/2012/08/new-modeset-code.html) merged into [kernel 3.7](/2012/10/neat-drmi915-stuff-for-37.html) one of the
+goals was to facility atomic modesetting and fastboot. Now the big new
+requirement for both atomic modesetting and fastboot is that we precompute the
+entire output configuration before we start touching the hardware. And this
+includes things like pll settings, internal link configuration and watermarks.
+For atomic modesetting we need this to be able to decide up-front whether a
+configuration requested by userspace works, or whether we don't have enough
+bandwidth, display plls or lack some other resource. For fastboot we need to be
+able to compute and track the full display hardware state in software so that we
+can compare a requested configuration from userspace with the boot-up state
+taken over from the BIOS. Otherwise we might end up with suboptimal settings
+inherited from the firmware or worse, we'd try to reuse some resources still in
+use by the firmware configuration (like when the BIOS and the linux driver would
+pick different display plls). 
 
-Now the new modeset code merged into 3.7 already added such state tracking and precomputation for the output routing between crtcs and connectors. Over the past months, starting with the just released 3.10 linux kernel we've added new infrastructure and tons of code to track the low-level hardware state like display pll selection, FDI link configuration and tons of other things. Read on below for an overview of how the new magic works. 
+Now the new modeset code merged into 3.7 already added such state tracking and
+precomputation for the output routing between crtcs and connectors. Over the
+past months, starting with the just released 3.10 linux kernel we've added new
+infrastructure and tons of code to track the low-level hardware state like
+display pll selection, FDI link configuration and tons of other things. Read on
+below for an overview of how the new magic works. 
+
 <!--more-->
 
 ## Pipe Configuration Computation

@@ -11,9 +11,9 @@ blogger_orig_url: http://blog.ffwll.ch/2013/08/recent-drmi915-testsuite-improvem
 ---
 
 
-So recently I've again wreaked decent havoc in our intel-gpu-tools kernel
+Recently I've again wreaked decent havoc in our intel-gpu-tools kernel
 testsuite. And then shockingly noticed that I've never done a big pompous blog
-post to announce what we've started about one-a-half years ago. So besides just
+post to announce what we've started about one-a-half years ago. Besides just
 describing the new infrastructure for writing testcases (apparently every decent
 hacker must reinvent a testframework at least once ...) I'll also recap a bit
 what's been going on in the past.
@@ -31,12 +31,11 @@ behind memory and other resource exhausting handling, racing multiple threads
 (or the cpu against the gpu) or trying to provoke coherency issues. 
 
 But there was a really basic set of manually run testcases in intel-gpu-tools.
-So we've started with them and wrapped them up in a very hackish testrunner
+We've started with them and wrapped them up in a very hackish testrunner
 using autotools and went ahead integrating this into our nightly regression
-testing. Like I've said in my <a
-href="http://blog.ffwll.ch/2013/02/fosdem-slides-2013.html">fosdem presentation
-this year</a> I was shocked how much fallout and regressions even the shittiest
-testsuite catches ... 
+testing. Like I've said in my [fosdem presentation this
+year](/2013/02/fosdem-slides-2013.html) I was shocked how much fallout and
+regressions even the shittiest testsuite catches ... 
 
 Since then an awful lot of stuff has happened: 
 
@@ -53,7 +52,7 @@ Since then an awful lot of stuff has happened:
 
 - We've added tons more testcases. Starting with just twenty-odd test tools
   we've ended up with currently over 300 testcases. And very often when we've
-  started to test an existing feature bugs just kept on showing up. So nowadays
+  started to test an existing feature bugs just kept on showing up. Nowadays
   new features don't go in without decent test coverage. 
 
 - We've added a lot of debugfs interfaces to the kernel to allow us to exercise
@@ -77,7 +76,7 @@ Since then an awful lot of stuff has happened:
 ## Running i-g-t Kernel Tests 
 
 At the moment there are no provisions for installing the tests as binaries and
-shipping them in distros - no one yet demanded this. So first you need to grab
+shipping them in distros - no one yet demanded this. First you need to grab
 intel-gpu-tools and piglit sources: 
 
 	$ git clone git://anongit.freedesktop.org/piglit
@@ -99,7 +98,10 @@ Finally we can run testcases. Note that currently we assume that testcases are r
 
 	$ sudo ./piglit-run.py tests/igt result
 
-Just enumerating the testcases doesn't need root though. But it will run the binaries of tests with subtests since igt subtests are enumerated at runtime - that helps greatly with constructing combinatorial testcases. So to list all tests just run 
+Just enumerating the testcases doesn't need root though. But it will run the
+binaries of tests with subtests since igt subtests are enumerated at runtime -
+that helps greatly with constructing combinatorial testcases. To list all
+tests just run 
 
 	$ ./piglit-run.py -d tests/igt result
 
@@ -172,7 +174,7 @@ should be skipped or failed.
 
 For the first issue there's another magic codeblock, `igt_fixture`.
 Anything within such a codeblock will be skipped when only listing subtests, but
-unconditionally run when any subtests should be run. So code to setup the global
+unconditionally run when any subtests should be run. Code to setup the global
 test fixture should be enclosed in such blocks. 
 
 For testcases without subtests the skipping and failing is easy to do - failed
@@ -221,7 +223,7 @@ trouble while converting testcase on an earlier version of&nbsp; the fixture
 block - that used a long jump even when the fixture successfully complete and so
 could wreak the just set up stack variables. 
 
-So all in all for a testcase with subtests like `gem_mmap_gtt` this
+All in all for a testcase with subtests like `gem_mmap_gtt` this
 results in a fairly streamlined main function, despite all the magic:
 
 	int

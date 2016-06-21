@@ -10,7 +10,9 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-61664298855303029
 blogger_orig_url: http://blog.ffwll.ch/2015/06/neat-drmi915-stuff-for-42.html
 ---
 
-The [4.1 kernel release](http://blog.ffwll.ch/2015/04/neat-drmi915-stuff-for-41.html) is still a few weeks off and hence a bit early to talk about 4.2. But the drm subsystem feature cut-off already passed and I'm going on vacation for 2 weeks, so here we go.
+The [4.1 kernel release](/2015/04/neat-drmi915-stuff-for-41.html) is still a few
+weeks off and hence a bit early to talk about 4.2. But the drm subsystem feature
+cut-off already passed and I'm going on vacation for 2 weeks, so here we go.
 
 <!--more-->
 

@@ -10,7 +10,9 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-13260505721541594
 blogger_orig_url: http://blog.ffwll.ch/2014/06/neat-drmi915-stuff-for-316.html
 ---
 
-Linus decided to have a bit fun with the 3.16 merge window and the [3.15 release](http://blog.ffwll.ch/2014/04/neat-drmi915-stuff-for-315.html), so I'm a bit late with our regular look at the new stuff for the Intel graphics driver.
+Linus decided to have a bit fun with the 3.16 merge window and the [3.15
+release](/2014/04/neat-drmi915-stuff-for-315.html), so I'm a
+bit late with our regular look at the new stuff for the Intel graphics driver.
 
 <!--more-->
 

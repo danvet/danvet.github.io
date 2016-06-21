@@ -10,7 +10,9 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-17277903912452880
 blogger_orig_url: http://blog.ffwll.ch/2015/04/neat-drmi915-stuff-for-41.html
 ---
 
-With [Linux kernel v3.20^W v4.0](http://blog.ffwll.ch/2015/02/neat-drmi915-stuff-for-320.html) already out there door my overview of what's in 4.1 for drm/i915 is way overdue.
+With [Linux kernel v3.20^W
+v4.0](/2015/02/neat-drmi915-stuff-for-320.html) already out
+there door my overview of what's in 4.1 for drm/i915 is way overdue.
 
 <!--more-->
 

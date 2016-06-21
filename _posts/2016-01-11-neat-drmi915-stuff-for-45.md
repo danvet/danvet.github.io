@@ -10,7 +10,10 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-19843835017188997
 blogger_orig_url: http://blog.ffwll.ch/2016/01/neat-drmi915-stuff-for-45.html
 ---
 
-[Kernel version 4.4](http://blog.ffwll.ch/2015/12/neat-drmi915-stuff-for-44.html) is released, it's time for our regular look at what's in store for the Intel graphics driver in the next release.
+[Kernel version
+4.4](/2015/12/neat-drmi915-stuff-for-44.html) is released,
+it's time for our regular look at what's in store for the Intel graphics driver
+in the next release.
 
 <!--more-->
 

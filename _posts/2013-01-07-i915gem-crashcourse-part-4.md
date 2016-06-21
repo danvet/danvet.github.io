@@ -11,7 +11,20 @@ blogger_orig_url: http://blog.ffwll.ch/2013/01/i915gem-crashcourse-part-4.html
 ---
 
 
-In the previous installment we've taken a closer look at some [i915/GEM crashcourse overview](http://blog.ffwll.ch/2012/11/i915gem-crashcourse-part-3.html">details of the gpu memory management</a>. One of the last big topics now still left are all the various caches, both on the gpu (both render and display block) and the cpu, and what is required to keep the data coherent between them. Now one of the reasons gpus are so fast at processing raw amounts of data is that caches are managed through explicit instructions (cutting down massively on complexity and delays) and there are also a lot of special-purpose caches optimized for different use-cases. Since coherency management isn't automatic, we will also consider the different ways to move data between different coherency domains and what the respective up- and downsides are. See the <a href="http://blog.ffwll.ch/2013/01/i915gem-crashcourse-overview.html) for links to the other parts of this series.  
+In the previous installment we've taken a closer look at some [details of the
+gpu memory management](/2012/11/i915gem-crashcourse-part-3.html). One of the
+last big topics now still left are all the various caches, both on the gpu (both
+render and display block) and the cpu, and what is required to keep the data
+coherent between them. Now one of the
+reasons gpus are so fast at processing raw amounts of data is that caches are
+managed through explicit instructions (cutting down massively on complexity and
+delays) and there are also a lot of special-purpose caches optimized for
+different use-cases. Since coherency management isn't automatic, we will also
+consider the different ways to move data between different coherency domains and
+what the respective up- and downsides are. See the [i915/GEM crashcourse
+overview](/2013/01/i915gem-crashcourse-overview.html) for links to the other
+parts of this series.
+
 <!--more--> 
 
 ## Interactions with CPU Caches

@@ -9,7 +9,10 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-64982716988550007
 blogger_orig_url: http://blog.ffwll.ch/2015/12/neat-drmi915-stuff-for-44.html
 ---
 
-Due to vacations, conferences and other things I'm way later than usual and [4.3 has been released](http://blog.ffwll.ch/2015/09/neat-drmi915-stuff-for-43.html) a while ago. More than overdue to take a look at what's in store in the next kernel release.
+Due to vacations, conferences and other things I'm way later than usual and [4.3
+has been released](/2015/09/neat-drmi915-stuff-for-43.html)
+a while ago. More than overdue to take a look at what's in store in the next
+kernel release.
 
 <!--more-->
 

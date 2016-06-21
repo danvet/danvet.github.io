@@ -10,7 +10,9 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-77222455168336005
 blogger_orig_url: http://blog.ffwll.ch/2014/01/neat-drmi915-stuff-for-314.html
 ---
 
-[Kernel v3.13](http://blog.ffwll.ch/search/label/Kernel%20RelNotes) is nearing its release, so it's time at our regular look at what the next version will bring to the Intel gfx driver.
+[Kernel v3.13](/2013/11/its-that-time-again-when-old-kernel-v3.html) is nearing
+its release, so it's time at our regular look at what the next version will
+bring to the Intel gfx driver.
 
 <!--more-->
 

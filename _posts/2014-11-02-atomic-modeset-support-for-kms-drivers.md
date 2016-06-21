@@ -45,17 +45,40 @@ Besides these two complications (which might require a bit of work depending upo
 ### Follow-up Driver Cleanups
 
 
-But there's of course quite a bit of cleanup work possible afterards!
-The are some big differences between the old CRTC helper modeset logic and the new one (using the same callbacks, but completely rewritten otherwise) in the atomic helper library:
+But there's of course quite a bit of cleanup work possible afterards!  The are
+some big differences between the old CRTC helper modeset logic and the new one
+(using the same callbacks, but completely rewritten otherwise) in the atomic
+helper library:
 
-<ul><li>The encoder/bridge/CRTC enabling/disabling sequence for a given modeset configuration is now always the same. Which means unused CRTC won't be disabled any more only after everything else is set up, but together with all the other blocks before enabling anything from the new configuration. Also, when an output pipeline changes the helper library will always force a full modeset of the entire pipeline.
+- The encoder/bridge/CRTC enabling/disabling sequence for a given modeset
+  configuration is now always the same. Which means unused CRTC won't be
+  disabled any more only after everything else is set up, but together with all
+  the other blocks before enabling anything from the new configuration. Also,
+  when an output pipeline changes the helper library will always force a full
+  modeset of the entire pipeline.
 
-This reduces combinatorial complexity a lot and should especially help with shared resources (like PLLs) - no longer can a modeset spuriously fail just because the old CRTC hasn't released its PLL before the new one was enabled.</li><li>Thanks to the atomic state tracking the helper code won't lose track of the software state of each object any more. Which means disabled functions won't be disabled more than once. So all code in the driver-backend which checks the current state and acts accordingly can be flattened and replaced by WARNings.</li></ul>
-These are all lessons learned from the [state readout and cross-checking support](http://blog.ffwll.ch/2012/08/new-modeset-code.html">i915 modeset rewrite</a>. The only thing missing in the atomic helpers compared to i915 is the <a href="http://blog.ffwll.ch/2013/07/precomputing-crtc-configuration-in.html) - everything else is there. But even that can be easily implemented by adding hardware state readout callbacks and using them in the various state reset functions (to reconstruct matching software state) and also to cross-check state.
+  This reduces combinatorial complexity a lot and should especially help with
+  shared resources (like PLLs) - no longer can a modeset spuriously fail just
+  because the old CRTC hasn't released its PLL before the new one was enabled.
 
+- Thanks to the atomic state tracking the helper code won't lose track of the
+  software state of each object any more. Which means disabled functions won't
+  be disabled more than once. So all code in the driver-backend which checks the
+  current state and acts accordingly can be flattened and replaced by WARNings.
 
+These are all lessons learned from the [i915 modeset
+rewrite](/2012/08/new-modeset-code.html). The only
+thing missing in the atomic helpers compared to i915 is the [state readout and
+cross-checking support](/2013/07/precomputing-crtc-configuration-in.html) -
+everything else is there. But even that can be easily implemented by adding
+hardware state readout callbacks and using them in the various state reset
+functions (to reconstruct matching software state) and also to cross-check
+state.
 
-The other big cleanup task is to stop using all the legacy state variables and switch all the driver backend code to only look at the state object structures. The two big examples here are <code>crtc-&gt;mode</code> and the <code>plane-&gt;fb</code> pointer.
+The other big cleanup task is to stop using all the legacy state variables and
+switch all the driver backend code to only look at the state object structures.
+The two big examples here are <code>crtc-&gt;mode</code> and the
+<code>plane-&gt;fb</code> pointer.
 
 ### So What Now?
 

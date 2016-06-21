@@ -10,9 +10,10 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-52997732832448969
 blogger_orig_url: http://blog.ffwll.ch/2013/06/neat-drmi915-stuff-for-311.html
 ---
 
-[Kernel 3.10](http://blog.ffwll.ch/2013/04/neat-drmi915-stuff-for-310.html) will be release soon, so it's time for our regular look at what the next kernel will bring. Purely on statistics the drm-intel-next pull for 3.11&nbsp; is one of the biggest pull request with 314 patches thus far. Read on after the break for the details.
-
-
+[Kernel 3.10](/2013/04/neat-drmi915-stuff-for-310.html) will be release soon, so
+it's time for our regular look at what the next kernel will bring. Purely on
+statistics the drm-intel-next pull for 3.11&nbsp; is one of the biggest pull
+request with 314 patches thus far. Read on after the break for the details.
 
 <!--more-->
 

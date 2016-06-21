@@ -10,7 +10,10 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-50693981365778773
 blogger_orig_url: http://blog.ffwll.ch/2014/04/neat-drmi915-stuff-for-315.html
 ---
 
-So the release of the [3.14 linux kernel](https://www.blogger.com/%3Cdegasus%3E%20but%20when%20implementing%20running%20based%20on%20walking%20needs%20some%20major%20api%20changes%20:/) already happended and I'm a bit late for our regular look at what cool stuff will land in the 3.15 merge window for the Intel graphics driver.
+So the release of the [3.14 linux
+kernel](/2014/01/neat-drmi915-stuff-for-314.html) already happended and I'm a
+bit late for our regular look at what cool stuff will land in the 3.15 merge
+window for the Intel graphics driver.
 
 
 
@@ -24,7 +27,14 @@ Another really big feature was the much more <b>fine-grained display power domai
 
 
 
-Another long-standing nuisance with our driver was the take-over from the firmware configuration. With the [reworked modesetting infrastructure](http://blog.ffwll.ch/2012/08/new-modeset-code.html) we could take over the output routing, and with the experimental i915.fastboot=1 option we could eschew the initial modeset. This release Jesse provided another piece of the puzzle by allowing the driver to <b>inherit the firmware framebuffer</b>. There's still more work to do to make fastboot solid and enable it by default, but we now have all the pieces in place for a smooth and fast boot-up.
+Another long-standing nuisance with our driver was the take-over from the
+firmware configuration. With the [reworked modesetting
+infrastructure](/2012/08/new-modeset-code.html) we could take over the output
+routing, and with the experimental i915.fastboot=1 option we could eschew the
+initial modeset. This release Jesse provided another piece of the puzzle by
+allowing the driver to <b>inherit the firmware framebuffer</b>. There's still
+more work to do to make fastboot solid and enable it by default, but we now have
+all the pieces in place for a smooth and fast boot-up.
 
 
 

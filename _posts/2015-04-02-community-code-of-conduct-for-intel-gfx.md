@@ -14,7 +14,7 @@ blogger_orig_url: http://blog.ffwll.ch/2015/04/community-code-of-conduct-for-int
 
 
 
-Code of conducts seem to be in the news a bit recently, and I realized that I've never really documented how we run things. It's different from the kernel's overall [Xorg Foundation event policy](https://www.kernel.org/doc/Documentation/CodeOfConflict">CodeOfConflict</a> and also differs from the official <a href="https://01.org/linuxgraphics/community">Intel/OTC one</a> in small details about handling issues. And for completeness there's also the <a href="http://www.x.org/wiki/XorgFoundation/Policies/Harassment/). Anyway, I think this is worth clarifying and here it goes.
+Code of conducts seem to be in the news a bit recently, and I realized that I've never really documented how we run things. It's different from the kernel's overall [Xorg Foundation event policy](https://www.kernel.org/doc/Documentation/CodeOfConflict">CodeOfConflict</a> and also differs from the official [Intel/OTC one](https://01.org/linuxgraphics/community) in small details about handling issues. And for completeness there's also the <a href="http://www.x.org/wiki/XorgFoundation/Policies/Harassment/). Anyway, I think this is worth clarifying and here it goes.
 
 <!--more-->
 

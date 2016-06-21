@@ -10,7 +10,9 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-75766497327907010
 blogger_orig_url: http://blog.ffwll.ch/2013/09/neat-drmi915-stuff-for-312.html
 ---
 
-So [kernel 3.11](http://blog.ffwll.ch/2013/06/neat-drmi915-stuff-for-311.html) will be released soonish and it's time for our regular look at what the next merge window will bring in for the intel GPU driver.
+[The linux kernel 3.11](/2013/06/neat-drmi915-stuff-for-311.html) will be released
+soonish and it's time for our regular look at what the next merge window will
+bring in for the intel GPU driver.
 
 <!--more-->
 
@@ -18,21 +20,33 @@ For Haswell enabling there are two new power saving features in 3.12: The first 
 
 
 
-The other Haswell power saving feature is <b>panel self refresh</b> support (PSR for short), polished for merging by Rodrigo Vivi. Note that we still have a few issues with properly tracking frontbuffer rendering (used by X without a pageflippping compositor) without completely killing the power saving advantages on more usual setups. So right now enabling PSR will cause render issues on such legacy X setups and hence is disabled by default.
+The other Haswell power saving feature is <b>panel self refresh</b> support (PSR
+for short), polished for merging by Rodrigo Vivi. Note that we still have a few
+issues with properly tracking frontbuffer rendering (used by X without a
+pageflippping compositor) without completely killing the power saving advantages
+on more usual setups. Right now enabling PSR will cause render issues on such
+legacy X setups and hence is disabled by default.
 
+On the other end in the power-vs-performace scale we've tuned our Haswell/Iris
+support. Ben Widawsky enabled the giant <b>eLLC cache</b> (the seperate 128 MB
+cache chip on some Iris packages). And Chris Wilson enabled the <b>write-through
+scanout buffer caching mode</b>, again an Iris-only feature used to improve the
+effectiveness of the eLLC cache.
 
+Looking at general improvements we've finally moved the <b>gpu error state into
+a sysfs file</b> (the old debugfs file will stay around). So now with this
+official interface we can support users better even on production systems where
+debugfs really shouldn't be mounted. This was all made possible by Mika
+Kuoppala's improvements, which mostly landed in 3.12 already.
 
-On the other end in the power-vs-performace scale we've tuned our Haswell/Iris support. Ben Widawsky enabled the giant <b>eLLC cache</b> (the seperate 128 MB cache chip on some Iris packages). And Chris Wilson enabled the <b>write-through scanout buffer caching mode</b>, again an Iris-only feature used to improve the effectiveness of the eLLC cache.
-
-
-
-Looking at general improvements we've finally moved the <b>gpu error state into a sysfs file</b> (the old debugfs file will stay around). So now with this official interface we can support users better even on production systems where debugfs really shouldn't be mounted. This was all made possible by Mika Kuoppala's improvements, which mostly landed in 3.12 already.
-
-
-
-Under the hood there has been lots of improvements to the codebase. Damien Lespiau, based on work from Paulo Zanoni finally <b>converted our HDMI infoframe code</b> over to the common helpers introduced into the kernel half a year ago. Code sharing, especially for sink handling code is always nice. Also in our display code we've rid ourselves of the last remnants of the old crtc helper based modesetting code. This completes the [massive modesetting rework](http://blog.ffwll.ch/2012/08/new-modeset-code.html) started in kernel 3.8.
-
-
+Under the hood there has been lots of improvements to the codebase. Damien
+Lespiau, based on work from Paulo Zanoni finally <b>converted our HDMI infoframe
+code</b> over to the common helpers introduced into the kernel half a year ago.
+Code sharing, especially for sink handling code is always nice. Also in our
+display code we've rid ourselves of the last remnants of the old crtc helper
+based modesetting code. This completes the [massive modesetting
+rework](/2012/08/new-modeset-code.html) started in kernel
+3.8.
 
 But we don't stand still and the next big thing is atomic pageflipping. One of the really tricky bits there is to update the <b>display watermarks</b> atomically, even when we completely switch the plane, sprite, cursor, ... configuration. Hence why Ville Syrjälä has written lots of patches to convert our existing code into a shape more suitable for such atomic updates.
 

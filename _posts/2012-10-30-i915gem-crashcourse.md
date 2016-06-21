@@ -11,7 +11,7 @@ blogger_orig_url: http://blog.ffwll.ch/2012/10/i915gem-crashcourse.html
 ---
 
 
-This is the first part in a short tour of the Intel hardware and what the GEM (graphics execution manager) in the i915 does. See the [overview](http://blog.ffwll.ch/2013/01/i915gem-crashcourse-overview.html) for links to the other parts. 
+This is the first part in a short tour of the Intel hardware and what the GEM (graphics execution manager) in the i915 does. See the [overview](/2013/01/i915gem-crashcourse-overview.html) for links to the other parts. 
 <!--more-->
 GEM essentially deals with graphics buffer objects (which can contain textures, renderbuffers, shaders or all kinds of other state objects and data used by the gpu) and how to run a given workload on the gpu, commonly called command submission (CS), but in the i915.ko driver done with the execbuf ioctl (since the gpu commands themselves reside in a buffer object on Intel hardware). 
 
@@ -62,6 +62,6 @@ Managing the fences is rather straightforward - we keep them in an lru, and if n
  
 Also, on some older platforms fences have a minimal size and need to be a power of two in alignment and size. To avoid the need to over-allocate a texture (and so waste memory) we allow tiled objects to be smaller than the fenced region they would require. When setting up a fence we simply reserve the entire region that the fence detiles in the GTT memory manager, and so ensure that no other object ends up in the unused, but still detiled area (where it would get corrupted).
  
-Now that we've covered how to make memory accessible to the gpu and how to handle tiling, swizzling and setting up fences, the [next installment](http://blog.ffwll.ch/2012/11/i915gem-crashcourse-part-2.html) of this series will look at how to submit work to the gpu and some related issues. 
+Now that we've covered how to make memory accessible to the gpu and how to handle tiling, swizzling and setting up fences, the [next installment](/2012/11/i915gem-crashcourse-part-2.html) of this series will look at how to submit work to the gpu and some related issues. 
  
 <b>Errata:</b> Mika Kuoppala noticed that my math about the GTT PTE stealing for the PDEs used for PPGTT was off, now it's fixed.

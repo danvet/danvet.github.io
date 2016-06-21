@@ -10,19 +10,22 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-58124340273138698
 blogger_orig_url: http://blog.ffwll.ch/2013/11/botching-up-ioctls.html
 ---
 
-One clear insight kernel graphics hackers gained in the past few years is that trying to come up with a unified interface to manage the execution units and memory on completely different GPUs is a futile effort. So nowadays every driver has its own set of ioctls to allocate memory and submit work to the GPU. Which is nice, since there's no more insanity in the form of fake-generic, but actually only used once interfaces. But the clear downside is that there's much more potential to screw things up.
+One clear insight kernel graphics hackers gained in the past few years is that
+trying to come up with a unified interface to manage the execution units and
+memory on completely different GPUs is a futile effort. So nowadays every driver
+has its own set of ioctls to allocate memory and submit work to the GPU. Which
+is nice, since there's no more insanity in the form of fake-generic, but
+actually only used once interfaces. But the clear downside is that there's much
+more potential to screw things up.
 
-
-
-To avoid repeating all the same mistakes again I've written up some of the lessons learned while botching the job for the drm/i915 driver. Most of these only cover technicalities and not the big-picture issues like what the [command submission ioctl exactly should look like](http://blog.ffwll.ch/2011/01/on-getting-your-api-right.html). Learning these lessons is probably something every GPU driver has to do on its own.
-
-
+To avoid repeating all the same mistakes again I've written up some of the
+lessons learned while botching the job for the drm/i915 driver. Most of these
+only cover technicalities and not the big-picture issues like what the [command
+submission ioctl exactly should look
+like](/2011/01/on-getting-your-api-right.html). Learning
+these lessons is probably something every GPU driver has to do on its own.
 
 <!--more-->
-
-
-
-
 
 ## Prerequisites 
 
