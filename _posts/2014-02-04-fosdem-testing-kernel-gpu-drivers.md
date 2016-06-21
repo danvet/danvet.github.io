@@ -13,7 +13,7 @@ So as usual FOSDEM was a blast and as usual the hallway track was great too. The
 
 
 
-I've also uploaded the slides for my [Kernel GPU Driver Testing](http://people.freedesktop.org/~danvet/presentations/fosdem-2014.odp) talk. My OCD made me remove that additional dot and resurrect the missing 'e' in one of the slides even. FOSDEM also had live-streaming and rendering videos should eventually show up, I'll add the link as soon as it's there.
+I've also uploaded the slides for my [Kernel GPU Driver Testing](/slides/fosdem-2014.odp) talk. My OCD made me remove that additional dot and resurrect the missing 'e' in one of the slides even. FOSDEM also had live-streaming and rendering videos should eventually show up, I'll add the link as soon as it's there.
 
 
 

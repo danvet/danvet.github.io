@@ -6,12 +6,12 @@ author: danvet
 tags:
 - X.org
 modified_time: '2016-04-20T00:24:39.792-07:00'
-thumbnail: https://1.bp.blogspot.com/-0xdeyuFfML0/VxcuHa6le1I/AAAAAAAAAYw/qho0p0LtZH0jfQGQ5L01ZoedVmL9fKaFQCLcB/s72-c/vote_now.jpg
+thumbnail: /img/vote_now.jpg
 blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-9047795241514036687
 blogger_orig_url: http://blog.ffwll.ch/2016/04/xorg-foundation-election-vote-now.html
 ---
 
-<div class="separator" style="clear: both; text-align: center;"><a href="https://1.bp.blogspot.com/-0xdeyuFfML0/VxcuHa6le1I/AAAAAAAAAYw/qho0p0LtZH0jfQGQ5L01ZoedVmL9fKaFQCLcB/s1600/vote_now.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="320" src="https://1.bp.blogspot.com/-0xdeyuFfML0/VxcuHa6le1I/AAAAAAAAAYw/qho0p0LtZH0jfQGQ5L01ZoedVmL9fKaFQCLcB/s320/vote_now.jpg" width="320" /></a></div>It's election season in X.org land, and it matters: Besides new board seats we're also voting on bylaw changes and whether to join SPI or not.
+<div class="separator" style="clear: both; text-align: center;"><a href="/img/vote_now.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="320" src="https://1.bp.blogspot.com/-0xdeyuFfML0/VxcuHa6le1I/AAAAAAAAAYw/qho0p0LtZH0jfQGQ5L01ZoedVmL9fKaFQCLcB/s320/vote_now.jpg" width="320" /></a></div>It's election season in X.org land, and it matters: Besides new board seats we're also voting on bylaw changes and whether to join SPI or not.
 
 
 

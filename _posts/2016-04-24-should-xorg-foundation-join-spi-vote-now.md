@@ -5,12 +5,12 @@ date: '2016-04-24T02:14:00.001-07:00'
 author: danvet
 tags: 
 modified_time: '2016-04-24T02:14:48.547-07:00'
-thumbnail: https://2.bp.blogspot.com/-0xdeyuFfML0/VxcuHa6le1I/AAAAAAAAAY0/szB2xu42-qwWGLZpwIitJYZkDKiNrgBsQCKgB/s72-c/vote_now.jpg
+thumbnail: /img/vote_now.jpg
 blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-3068400291878314076
 blogger_orig_url: http://blog.ffwll.ch/2016/04/should-xorg-foundation-join-spi-vote-now.html
 ---
 
-<div class="separator" style="clear: both; text-align: center;"><a href="https://2.bp.blogspot.com/-0xdeyuFfML0/VxcuHa6le1I/AAAAAAAAAY0/szB2xu42-qwWGLZpwIitJYZkDKiNrgBsQCKgB/s1600/vote_now.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="320" src="https://2.bp.blogspot.com/-0xdeyuFfML0/VxcuHa6le1I/AAAAAAAAAY0/szB2xu42-qwWGLZpwIitJYZkDKiNrgBsQCKgB/s320/vote_now.jpg" width="320" /></a></div>
+<div class="separator" style="clear: both; text-align: center;"><a href="/img/vote_now.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="320" src="https://2.bp.blogspot.com/-0xdeyuFfML0/VxcuHa6le1I/AAAAAAAAAY0/szB2xu42-qwWGLZpwIitJYZkDKiNrgBsQCKgB/s320/vote_now.jpg" width="320" /></a></div>
 
 
 
