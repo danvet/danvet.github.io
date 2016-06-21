@@ -12,7 +12,11 @@ blogger_orig_url: http://blog.ffwll.ch/2013/08/recent-drmi915-testsuite-improvem
 
 
 So recently I've again wreaked decent havoc in our intel-gpu-tools kernel testsuite. And then shockingly noticed that I've never done a big pompous blog post to announce what we've started about one-a-half years ago. So besides just describing the new infrastructure for writing testcases (apparently every decent hacker must reinvent a testframework at least once ...) I'll also recap a bit what's been going on in the past. 
-<a name='more'></a><h2>What Has Happened Thus Far ...</h2>
+<a name='more'></a>
+
+## What Has Happened Thus Far ...
+
+
 drm/i915 kernel testing was in a very sorry state two years ago - we've had pretty much zero regression testing of corner cases. Of course we've implicitly tested the kernel by running userspace drivers, e.g. testing mesa with piglit. But that only exercise the best case code and not at all the fun stuff hidden behind memory and other resource exhausting handling, racing multiple threads (or the cpu against the gpu) or trying to provoke coherency issues. 
 
 But there was a really basic set of manually run testcases in intel-gpu-tools. So we've started with them and wrapped them up in a very hackish testrunner using autotools and went ahead integrating this into our nightly regression testing. Like I've said in my <a href="http://blog.ffwll.ch/2013/02/fosdem-slides-2013.html">fosdem presentation this year</a> I was shocked how much fallout and regressions even the shittiest testsuite catches ... 
@@ -28,7 +32,11 @@ We've added tons more testcases. Starting with just twenty-odd test tools we've 
 We've added a lot of debugfs interfaces to the kernel to allow us to exercise tricky corner conditions. One of the first examples is the ring stop interface to simulate gpu hangs without actually hanging the gpu - the latter has the ugly tendency to take down the entire system, hard. With simulated gpu hangs we can exercise the hangcheck code, error capturing and dumping and the hw and soft reset logic without too much risk. This way we can exercise gpu hang vs. pageflip races and other nasty stuff that up to then has all been nicely broken. Other examples are interfaces to provoke gpu completion number wrap-arounds, disabling the prefetching to exercise slowpaths or interfaces to our shrinker code to more accurately exercise some of the memory trashing scenarios without actually thrashing the machine too badly. 
 </li><li>
 We've also added tons of infrastructure for writing testcases in <code>lib/drmtest.c</code>. Detailing a bit what's all in there is the aim of this blog post. The most recent improvement here is that tests with subcases can now properly enumerate all subtests even when the drm kernel driver isn't available. 
-</li></ul><h2>Running i-g-t Kernel Tests </h2>
+</li></ul>
+
+## Running i-g-t Kernel Tests 
+
+
 At the moment there are no provisions for installing the tests as binaries and shipping them in distros - no one yet demanded this. So first you need to grab intel-gpu-tools and piglit sources: 
 <code>$ git clone <a href="git://anongit.freedesktop.org/piglit">git://anongit.freedesktop.org/piglit</a>
 
@@ -50,13 +58,21 @@ Finally we can run testcases. Note that currently we assume that testcases are r
 Just enumerating the testcases doesn't need root though. But it will run the binaries of tests with subtests since igt subtests are enumerated at runtime - that helps greatly with constructing combinatorial testcases. So to list all tests just run 
 <code>$ ./piglit-run.py -d tests/igt result</code>
 For further options and tools to display the test results, list the test commands and other useful stuff please consult the piglit documentation. 
-<h2>Helper Functions</h2>
+
+
+## Helper Functions
+
+
 The biggest part of the helper library is a pile of small wrappers around drm ioctls. libdrm is often at a way to high abstraction level, especially if you try to be nasty and provoke the kernel into doing stupid things. There's also the usual duplication of headers that we replicate (in slightly different versions) in all our userspace driver repositories ... 
 
 But the far more interesting functionality is in the other code in <code>lib/drmtest.c</code>. One of the most often used helpers is the rude interruptor, which forks a second process to constantly interrupt the first with a signal. That's useful for three reasons: X makes heavy use of signals, so we need to be able to exercise these paths, too. Then the kernel code itself relies on the ioctl restarting to bail out threads when the gpu is hung - this way we can avoid ugly issues when threads hog locks waiting for the gpu, while the reset code needs those logs to complete the requests (or restart them if we ever implement them) after the hardware resets. And finally it's just a great way to exercise error paths, since most of the tricky error handling code for e.g. out of memory conditions also needs to deal with interruptions due to a pending signal. 
 
 Another big chunk of helper logic is the just recently improved support code for subtests. The next section will go into greater detail on those. Then there's also helper code for system suspend/resume, gpu aperture thrashing, prefault disabling. And finally we have a few helpers for modesetting tests, to draw nice framebuffers with some gradients and corner markers and to get the VT handling right - it's rather tricky to stop the fbcon from interferring by blanking the screen in the middle of a test ... 
- <h2>Subtest Infrastructure and Magic Codeblocks</h2>
+ 
+
+## Subtest Infrastructure and Magic Codeblocks
+
+
 As mentioned already igt kernel tests enumerate subtests at runtime. Generally the subtest infrastructure is pretty simple. At the beginning of the test <code>igt_subtest_init(argc, argv)</code> needs to be called so that the subtest logic can correctly disable subtest - either all off them when only listing subtest names with <code>--list-subtests</code> or all but one when running a specific subtest with <code>--run-subtes &lt;subtest-name&gt;</code>. There is also a special variant of this init function called <code>igt_subtest_init_parse_opts</code> useful when the test program wants to augment its own option parsing with this functionality. 
 
 

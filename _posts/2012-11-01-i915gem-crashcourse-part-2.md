@@ -12,7 +12,11 @@ blogger_orig_url: http://blog.ffwll.ch/2012/11/i915gem-crashcourse-part-2.html
 
 
 After the <a href="http://blog.ffwll.ch/2012/10/i915gem-crashcourse.html">previous installement</a> this part will cover command submission to the gpu. See the <a href="http://blog.ffwll.ch/2013/01/i915gem-crashcourse-overview.html">i915/GEM crashcourse overview</a> for links to the other parts of this series.  
-<a name='more'></a><h2>Command Submission and Relocations </h2>
+<a name='more'></a>
+
+## Command Submission and Relocations 
+
+
 As I've alluded already, gpu command submission on intel hardware happens by sending a special buffer object with rendering commands to the kernel for execution on the gpu, the so called batch buffer. The ioctl to do this is called <code>execbuf</code>. Now this buffer contains tons of references to various other buffer objects which contain textures, render buffers, depth&amp;stencil buffers, vertices, all kinds of gpu specific things like shaders and also quite some state buffers which e.g. describe the configuration of specific (fixed-function) gpu units.
  
 The problem now is that userspace doesn't control where all these buffers are - the kernel manages the entire GTT.&nbsp; And the kernel needs to manage the entire GTT, since otherwise multiple users of the same single gpu can't get along. So the kernel needs to be able to move buffers around in the GTT when they don't all fit in at the same time, which means clearing the PTEs in the relevant pagetables for the old buffers that get kicked out and then filling them again with entries pointing at new the buffers which the gpu now requires to execute the batch buffer. In short userspace needs to fill the batchbuffer with tons of GTT addresses, but only the kernel really knows them at any given point.
@@ -26,7 +30,11 @@ Now along with any information required to rewrite references for relocated buff
 The other special relocation is for older generations, where the gpu needs a fence set up to access tiled buffers, at least for some operations. The relocation entries have a flag for that to signal the kernel that a fence is required. Another peculiarity is that fences can only be set up in the mappable part of the GTT, at least on those chips that require them for rendering. Hence we also restrict the placement of any buffers that require a fence to the mappable part of the GTT.
  
 So after rewriting any references to buffers that moved around, the kernel is ready to submit the batch to the gpu. Every gpu engine has a ringbuffer that the kernel can fill with its own commands. First we emit a few preparatory commands to flush caches and set a few registers (which normal userspace batches can't write) to the values that userspace needs. Then we start the batch by emitting a MI_BATCHBUFFER_START command.
- <h2>Retiring and Synchronization</h2> 
+ 
+
+## Retiring and Synchronization
+
+ 
 Now the gpu can happily process the commands and do the rendering, but that leaves the kernel with a problem: When is the gpu done? Userspace obviously needs to know this to avoid reading back incomplete results. But the kernel also needs to know this, to avoid unmapping buffers which are still in use by the gpu, e.g. when a render operation requires a temporary buffer, userspace might free that buffer right away after the <code>execbuf</code> call completes. But the kernel needs to delay the unmapping and freeing of the backing storage until the gpu not longer needs that buffer.
  
 Therefore the kernel associates a sequence number with every batchbuffer and adds a write of that sequence number to the ringbuffer. Every engine has a hardware status page (HWS_PAGE) which we can use for such synchronization purposes. The upshot of that special status page is that gpu writes to it snoop the cpu caches, and hence a read from it is much faster than reading directly the gpu head pointer register of the ring buffer. We also add a MI_USER_IRQ command after the sequence number (seqno for short) write, so that we don't need to constantly poll when waiting for the gpu.
