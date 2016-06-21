@@ -14,7 +14,9 @@ Another kernel release is imminent and a lot of things happened since my last bi
 
 <a name='more'></a>
 
-<h3>Atomic IOCTL and Properties</h3>
+<h3>Atomic IOCTL and Properties
+
+
 
 The big thing for sure is that the actual atomic IOCTL from Ville has finally landed for 3.20. That together with all the work from Rob Clark to add all the new atomic properties to make it functional (there's no IOCTL structs for any standard values, everything is a property now) means userspace can finally start using atomic. Well, it's still hidden behind the experimental module option <code>drm.atomic=1</code> but otherwise it's all there. There's a few big differences compared to earlier iterations:
 
@@ -22,7 +24,9 @@ The big thing for sure is that the actual atomic IOCTL from Ville has finally la
 
 
 
-<h3>New Driver Conversions and Backend Hooks</h3>
+<h3>New Driver Conversions and Backend Hooks
+
+
 
 Another big thing for 3.20 is that driver support has moved forward greatly: Tegra has now most of the basic bits ready, MSM is already converted. Both still lack conversion and testing for DPMS since that landed very late though. There's a lot of prep work for exynos, but unfortunately nothing yet towards atomic support. And i915 is in the process of being converted to the new structures and will have very preliminary atomic plane updates support in 3.20, hidden behind a module option for now.
 
@@ -36,7 +40,9 @@ And all that work resulted in piles of little fixes. Like making sure that the l
 
 
 
-<h3>Future Work</h3>
+<h3>Future Work
+
+
 
 Of course there's still a few things left to do before atomic display updates can be rolled out to the masses. And a few things that would be rather nice to have, too:
 
