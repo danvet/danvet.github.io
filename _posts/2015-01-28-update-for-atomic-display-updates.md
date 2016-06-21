@@ -14,7 +14,7 @@ Another kernel release is imminent and a lot of things happened since my last bi
 
 <a name='more'></a>
 
-<h3>Atomic IOCTL and Properties
+### Atomic IOCTL and Properties
 
 
 
@@ -24,7 +24,7 @@ The big thing for sure is that the actual atomic IOCTL from Ville has finally la
 
 
 
-<h3>New Driver Conversions and Backend Hooks
+### New Driver Conversions and Backend Hooks
 
 
 
@@ -40,7 +40,7 @@ And all that work resulted in piles of little fixes. Like making sure that the l
 
 
 
-<h3>Future Work
+### Future Work
 
 
 
