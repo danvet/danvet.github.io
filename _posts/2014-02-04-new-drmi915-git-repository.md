@@ -10,4 +10,12 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-89561769666862179
 blogger_orig_url: http://blog.ffwll.ch/2014/02/new-drmi915-git-repository.html
 ---
 
-So earlier this year I've signed up <a href="http://comments.gmane.org/gmane.comp.freedesktop.xorg.drivers.intel/31780">Jani Nikula officially as co-maintainer</a>. Now we've also gotten around to move the drm/i915 git repository to a <a href="http://cgit.freedesktop.org/drm-intel">common location</a> so that there's no longer a need to move it around when I'm on vacation. So everone please update any git references and remotes:<br /><pre><br /><a href="git://anongit.freedesktop.org/drm-intel">git://anongit.freedesktop.org/drm-intel</a><br /><a href="ssh://git.freedesktop.org/git/drm-intel">ssh://git.freedesktop.org/git/drm-intel</a><br /></pre>
+So earlier this year I've signed up <a href="http://comments.gmane.org/gmane.comp.freedesktop.xorg.drivers.intel/31780">Jani Nikula officially as co-maintainer</a>. Now we've also gotten around to move the drm/i915 git repository to a <a href="http://cgit.freedesktop.org/drm-intel">common location</a> so that there's no longer a need to move it around when I'm on vacation. So everone please update any git references and remotes:
+
+<pre>
+
+<a href="git://anongit.freedesktop.org/drm-intel">git://anongit.freedesktop.org/drm-intel</a>
+
+<a href="ssh://git.freedesktop.org/git/drm-intel">ssh://git.freedesktop.org/git/drm-intel</a>
+
+</pre>

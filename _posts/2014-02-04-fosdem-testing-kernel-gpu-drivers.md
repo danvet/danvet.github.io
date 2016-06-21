@@ -9,4 +9,12 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-56083954350308873
 blogger_orig_url: http://blog.ffwll.ch/2014/02/fosdem-testing-kernel-gpu-drivers.html
 ---
 
-So as usual FOSDEM was a blast and as usual the hallway track was great too. The beer certainly helped with that ... Big props to the entire conference crew for organizing a stellar event and specifically to Luc and the other graphics devroom people.<br /><br />I've also uploaded the slides for my <a href="http://people.freedesktop.org/~danvet/presentations/fosdem-2014.odp">Kernel GPU Driver Testing</a> talk. My OCD made me remove that additional dot and resurrect the missing 'e' in one of the slides even. FOSDEM also had live-streaming and rendering videos should eventually show up, I'll add the link as soon as it's there.<br /><br /><b>Update:</b> FOSDEM staff published the <a href="http://video.fosdem.org/2014/H1301_Cornil/Sunday/Testing_Kernel_GFX_Drivers.webm">video of the talk</a>! 
+So as usual FOSDEM was a blast and as usual the hallway track was great too. The beer certainly helped with that ... Big props to the entire conference crew for organizing a stellar event and specifically to Luc and the other graphics devroom people.
+
+
+
+I've also uploaded the slides for my <a href="http://people.freedesktop.org/~danvet/presentations/fosdem-2014.odp">Kernel GPU Driver Testing</a> talk. My OCD made me remove that additional dot and resurrect the missing 'e' in one of the slides even. FOSDEM also had live-streaming and rendering videos should eventually show up, I'll add the link as soon as it's there.
+
+
+
+<b>Update:</b> FOSDEM staff published the <a href="http://video.fosdem.org/2014/H1301_Cornil/Sunday/Testing_Kernel_GFX_Drivers.webm">video of the talk</a>! 

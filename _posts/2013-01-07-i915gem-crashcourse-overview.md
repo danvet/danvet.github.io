@@ -10,4 +10,26 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-73670051600296203
 blogger_orig_url: http://blog.ffwll.ch/2013/01/i915gem-crashcourse-overview.html
 ---
 
-Now that the entire series is done I've figured a small overview would be in order.<br /><br /><a href="http://blog.ffwll.ch/2012/10/i915gem-crashcourse.html">Part 1</a> talks about the different address spaces that a i915 GEM buffer object can reside in and where and how the respective page tables are set up. Then it also covers different buffer layouts as far as they're a concern for the kernel, namely how tiling, swizzling and fencing works.<br /><br /><a href="http://blog.ffwll.ch/2012/11/i915gem-crashcourse-part-2.html">Part 2</a> covers all the different bits and pieces required to submit work to the gpu and keep track of the gpu's progress: Command submission, relocation handling, command retiring and synchronization are the topics.<br /><br /><a href="http://blog.ffwll.ch/2012/11/i915gem-crashcourse-part-3.html">Part 3</a> looks at some of the details of the memory management implement in the i915.ko driver. Specifically we look at how we handle running out of GTT space and what happens when we're generally short on memory.<br /><br />Finally <a href="http://blog.ffwll.ch/2013/01/i915gem-crashcourse-part-4.html">part 4</a> discusses coherency and caches and how to most efficiently transfer between the gpu coherency domains and the cpu coherncy domain under different circumstances.<br /><br />Happy reading! <br /><b>Update:</b> There's now also a new article with a few <a href="http://blog.ffwll.ch/2013/05/i915gem-q.html">questions and answers about some details in the i915 gem code</a>.
+Now that the entire series is done I've figured a small overview would be in order.
+
+
+
+<a href="http://blog.ffwll.ch/2012/10/i915gem-crashcourse.html">Part 1</a> talks about the different address spaces that a i915 GEM buffer object can reside in and where and how the respective page tables are set up. Then it also covers different buffer layouts as far as they're a concern for the kernel, namely how tiling, swizzling and fencing works.
+
+
+
+<a href="http://blog.ffwll.ch/2012/11/i915gem-crashcourse-part-2.html">Part 2</a> covers all the different bits and pieces required to submit work to the gpu and keep track of the gpu's progress: Command submission, relocation handling, command retiring and synchronization are the topics.
+
+
+
+<a href="http://blog.ffwll.ch/2012/11/i915gem-crashcourse-part-3.html">Part 3</a> looks at some of the details of the memory management implement in the i915.ko driver. Specifically we look at how we handle running out of GTT space and what happens when we're generally short on memory.
+
+
+
+Finally <a href="http://blog.ffwll.ch/2013/01/i915gem-crashcourse-part-4.html">part 4</a> discusses coherency and caches and how to most efficiently transfer between the gpu coherency domains and the cpu coherncy domain under different circumstances.
+
+
+
+Happy reading! 
+
+<b>Update:</b> There's now also a new article with a few <a href="http://blog.ffwll.ch/2013/05/i915gem-q.html">questions and answers about some details in the i915 gem code</a>.

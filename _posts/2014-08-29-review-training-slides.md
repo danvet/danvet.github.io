@@ -9,4 +9,8 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-57730017229691538
 blogger_orig_url: http://blog.ffwll.ch/2014/08/review-training-slides.html
 ---
 
-We currently have a large influx of new people contributing to i915 - for the curious just check the git logs. As part of ramping them up I've done a few trainings about upstream review, and a bunch of people I've talked with at KS in Chicago were interested in that, too. So I've cleaned up the slides a bit and dropped the very few references to Intel internal resources. No speaker notes or video recording, but I think this is useful all in itself. And of course if you have comments or see big gaps - feedback is very much welcome:<br /><br /><a href="http://people.freedesktop.org/~danvet/presentations/review-training-public.pdf">Upstream Review Training Slides</a>
+We currently have a large influx of new people contributing to i915 - for the curious just check the git logs. As part of ramping them up I've done a few trainings about upstream review, and a bunch of people I've talked with at KS in Chicago were interested in that, too. So I've cleaned up the slides a bit and dropped the very few references to Intel internal resources. No speaker notes or video recording, but I think this is useful all in itself. And of course if you have comments or see big gaps - feedback is very much welcome:
+
+
+
+<a href="http://people.freedesktop.org/~danvet/presentations/review-training-public.pdf">Upstream Review Training Slides</a>
