@@ -12,7 +12,7 @@ description: > # this means to ignore newlines until "baseurl:"
   Daniel Vetter's ramblings on code, bugs, graphics, hw and the utter lack of
   sanity in all this.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://yourdomain.com" # the base hostname & protocol for your site
+url: "http://blog.ffwll.ch" # the base hostname & protocol for your site
 twitter_username: danvet
 github_username:  danvet
 permalink: /:year/:month/:title.html
@@ -20,3 +20,8 @@ permalink: /:year/:month/:title.html
 # Build settings
 markdown: kramdown
 excerpt_separator: <!--more-->
+
+collections:
+  portfolio:
+    output: true
+    permalink: /portfolio/:path/
