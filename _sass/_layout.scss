@@ -71,6 +71,21 @@ display: line;
     }
 }
 
+.archives{
+    a:hover{
+    text-decoration: none;
+    }
+
+    h3{
+	padding-bottom:0.3em;
+    }
+
+    time {
+        width:4em;
+	float: left;
+    }
+}
+
 /**
  * Site footer  **********************************************************
  */
