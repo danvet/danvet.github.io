@@ -3,7 +3,7 @@ layout: post
 title: Slides for FODSEM 2012 dma_buf presentation
 date: '2012-02-03T05:51:00.000-08:00'
 author: danvet
-tags: 
+tags: Conferences
 modified_time: '2012-02-07T06:11:28.417-08:00'
 blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-455512600608655117
 blogger_orig_url: http://blog.ffwll.ch/2012/02/slides-for-fodsem-2012-dmabuf.html

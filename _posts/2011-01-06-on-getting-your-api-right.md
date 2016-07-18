@@ -3,7 +3,8 @@ layout: post
 title: On Getting Your API Right
 date: '2011-01-06T10:42:00.000-08:00'
 author: danvet
-tags: 
+tags:
+- In-Depth Tech
 modified_time: '2011-01-06T10:42:24.725-08:00'
 blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-1596341627763159524
 blogger_orig_url: http://blog.ffwll.ch/2011/01/on-getting-your-api-right.html

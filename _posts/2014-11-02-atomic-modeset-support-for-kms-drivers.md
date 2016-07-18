@@ -14,7 +14,7 @@ blogger_orig_url: http://blog.ffwll.ch/2014/11/atomic-modeset-support-for-kms-dr
 So I've just reposted my [atomic modeset helper series](http://article.gmane.org/gmane.comp.video.dri.devel/117376), and since the main goal of all that work was to ensure a smooth and simple transition for existing drivers to the promised atomic land it's time to elaborate a bit. The big problem is that the existing helper libraries and callbacks to driver backends don't really fit the new semantics, so some shuffling was required to avoid long-term pain. So if you are a driver writer and just interested in the details then read for what needs to be done to support atomic modeset updates using these new helper libraries.
 <!--more-->
 
-### Phase 1: Reworking the Driver Backend Functions for Planes
+## Phase 1: Reworking the Driver Backend Functions for Planes
 
 
 The first phase is reworking the driver backend callbacks to fit the new world. There are two big mismatches between the new atomic semantics and legacy ioctl interfaces:
@@ -27,13 +27,13 @@ The first step is to rework the <code>-&gt;disable/update_plane</code> hooks usi
 <ul><li><code>-&gt;atomic_check</code> for both CRTCs and planes. This isn't strictly required, but any state checks implemented in the current <code>-&gt;update_plane</code> hook must be moved into the plane's -&gt;atomic_check callback. The CRTC's callback will likely be empty for now.</li><li><code>-&gt;atomic_begin</code> and <code>-&gt;atomic_flush</code> CRTC callbacks. These wrap the actual plane update and should do per-CRTC work like preparing to send out the flip completion event. Or ensure that the plane updates are actually done atomically by e.g. setting/clearing GO bits or latching the update through some other means. Or if the hardware does not provide any support for synchronized updates, use vblank evasion to ensure all updates happen on the same frame.</li><li><code>-&gt;prepare_fb</code> and <code>-&gt;cleanup_fb</code> hooks are also optional. These are used to setup the framebuffers, e.g. pin their backing storage into memory and set up any needed hardware resources. The important part is that besides the <code>-&gt;atomic_check</code> callbacks <code>-&gt;prepare_fb</code> is the only new callback which is allowed to fail. This is important to make asynchronous commits of atomic state updates work. The helper library guarantees that for any successful call of <code>->prepare_fb</code> it will call <code>->cleanup_fb</code> - even when something else fails in the atomic update.</li><li>Finally there's <code>-&gt;atomic_update</code>. That's the function which does all the per-plane update, like setting up the new viewport or the new base address of the framebuffer for each plane.</li></ul>With this it's also easy to implement universal plane support directly, instead of with the default implementation which doesn't allow the primary plane to be disabled.  Universal planes are a requirement for atomic and need to be implemented in phase 1, but testing the primary plane support is also a good preparation for the next step: 
 The new <code>crtc-&gt;mode_set_nofb</code> callback must be implement, which just updates the CRTC timings and data in the hardware without touching the primary plane state at all. The provided helpers functions <code>drm_helper_crtc_mode_set</code> and <code>drm_helper_crtc_mode_set_base</code> then implement the callbacks required by the CRTC helpers in terms of the new <code>-&gt;mode_set_nofb</code> callback and the above newly implemented plane helper callbacks.
 
-### Phase 2: Wire up the Atomic State Object Scaffolding 
+## Phase 2: Wire up the Atomic State Object Scaffolding 
 
 
 With the completion of phase 1 all the driver backend functions have been adapted to the new requirements of the atomic helper library. The goal of phase 2 is to get all the state object handling needed for atomic updates into place. There are three steps to that:
 <ul><li>The first is fairly simply and consists in just wiring up all the state reset, duplicate and destroy functions for planes, CRTCs and connectors. Except for really crazy cases the default implementations from the atomic helper library should be good enough, at least to get started. With this there will always be an atomic state object stored in each object's <code>-&gt;state</code> pointer.</li><li>The second step is patching up the state objects in legacy code paths to make sure that we can partially transition to atomic updates. If your driver doesn't have any transition checks for plane updates (i.e. doesn't ever look at the old state to figure out whether an change is possible) then all you need to do is keep the framebuffer pointers and reference counts in balance with <code>drm_atomic_set_fb_for_plane</code>. The transitional helpers from phase 1 already do this, so usually the only place this is needs to be manually added is in the <code>-&gt;page_flip</code> callback.</li><li>Finally all <code>-&gt;mode_fixup</code> callbacks need to be audited to not depend upon any state which is only set in the various CRTC helper callbacks and not tracked by the atomic state objects. This isn't required for implementing the legacy interfaces using atomic updates, but this is important to correctly implement the check/commit semantics. Especially when the commit is done asynchronously. This really is a corner-case though, but any such code must be moved into <code>-&gt;atomic_check</code> hooks and rewritten in terms of the atomic state objects.</li></ul>
 
-### Phase 3: Rolling out Atomic Support
+## Phase 3: Rolling out Atomic Support
 
 
 With the driver backend changes from phase 1 and the state handling changes from phase 2 everything is ready for the step-by-step rollout of atomic support. Presuming nothing was missed this just consists of wiring up the -&gt;atomic_check and -&gt;atomic_commit implementations from the atomic helper library. And then replacing all the legacy entry pointers with the corresponding functions from the atomic helper library to implement them in terms of atomic.
@@ -42,7 +42,7 @@ The recommended order is to start with planes first, then test the -&gt;set_conf
 <ul><li>The atomic helper library doesn't provide any default asynchronous commit support, since driver and hardware requirements seem to be too diverse. At least until we have a few proper implementations and can use them to extract a good set of helper functions. Hence drivers must implement basic async commit support using the building blocks provided (and other drm and kernel infrastructre like flip queues, fence callbacks and work items - hopefully soonish also vblank callbacks).</li><li>Property values need to be moved into the relevant state object first before the corresponding implementations can be wired up. As long as the driver doesn't yet support the full atomic ioctl this can be done at leisure, but must be completed before the ioctl can be enabled. To do so drivers need to subclass the relevant state structure and reimplement all the state handling functions rolled out in phase 2.</li></ul>
 Besides these two complications (which might require a bit of work depending upon the driver) this is all that's needed for full atomic modeset and pageflip support.
 
-### Follow-up Driver Cleanups
+## Follow-up Driver Cleanups
 
 
 But there's of course quite a bit of cleanup work possible afterards!  The are
@@ -80,7 +80,7 @@ switch all the driver backend code to only look at the state object structures.
 The two big examples here are <code>crtc-&gt;mode</code> and the
 <code>plane-&gt;fb</code> pointer.
 
-### So What Now?
+## So What Now?
 
 
 With all that converting drivers should be simple and can be done with a series of not-too-invasive refactorings. But my patch series doesn't yet contain the actual atomic modeset ioctl. So what's left to be done in the drm core?

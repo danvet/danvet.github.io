@@ -4,6 +4,7 @@ title: 'LCA Geelong: Embrace the Atomic Display Age'
 date: '2016-02-08T01:32:00.001-08:00'
 author: danvet
 tags: 
+- Conferences
 modified_time: '2016-02-08T01:32:06.305-08:00'
 blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-183319580757219114
 blogger_orig_url: http://blog.ffwll.ch/2016/02/lca-geelong-embrace-atomic-display-age.html

@@ -3,7 +3,7 @@ layout: post
 title: Documentation for drm/i915
 date: '2014-06-11T11:51:00.001-07:00'
 author: danvet
-tags: 
+tags: Maintainer-Stuff
 modified_time: '2014-06-11T11:51:32.241-07:00'
 blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-6079091040906080615
 blogger_orig_url: http://blog.ffwll.ch/2014/06/documentation-for-drmi915.html

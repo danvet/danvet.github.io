@@ -4,6 +4,7 @@ title: 'LCA 2015: Botching Up IOCTLs'
 date: '2015-01-18T21:55:00.003-08:00'
 author: danvet
 tags: 
+- Conferences
 modified_time: '2015-01-18T21:55:25.511-08:00'
 blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-6543470772358829887
 blogger_orig_url: http://blog.ffwll.ch/2015/01/lca-2015-botching-up-ioctls.html

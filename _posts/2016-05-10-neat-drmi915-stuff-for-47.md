@@ -4,6 +4,7 @@ title: Neat drm/i915 Stuff for 4.7
 date: '2016-05-10T14:52:00.001-07:00'
 author: danvet
 tags: 
+- Kernel RelNotes
 modified_time: '2016-05-11T08:02:31.939-07:00'
 blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-3142001204592303032
 blogger_orig_url: http://blog.ffwll.ch/2016/05/neat-drmi915-stuff-for-47.html
