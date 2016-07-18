@@ -55,6 +55,10 @@ body {
     -webkit-text-size-adjust: 100%;
 }
 
+b, strong {
+    font-weight: bold;
+}
+
 
 
 /**
@@ -140,7 +144,7 @@ article a {
     font-weight: 100;
 
     &:hover {
-        text-decoration: none;
+        text-decoration: underline;
     }
 }
 
