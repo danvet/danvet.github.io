@@ -2,11 +2,13 @@
 layout: post
 title: New Blog Engine!
 ---
+
 I finally unlazied and moved my blog away from the Google mothership to
-something simply, fast and statically generated. It's built on Jekyll, hosted on
-github. It's not quite as fancy as the old one, but with some googling I figured
-out how to add pages for tags and an archive section, and that's about all
-that's really needed.
+something simply, fast and statically generated. It's built on
+[Jekyll](https://jekyllrb.com/), hosted on
+[github](https://github.com/danvet/danvet.github.io). It's not quite as fancy as
+the old one, but with some googling I figured out how to add pages for tags and
+an archive section, and that's about all that's really needed.
 
 Comments are gone too, because I couldn't be bothered, and because everything
 seems to add Orwellian amounts of trackers. Ping [me on IRC, by mail](/about) or
