@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Neat stuff for 3.17
+title: Neat drm/i915 stuff for 3.17
 date: '2014-08-07T07:29:00.000-07:00'
 author: danvet
 tags:
