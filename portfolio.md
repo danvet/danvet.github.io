@@ -1,6 +1,6 @@
 ---
 layout: page
-title: pictures
+#title: pictures
 permalink: /portfolio/
 ---
 
