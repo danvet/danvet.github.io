@@ -2,6 +2,8 @@
 layout: page
 title: about
 permalink: /about/
+redirect_from:
+- "/p/about-me.html"
 ---
 
 <a

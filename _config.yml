@@ -17,6 +17,9 @@ twitter_username: danvet
 github_username:  danvet
 permalink: /:year/:month/:title.html
 
+gems:
+- jekyll-redirect-from
+
 # Build settings
 markdown: kramdown
 excerpt_separator: <!--more-->
