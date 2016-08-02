@@ -36,3 +36,9 @@ generally hang around on `#dri-devel` and `#intel-gfx`.
 Legal boilerplate: The opinions expressed on this site are mine alone and do not
 necessarily reflect the opinions or strategies of Intel Corporation or its
 worldwide subsidiaries.&nbsp;
+
+All content, including presentations and pictures, is licensed under a [Creative
+Commons Attribution-ShareAlike 4.0 International
+License](http://creativecommons.org/licenses/by-sa/4.0/). Website style based on
+[folio](http://jekyllthemes.org/themes/folio/). Full source of this blog is
+available on [github](https://github.com/danvet/danvet.github.io).
