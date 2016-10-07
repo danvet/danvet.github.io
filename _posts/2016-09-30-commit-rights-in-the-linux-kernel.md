@@ -5,6 +5,7 @@ date: '2016-09-30T06:32:00.001+01:00'
 author: danvet
 tags: 
 - Maintainer-Stuff
+- Conferences
 ---
 
 Since about a year we're running the Intel graphics driver with a new process:
