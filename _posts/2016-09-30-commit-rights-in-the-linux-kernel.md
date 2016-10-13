@@ -17,10 +17,13 @@ in the first few months.
 I've presented the new model here at Kernel Recipes in Paris, and I will also
 talk about it at Kernel Summit in Santa Fe. Since [LWN](https://lwn.net/) is
 present at both I won't bother with a full writeup, but leave that to much
-better editors.
+better editors. **Update**: [LWN on kernel maintainer
+scalability](https://lwn.net/Articles/703005/).
 
-Anyway, there's a video recording (I'll link as soon as it's there) and the
-[slides](/slides/kernel-recipes-2016-maintainer.odp). Our [process is also
+Anyway, there's a [video
+recording](https://www.youtube.com/watch?v=gZE5ovQq9g8&feature=youtu.be&list=PLQ8PmP_dnN7L5OVT95uXJAE78qcGCcDVm)
+and the [slides](/slides/kernel-recipes-2016-maintainer.odp). Our [process is
+also
 documented](https://01.org/linuxgraphics/gfx-docs/maintainer-tools/drm-intel.html) -
 scroll down to the bottom for the more interesting bits around what's
 expected of committers.
