@@ -21,9 +21,13 @@ non-violent communication?
 
 
 
+burnout
 &nbsp;https://www.youtube.com/watch?v=EqcuzSwySR4
 
 
+https://www.youtube.com/watch?v=RbeHBnWfXUc
+https://www.youtube.com/watch?v=0yAJfiMlo7g
+https://www.youtube.com/watch?v=5d0y5J8rn4A
 
 ruby community hacking ed dunham?
 
