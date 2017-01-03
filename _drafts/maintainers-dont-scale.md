@@ -266,3 +266,6 @@ mandatory sentence than something done by choice. What I object against is the
 "Dictator" part, since if your goal is to grow a great community and maybe reach
 world domination, then you as the maintainer need to serve that community. And
 not that the community serves you.
+
+Thanks a lot to Jani Nikulai and Laurent Pinchart for reading and commenting on
+drafts of this text.
