@@ -97,10 +97,12 @@ standard-issue overloaded bottleneck.
 That's the point where I think the kernel community goes wrong. Lots of other
 projects then start to build up a more formal community structure, with
 specialized roles, boards for review and other bits and pieces. One of the
-oldest, and probably most notorious, is Debian with it's constitution. Not ever
-project needs a this elaborate structure. But if the goal is world domination,
-or at least creating something lasting, it helps when there's solid instutions
-that cope with people leaving and joining.
+oldest, and probably most notorious, is Debian with it's constitution. Of course
+a small project doesn't need such elaborate structures. But if the goal is world
+domination, or at least creating something lasting, it helps when there's solid
+instutions that cope with people leaving and joining. At first just documenting
+processes and roles properly goes a long way, long before bylaws and codified
+decision rules are needed.
 
 The kernel community, at least on the maintainer side, entirely lacks this.
 
@@ -239,7 +241,7 @@ to everyone and taking the blame is all it takes.
 
 ### Recognize Your Power
 
-Your a maintainer, and you have essentially absolutely power over what happens
+You're a maintainer, and you have essentially absolutely power over what happens
 to your code. And for successful projects that means you can unleash a lot of
 harm on people who for better or worse are employed to deal with you. One of the
 things that annoy me the most is when maintainers engage in petty status fights
