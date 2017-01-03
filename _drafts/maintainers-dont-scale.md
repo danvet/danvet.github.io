@@ -30,10 +30,11 @@ kernel), ARM-SoC and the graphics subsystem (DRM).
 
 The radical change, at least for the kernel community, that we implemented a bit
 over a year ago for the Intel graphics driver is to hand out commit rights to
-all regular contributors. In the first year of ramp-up 70% of all patches are now
-committed directly by their authors, a big change compared to how things worked
-before, and still work everywhere else outside of the graphics subsystem. More
-recently we also started to manage the drm-misc tree for subsystem wide
+all regular contributors. Currently there are 19 people with commit rights to
+the drm-intel repository. In the first year of ramp-up 70% of all patches are
+now committed directly by their authors, a big change compared to how things
+worked before, and still work everywhere else outside of the graphics subsystem.
+More recently we also started to manage the drm-misc tree for subsystem wide
 refactorings and core changes in the same way.
 
 I've covered the details of the new process  in my
@@ -102,7 +103,7 @@ a small project doesn't need such elaborate structures. But if the goal is world
 domination, or at least creating something lasting, it helps when there's solid
 instutions that cope with people leaving and joining. At first just documenting
 processes and roles properly goes a long way, long before bylaws and codified
-decision rules are needed.
+decision processes are needed.
 
 The kernel community, at least on the maintainer side, entirely lacks this.
 
@@ -147,8 +148,8 @@ control flows entirely top-down, commonly called dictatorship. History tells us
 that despite best intentions, the end result tends to heavily optimize for the
 few over the many. As a crude measure for how much maintainers subject themselves
 to some checks&balances by their peers and contributors I looked at how many
-patches authored and committed by the same person (probably a maintainer) also
-carry a reviewed or acked tag. For the intel driver that's less than 3%, no
+patches authored and committed by the same person (probably a maintainer) do not
+also carry a reviewed or acked tag. For the intel driver that's less than 3%, no
 surprise given that over 70% of all patches have been merged by their authors
 directly. But even within the core graphics code it's only 5%, and that covers
 the time before we started to experiment with commit rights for that area. And
@@ -157,7 +158,7 @@ of drivers with essentially just one contributor and hence a bit
 of a given they lack reviewers.
 
 Outside of graphics only roughly 25% of all patches written by maintainers are
-reviwed by their peers. And even looking at core areas like <code>kernel/</code>
+reviewed by their peers. And even looking at core areas like <code>kernel/</code>
 or <code>mm/</code> the ratio is only marginally better at about 30%. In short,
 in the kernel at large, peer review of maintainers isn't the norm.
 
@@ -198,20 +199,44 @@ trees and overloaded maintainer, is that it seems to harm collaboration and
 integration of new contributors. In the Intel graphics driver maintainers only
 ever reviewed a small minority of all patches over the last few years, with the
 goal to foster direct collaboration between contributors. Still, when a patch
-was stuck maintainers where the first point of contact, especially, but not
+was stuck maintainers were the first point of contact, especially, but not
 only, for newer contributors. No amount of explaining that only the lack of
-agreement with the reviewer was the gating factor could persuade people. Having
-the keys to the kingdom, i.e. the means to apply patches to the main tree, was
-always too much of an attractive force.
+agreement with the reviewer was the gating factor could persuade people to fully
+collaborate on code reviews and rework the code, tests and documentation as
+needed. Especially when they're coming with previous experience where code
+review is more of a rubber-stamp step instead of the distributed and
+asynchronous pair-programming it often resembles in open-source.  Instead new
+contributors often just ended up falling back to pinging maintainers to make a
+decision or just merge the patches as-is.
 
 Giving all regular contributors commit rights and fully trusting them to do the
-right thing entirely fixed that: If the reviwer or author have commit rights
-there's no easy excuse anymore to involve maintainers when they can't reach
-agreement. Of course that requires a lot of work in mentoring people, making
-sure requirements for merging are understood and documented, and automating as
-much as possible to avoid screw ups. I think maintainers who lament their lack
-of review bandwidth, but also state they can't trust anyone else aren't really
-doing their jobs.
+right thing entirely fixed that: If the reviewer or author have commit rights
+there's no easy excuse anymore to involve maintainers when author and reviewers
+can't reach agreement. Of course that requires a lot of work in mentoring
+people, making sure requirements for merging are understood and documented, and
+automating as much as possible to avoid screw ups. I think maintainers who
+lament their lack of review bandwidth, but also state they can't trust anyone
+else aren't really doing their jobs.
+
+At least for me, review isn't just about ensure good code quality, but also
+about diffusing knowledge and improving understanding. At first there's maybe
+one person, the author, and that's not a given, understanding the code. After
+good review there should be at least two people who fully understand it,
+including corner cases. I think that fostering these communication links as a
+mesh is much better for the project and team instead of a hierarchy with the
+single maintainer at the center. And that's also why I think that group
+maintainership, is the only way to run any project with more than one regular
+contributor.
+
+On the topic of patch review and maintainers, there's also the habit of
+wholesale rewrites of patches written by others. If you want others to
+contribute to your project, then that means you need to accept other styles and
+can't enforce your own all the time. Merging first and polishing later
+recognizes new contributions, and if you engage newcomers for the polish work
+they tend to stick around more often. And even when a patch really needs to be
+reworked before merging it's better to ask the author to do it: Worst case they
+don't have time, best case you've improved your documentation and training
+procedure and maybe gained a new regular contributor on top.
 
 ## Towards a Maintainer's Manifest
 
@@ -241,13 +266,14 @@ to everyone and taking the blame is all it takes.
 
 ### Recognize Your Power
 
-You're a maintainer, and you have essentially absolutely power over what happens
+You're a maintainer, and you have essentially absolute power over what happens
 to your code. And for successful projects that means you can unleash a lot of
 harm on people who for better or worse are employed to deal with you. One of the
 things that annoy me the most is when maintainers engage in petty status fights
 against subordinates, thinly veiled as technical discussions - you end up
 looking silly, and it just pisses everyone off. Instead recognize your powers,
-and try to stay on the good side of the force.
+try to stay on the good side of the force and make sure you share it
+sufficiently with the contributors of your project.
 
 ### Accept Your Limits
 
@@ -267,5 +293,5 @@ mandatory sentence than something done by choice. What I object against is the
 world domination, then you as the maintainer need to serve that community. And
 not that the community serves you.
 
-Thanks a lot to Jani Nikulai and Laurent Pinchart for reading and commenting on
-drafts of this text.
+Thanks a lot to Daniel Stone, Eric Anhol, Jani Nikulai and Laurent Pinchart for
+reading and commenting on drafts of this text.
