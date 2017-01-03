@@ -24,9 +24,9 @@ patches get merged this way, only 20% are committed by a maintainer directly.
 
 Most maintainers are just that, a single person, and often responsible for a
 bunch of different areas in the kernel with corresponding different git branches
-and repositories. As far I know there's only three subsystems who have embraced
-group maintainership models of different kinds: TIP (x86 and core kernel),
-ARM-SoC and the graphics subsystem (DRM).
+and repositories. As far as I know there are only three subsystems that have
+embraced group maintainership models of different kinds: TIP (x86 and core
+kernel), ARM-SoC and the graphics subsystem (DRM).
 
 The radical change, at least for the kernel community, that we implemented a bit
 over a year ago for the Intel graphics driver is to hand out commit rights to
@@ -178,10 +178,16 @@ contributions, but there's no such survey. On the contrary feedback sessions
 reinforce the control structure, with e.g. the kernel summit featuring a "Is
 Linus happy" session each year.
 
-Finally there's the "Code of Conflict", which de facto just throws up its hands
-and declares that conflict is the normal outcome. Refusing to handle conflicts
-in a project with thousands of contributors just doesn't work, except that it
-results in lots of frustration and ultimately people trying to get away.
+Another closely related aspect to all this is how a project handles personal
+conflicts between contributors. For a very long time Linux didn't have any
+formal structures in this area either, with the only options available to
+unhappy people to either take it or leave it. Well, or usurping a maintainer
+with a small revolution, but that's not really an option. For two years
+we've now had the "Code of Conflict", which de facto just throws up its hands and
+declares that conflict are the normal outcome, essentially just encoding the
+status quo. Refusing to handle conflicts in a project with thousands of
+contributors just doesn't work, except that it results in lots of frustration
+and ultimately people trying to get away.
 
 ## Mesh vs. Hierarchy
 
@@ -193,15 +199,17 @@ goal to foster direct collaboration between contributors. Still, when a patch
 was stuck maintainers where the first point of contact, especially, but not
 only, for newer contributors. No amount of explaining that only the lack of
 agreement with the reviewer was the gating factor could persuade people. Having
-the keys the kingdom, i.e. the means to apply patches to the main tree, was
+the keys to the kingdom, i.e. the means to apply patches to the main tree, was
 always too much of an attractive force.
 
-Given all regular contributors commit rights and fully trusting them to do the
-right thing entirely fixed that. Of course that requires a lot of work in
-mentoring people, making sure requirements for merging are understood and
-documented, and automating as much as possible to avoid screw ups. I think
-maintainers who lament their lack of review bandwidth, but also state they can't
-trust anyone else aren't really doing their jobs.
+Giving all regular contributors commit rights and fully trusting them to do the
+right thing entirely fixed that: If the reviwer or author have commit rights
+there's no easy excuse anymore to involve maintainers when they can't reach
+agreement. Of course that requires a lot of work in mentoring people, making
+sure requirements for merging are understood and documented, and automating as
+much as possible to avoid screw ups. I think maintainers who lament their lack
+of review bandwidth, but also state they can't trust anyone else aren't really
+doing their jobs.
 
 ## Towards a Maintainer's Manifest
 
@@ -209,7 +217,7 @@ I think what's needed in the end is some guidelines and discussions about what a
 maintainer is, and what a maintainer does. We have ready-made license to avoid
 havoc, there's code of conducts to copypaste and implement, handbooks for
 building communities, and for all of these things, lots of conferences.
-Maitainer on the other hand you become by accident, as a default. And then
+Maintainer on the other hand you become by accident, as a default. And then
 everyone gets to learn how to do it on their own, while hopefully not burning
 too many bridges - at least I myself was rather lost on that journey at times.
 I'd like to conclude with a draft on a maintainer's manifest.
@@ -234,14 +242,14 @@ to everyone and taking the blame is all it takes.
 Your a maintainer, and you have essentially absolutely power over what happens
 to your code. And for successful projects that means you can unleash a lot of
 harm on people who for better or worse are employed to deal with you. One of the
-things that annoy me the most is when mainainers engage in petty fights against
-subordinates, thinly veiled as technical discussions - you end up looking silly,
-and it just pisses everyone off. Instead recognize your powers, and try to stay
-on the good side of the force.
+things that annoy me the most is when maintainers engage in petty status fights
+against subordinates, thinly veiled as technical discussions - you end up
+looking silly, and it just pisses everyone off. Instead recognize your powers,
+and try to stay on the good side of the force.
 
 ### Accept Your Limits
 
-At the beginning your responible for everything, and for a one-person project
+At the beginning you're responible for everything, and for a one-person project
 that's all fine. But eventually the project grows too much and you'll just
 become a dictator, and then failure is all but assured because we're all human.
 Recognize what you don't do well, built institutions to replace you. And do all
