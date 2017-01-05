@@ -280,8 +280,8 @@ sufficiently with the contributors of your project.
 At the beginning you're responible for everything, and for a one-person project
 that's all fine. But eventually the project grows too much and you'll just
 become a dictator, and then failure is all but assured because we're all human.
-Recognize what you don't do well, built institutions to replace you. And do all
-that before you start burning out.
+Recognize what you don't do well, built institutions to replace you, and do all
+that before you start to burn out.
 
 ### Be a Steward, Not a Lord
 
@@ -293,5 +293,5 @@ mandatory sentence than something done by choice. What I object against is the
 world domination, then you as the maintainer need to serve that community. And
 not that the community serves you.
 
-Thanks a lot to Daniel Stone, Eric Anhol, Jani Nikulai and Laurent Pinchart for
+Thanks a lot to Daniel Stone, Eric Anholt, Jani Nikulai and Laurent Pinchart for
 reading and commenting on drafts of this text.
