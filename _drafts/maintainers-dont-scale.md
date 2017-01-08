@@ -162,7 +162,8 @@ contributor, who is always volunteered as the maintainer, and hence somewhat
 natural that those maintainers lack reviewers.
 
 Outside of graphics only roughly 25% of all patches written by maintainers are
-reviewed by their peers - 75% of all maintainer patches lack any kind tracked
+reviewed by their peers - 75% of all maintainer patches lack any kind of
+recorded
 peer review, compared to just 25% for graphics alone. And even looking at core
 areas like <code>kernel/</code> or <code>mm/</code> the ratio is only marginally
 better at about 30%. In short, in the kernel at large, peer review of
@@ -171,7 +172,7 @@ maintainers isn't the norm.
 And there's nothing outside of the maintainer hierarchy that could provide some
 checks and balance either. The only way to escalate disagreement is by starting
 a revolution, and revolutions tend to be long, drawn-out struggles and generally
-not worth it. Even Debian only recently learned that a they lack a way to depose
+not worth it. Even Debian only recently learned that they lack a way to depose
 maintainers, and that maybe [going maintainerless would be easier (again, LWN
 has you covered)](https://lwn.net/Articles/708163/).
 
@@ -183,9 +184,9 @@ somewhat countered by providing ways to provide anonymous feedback, often
 through regular surveys. The results tend to not be all that significant, but at
 least provide some control and accountability to the wider masses of first-level
 dwellers in the hierarchy. In the kernel that amounts to about 80% of all
-contributions, but there's no such survey. On the contrary feedback sessions
-reinforce the control structure, with e.g. the kernel summit featuring an "Is
-Linus happy?" session each year.
+contributions, but there's no such survey. On the contrary, feedback sessions
+about maintainer happiness only reinforce the control structure, with e.g. the
+kernel summit featuring an "Is Linus happy?" session each year.
 
 Another closely related aspect to all this is how a project handles personal
 conflicts between contributors. For a very long time Linux didn't have any
@@ -204,7 +205,7 @@ line with the kernel community unwillingness to accept checks and balances.
 
 The last big issue I see with the Linux kernel model, featuring lots of boutique
 trees and overloaded maintainer, is that it seems to harm collaboration and
-integration of new contributors. In the Intel graphics driver maintainers only
+integration of new contributors. In the Intel graphics, driver maintainers only
 ever reviewed a small minority of all patches over the last few years, with the
 goal to foster direct collaboration between contributors. Still, when a patch
 was stuck, maintainers were the first point of contact, especially, but not
@@ -242,6 +243,15 @@ they tend to stick around more often. And even when a patch really needs to be
 reworked before merging it's better to ask the author to do it: Worst case they
 don't have time, best case you've improved your documentation and training
 procedure and maybe gained a new regular contributor on top.
+
+A great take on the consequences of having fixed roles instead of trying to
+spread responsibilities more evenly is [Alice Goldfuss' talk "Rock Stars,
+Builders, and Janitors: You're doing it
+wrong"](https://www.youtube.com/watch?v=posb7CzWSFc). I also think that rigid
+roles present a bigger bar for people with different backgrounds, hampering
+diversity efforts and in the spirit of [Sarah Sharps post on what makes a good
+community](http://sarah.thesharps.us/2015/10/06/what-makes-a-good-community/),
+need to be fixed first.
 
 ## Towards a Maintainer's Manifest
 
