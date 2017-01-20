@@ -12,6 +12,7 @@ slides for the talk are [here](/slides/lca-2017.pdf), and I will link to the
 video as soon as it is available.
 
 <!--more-->
+
 ## Linux Kernel Maintainers
 
 First let's look at how the kernel community works, and how a change gets merged
