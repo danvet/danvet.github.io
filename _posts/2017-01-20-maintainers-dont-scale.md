@@ -4,6 +4,7 @@ title: Maintainers Don't Scale
 date: 2017-01-20
 tags:
 - Maintainer-Stuff
+- Conferences
 ---
 This is the write-up of [my talk at LCA 2017 in
 Hobart](https://www.linux.conf.au/schedule/presentation/57/). It's not exactly
