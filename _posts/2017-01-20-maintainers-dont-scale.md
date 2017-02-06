@@ -10,7 +10,9 @@ This is the write-up of [my talk at LCA 2017 in
 Hobart](https://www.linux.conf.au/schedule/presentation/57/). It's not exactly
 the same, because this is a blog and not a talk, but the same contents. The
 slides for the talk are [here](/slides/lca-2017.pdf), and I will link to the
-video as soon as it is available.
+video as soon as it is available. **Update:**
+[Video](https://www.youtube.com/watch?v=KJ9Y0midtW4&feature=youtu.be) is now
+uploaded.
 
 <!--more-->
 
