@@ -10,9 +10,9 @@ blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-30684002918783140
 blogger_orig_url: http://blog.ffwll.ch/2016/04/should-xorg-foundation-join-spi-vote-now.html
 ---
 
-<div class="separator" style="clear: both; text-align: center;"><a href="/img/vote_now.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="320" src="https://2.bp.blogspot.com/-0xdeyuFfML0/VxcuHa6le1I/AAAAAAAAAY0/szB2xu42-qwWGLZpwIitJYZkDKiNrgBsQCKgB/s320/vote_now.jpg" width="320" /></a></div>
-
-
+<div style="text-align: center">
+<img border="0" height="320" src="/img/vote_now.jpg" width="320" />
+</div>
 
 [In](http://keithp.com/blogs/x.org-election/)
 [case](https://phoronix.com/scan.php?page=news_item&amp;px=Xorg-2016-Elections-Start)
