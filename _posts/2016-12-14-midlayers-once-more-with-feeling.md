@@ -34,7 +34,7 @@ be a powerful trick to speed up its acceptance.
 It seems common knowledge and accepted fact, but still there's a constant stream
 of drivers that come packaged with huge abstraction layers - mostly to abstract OS
 internals, but very often also just a few midlayers between different components
-within the driver. A major reason for this is certain that submissions by former
+within the driver. A major reason for this is certainly that submissions by former
 proprietary teams, or just generally code developed internally behind closed
 doors is suffering from the [platform problem - again LWN has you
 covered](https://lwn.net/Articles/443531/). If your driver is not open and part
