@@ -22,5 +22,5 @@ build is incremental it is recommended that you first run it before touching
 anything.  That way you'll only see warnings in areas you've touched, not all of
 them - the build is unfortunately somewhat noisy.
 
-*Update*: of course also check out the nice [documentation on
+**Update**: of course also check out the nice [documentation on
 kernel-doc](https://dri.freedesktop.org/docs/drm/doc-guide/index.html) itself.
