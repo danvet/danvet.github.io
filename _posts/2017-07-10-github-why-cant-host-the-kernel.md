@@ -8,7 +8,7 @@ tags:
 A while back at the awesome [maintainerati](https://maintainerati.org/) I
 chatted with a few great fellow maintainers about how to scale really big open
 source projects, and how github forces projects into a certain way of scaling.
-The Linux Kernel has an entirely different model, which maintainers hosting
+The linux kernel has an entirely different model, which maintainers hosting
 their projects on github don't understand, and I think it's worth explaining why
 and how it works, and how it's different.
 
@@ -82,9 +82,10 @@ causing:
   Of course it's not much work to do this, and many projects excel at making
   this fairly easy. But it is more effort than a simple pull request to the one
   single monorepo. Very simple refactorings (like just sharing a single new
-  function) will happen much less often. Except when you go the node.js way with
-  repos for single functions, but then you essentially replace git with npm as
-  your source control system, and that seems somewhat silly too.
+  function) will happen less often, and over a long time that compounds and
+  accumulates a lot of debt. Except when you go the node.js way with repos for
+  single functions, but then you essentially replace git with npm as your source
+  control system, and that seems somewhat silly too.
 
 - The combinatorial explosion of theoretically supported version mixes becomes
   unsupportable. As a user that means you end up having to do the integration
@@ -135,11 +136,11 @@ originally created for.
 
 ## Scaling, the Linux Kernel Way
 
-At first glance the Kernel looks like a monorepo, with everything smashed into
+At first glance the kernel looks like a monorepo, with everything smashed into
 one place in [Linus' main
 repo](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/). But that's very far from it:
 
-- Almost no one who's using Linux is running the main repo from Linus Torvalds.
+- Almost no one who's using linux is running the main repo from Linus Torvalds.
   If they run something upstream-ish it's probably one of the [stable
   kernels](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/).
   But much more likely is that they run a kernel from their distro, which
@@ -222,18 +223,18 @@ example.
 
 Yes and no.
 
-At first glance the Linux kernel looks like a monorepo because it contains
+At first glance the linux kernel looks like a monorepo because it contains
 everything. And lots of people learned that monorepos are really painful,
 because past a certain size they just stop scaling.
 
-But looking closer, it's very, very far away from a single git repositories.
+But looking closer, it's very, very far away from a single git repository.
 Just looking at the upstream subsystem and driver repositories gives you a few
 hundred. If you look at the entire ecosystem, including hardware vendors,
-distributions, other Linux-based OS and individual products, you easily have a
+distributions, other linux-based OS and individual products, you easily have a
 few thousand major repositories, and many, many more in total. Not counting
 any git repo that's just for private use by individual contributors.
 
-The crucial distinction is that Linux has one single file hierarchy as the
+The crucial distinction is that linux has one single file hierarchy as the
 shared namespace across everything, but lots and lots of different repos for all
 the different pieces and concerns. It's a monotree with multiple repositories,
 not a monorepo.
@@ -291,7 +292,7 @@ subsystem](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/co
 An entirely different example that this isn't insane is the [only other relevant
 general purpose large scale OS project](https://www.microsoft.com/windows/) in
 the world *also* decided to have a monotree, with a commit flow modelled similar
-to what's going on in Linux. I'm talking about the folks with such a huge tree
+to what's going on in linux. I'm talking about the folks with such a huge tree
 that they had to write an entire new [GVFS](https://github.com/Microsoft/GVFS)
 virtual filesystem provider to support it ...
 
@@ -303,7 +304,7 @@ back to patches on mailing lists and pull requests over email, applied manually.
 In my opinion that's the single one reason why the kernel community cannot
 benefit from moving to github. There's also the minor issue of a few top
 maintainers being extremely outspoken against github in general, but that's a
-not really a technical issue. And it's not just the Linux Kernel, it's all huge
+not really a technical issue. And it's not just the linux kernel, it's all huge
 projects on github in general which struggle with scaling, because github
 doesn't really give them the option to scale to multiple repositories, while
 sticking to with a monotree.
@@ -336,8 +337,8 @@ splitting repos is that pull requests and issues are separated, too.
 
 Related, it needs to be possible to establish the fork relationship after the
 fact. For new projects who've always been on github this isn't a big deal. But
-Linux will be able to move at most a subsystem at a time, and there's already
-tons of Linux repositories on github which aren't proper github forks of each
+linux will be able to move at most a subsystem at a time, and there's already
+tons of linux repositories on github which aren't proper github forks of each
 another.
 
 ### Pull Requests
