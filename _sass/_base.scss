@@ -45,7 +45,6 @@ body {
     font-family: $base-font-family;
     font-size: $base-font-size;
     line-height: $base-line-height;
-    font-weight: 100;
     color: $text-color;
     background-color: $background-color;
     -webkit-text-size-adjust: 100%;
@@ -111,14 +110,6 @@ li {
 
 
 /**
- * Headings
- */
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 100;
-}
-
-
-/**
  * Links
  */
 a {
@@ -138,7 +129,6 @@ a {
 article {
     a {
         color: $theme-color;
-        font-weight: 100;
 
         &:hover {
             text-decoration: underline;
