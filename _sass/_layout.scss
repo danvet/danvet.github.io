@@ -105,6 +105,15 @@ bottom:0px;
 height:25px;
 width:100%;
 }
+
+@media print {
+	.site-footer {
+		position:relative;
+	}
+	.site-header {
+		position:relative;
+	}
+}
 /**
  * Pagination   **********************************************************
  */
