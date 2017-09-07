@@ -17,8 +17,8 @@ Currently I work at Intel OTC on the graphics team,
 mostly creating havoc in the kernel driver part of our stack and tightly related
 parts.
 
-I'm also the kernel maintainer for the drm/i915 driver, the official git repo I
-maintain is at:
+I have been drm/i915 kernel maintainer for a few years, but handed that all off
+to a great new team. Still, the official git repo I maintain is at:
 [http://cgit.freedesktop.org/drm-intel](http://cgit.freedesktop.org/drm-intel)
 
 All the low-level tooling and especially all the kernel driver testcases can be
