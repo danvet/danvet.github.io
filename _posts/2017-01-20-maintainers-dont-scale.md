@@ -253,8 +253,8 @@ spread responsibilities more evenly is [Alice Goldfuss' talk "Rock Stars,
 Builders, and Janitors: You're doing it
 wrong"](https://www.youtube.com/watch?v=posb7CzWSFc). I also think that rigid
 roles present a bigger bar for people with different backgrounds, hampering
-diversity efforts and in the spirit of [Sarah Sharps post on what makes a good
-community](http://sarah.thesharps.us/2015/10/06/what-makes-a-good-community/),
+diversity efforts and in the spirit of [Sage Sharp's post on what makes a good
+community](http://sage.thesharps.us/2015/10/06/what-makes-a-good-community/),
 need to be fixed first.
 
 ## Towards a Maintainer's Manifest

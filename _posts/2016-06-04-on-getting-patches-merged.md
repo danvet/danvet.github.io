@@ -97,6 +97,6 @@ patches in.
   for the next step in your journey!
 
 And finally for the flip side, there's a great write up from <a
-href="http://sarah.thesharps.us/2014/09/01/the-gentle-art-of-patch-review/">Sarah
+href="http://sage.thesharps.us/2014/09/01/the-gentle-art-of-patch-review/">Sage
 Sharp about doing review</a>, which applies especially to reviewing newcomer's
 patches.
