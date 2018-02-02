@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "LCA Hobart: Burning Down the castle"
+title: "LCA Hobart: Burning Down the Castle"
 date: 2018-02-02
 tags:
 - Conferences
