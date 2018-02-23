@@ -14,8 +14,8 @@ documentation. And recently we've started to follow suite with the Intel
 graphics driver. All the kernel documenation is integrated into one big DocBook
 and I regularly upload latest HTML builds of the <a
 href="http://people.freedesktop.org/~danvet/drm/">Linux DRM Developer's
-Guide</a>. This is built from drm-intel-nightly so has slightly freshed
-documentation (hopefully) than the usual DocBook builds from Linus' main branch
+Guide</a>. This is built from drm-intel-nightly so has slightly fresher
+documentation (hopefully) than the usual documentation builds from Linus' main branch
 which can be found all over the place. If you want to build these yourself
 simply run
 
