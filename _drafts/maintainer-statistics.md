@@ -130,9 +130,9 @@ status, supporting the historical trend data.
 Much more interesting is the review statistics, split up by subsystem. Again we
 need a cut-off for noise and outliers. The big outliers here are all the pull
 requests and trees that have seen zero review, not even any *Acked-by* tags. But
-since I only want to show positive examples, we don't need to worry about those.
-A rather low cut-off of at least 10 maintainer commits takes care of the
-complete noise:
+since I don't want to pick on individual maintainers, we don't need to worry
+about those.  A rather low cut-off of at least 10 maintainer commits takes care
+of the complete noise:
 
 subsystem|total commits|maintainer commits| maintainer review ratio
 -|-|-|
@@ -149,21 +149,35 @@ clk|139|14|64%
 dma-mapping|63|60|60%
 
 
-Yes, XFS (and also f2fs, but that's much smaller) have their shit together. More
-interesting is how wide the spread in the filesystem code is: There's a bunch of
-substantial fs pulls with a review ratio of flat out zero. Not even a single
-*Acked-by*. XFS on the other hand seems to insist on full formal review of
-everything - I spot checked the history a bit.
+Yes, XFS and f2fs have their shit together. More interesting is how wide the
+spread in the filesystem code is: There's a bunch of substantial fs pulls with a
+review ratio of flat out zero. Not even a single *Acked-by*. XFS on the other
+hand seems to insist on full formal review of everything - I spot checked the
+history a bit. f2fs is a bit an outlier in 4.16, barely getting above the
+cut-off. Usually it has fewer patches and would have been excluded.
 
-Everyone not in the top ten here together has a review ratio of 27%.
+Everyone not in the top ten taken together has a review ratio of 27%.
 
 Looking at the big subsystems with multiple maintainers and huge groups of
 contributors - I picked 500 patches as the cut-off - there's some really low
 review ratios: Staging has 7%, networking 9% and tip scores 10%. Only really
-arm-soc is close to the top ten, with 50%, at the 14th slot. Staging having no
+arm-soc is close to the top ten, with 50%, at the 14th position. Staging having no
 standard is kinda the point, but the other core subsystems eschewing review
 entirely is rather worrisome - below 10% is easy to achieve, even if you only
-bother to add the various *Acked-by* tags flying around.
+bother to add the various *Acked-by* tags flying around. More than 9 out of 10
+maintainer patches merged into these core subsystem do not carry any indication
+that anyone else ever looked at the patch and deemed it a good idea. The only
+other subsystem with more than 500 commits is the GPU subsystem, at 4th position
+with 83% review ratio.
+
+Compared to maintainers overall the review situation is looking a lot less bleak.
+There's a sizeable group of subsystems who at least try to make this work,
+having similar review criteria for maintainer commits than normal contributors.
+This is also support by the rather slow, but steady overall increase of review
+when looking at the last few years of kernel releases.  But there's also clearly
+subsystems where review only seems to be a gauntlet inflicted on normal
+contributors, which is entirely optional for maintainers.
+
 
 One year ago I've written ["Review, not Rocket
 Sciene"](/2017/04/review-howto.html) on how to roll out review in your
