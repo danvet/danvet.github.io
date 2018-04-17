@@ -86,7 +86,7 @@ That's fairly arbitrary, but simplest to implement.
 
 ## Last few years of history
 
-history
+FIXME: Type up pls generate pretty graphs
 
 - declining maintainer commitsin kernel overall, accelarated without graphics ->
   we're dead by 2025
@@ -96,11 +96,77 @@ history
 
 ## v4.16 by Subsystem
 
-zooming into 4.16
+Let's zoom into how this all looks at a subsystem level, looking at just the
+recently released 4.16 kernel.
 
-- commit rights: very dire
+Trying to come up with a reasonable list of subsystems that have high maintainer
+commit ratios is tricky: Some rather substantial pull requests are essentially
+just maintainers submitting their own work, giving them an easy 100% score. But
+of course that's just an outlier in the larger scope of the kernel overall
+having a maintainer commit ratio of just 15%. To get a more interesting list of
+subsystems we need to look at only those with a group of regular contributors
+and more than just 1 maintainer. A fairly arbitrary cut-off of 200 commits or
+more in total seems to get us there, yielding the following top ten list:
 
-- review:
-- xfs has their shit together. "interesting" spread in vfs
-- where are the other big subsystems (500+ commits)?
-staging: 7%, networking 9%, tip: 10%, arm-soc: 50%
+| subsystem|total commits|maintainer commits| maintainer ratio
+|----------|-------------|------------------|-------|
+| GPU|1683|614|36%
+| KVM|257|91|35%
+| arm-soc|885|259|29%
+| linux-media|422|111|26%
+| tip (x86, core, ...)|792|125|16%
+| linux-pm|201|31|15%
+| staging|650|61|9%
+| linux-block|249|20|8%
+| sound|351|26|7%
+| powerpc|235|16|7%
+
+In short there's very few places where it's easier to be a maintainer than in
+the already rather low roughly 15% the kernel scores overall. Looking at all the
+outliers filtered out, the only realistic way is to create a new subsystem and
+somehow get it merged. In most subsystems being a maintainer is a rather elite
+status, supporting the historical trend data.
+
+Much more interesting is the review statistics, split up by subsystem. Again we
+need a cut-off for noise and outliers. The big outliers here are all the pull
+requests and trees that have seen zero review, not even any *Acked-by* tags. But
+since I only want to show positive examples, we don't need to worry about those.
+A rather low cut-off of at least 10 maintainer commits takes care of the
+complete noise:
+
+|subsystem|total commits|maintainer commits| maintainer review ratio
+|-|-|-|
+|f2fs|72|12|100%
+|XFS|105|78|100%
+|arm64|166|23|91%
+|GPU|1683|614|83%
+|linux-mtd|99|12|75%
+|KVM|257|91|74%
+|linux-pm|201|31|71%
+|pci|145|37|65%
+|remoteproc|19|14|64%
+|clk|139|14|64%
+|dma-mapping|63|60|60%
+
+
+Yes, XFS (and also f2fs, but that's much smaller) have their shit together. More
+interesting is how wide the spread in the filesystem code is: There's a bunch of
+substantial fs pulls with a review ratio of flat out zero. Not even a single
+*Acked-by*. XFS on the other hand seems to insist on full formal review of
+everything - I spot checked the history a bit.
+
+Everyone not in the top ten here together has a review ratio of 27%.
+
+Looking at the big subsystems with multiple maintainers and huge groups of
+contributors - I picked 500 patches as the cut-off - there's some really low
+review ratios: Staging has 7%, networking 9% and tip scores 10%. Only really
+arm-soc is close to the top ten, with 50%, at the 14th slot. Staging having no
+standard is kinda the point, but the other core subsystems eschewing review
+entirely is rather worrisome - below 10% is easy to achieve, even if you only
+bother to add the various *Acked-by* tags flying around.
+
+One year ago I've written ["Review, not Rocket
+Sciene"](/2017/04/review-howto.html) on how to roll out review in your
+subsystem. Looking at this data here I can close with an even shorter version:
+
+<blockquote>What would Dave Chinner do?</blockquote>
