@@ -94,7 +94,7 @@ FIXME: Type up pls generate pretty graphs
 - gfx: massive growth, but maintainer ratio roughly stable
 - gfx: doing a decent, but not perfect job on review
 
-## v4.16 by Subsystem
+## 4.16 by Subsystem
 
 Let's zoom into how this all looks at a subsystem level, looking at just the
 recently released 4.16 kernel.
@@ -108,18 +108,18 @@ subsystems we need to look at only those with a group of regular contributors
 and more than just 1 maintainer. A fairly arbitrary cut-off of 200 commits or
 more in total seems to get us there, yielding the following top ten list:
 
-| subsystem|total commits|maintainer commits| maintainer ratio
-|----------|-------------|------------------|-------|
-| GPU|1683|614|36%
-| KVM|257|91|35%
-| arm-soc|885|259|29%
-| linux-media|422|111|26%
-| tip (x86, core, ...)|792|125|16%
-| linux-pm|201|31|15%
-| staging|650|61|9%
-| linux-block|249|20|8%
-| sound|351|26|7%
-| powerpc|235|16|7%
+subsystem|total commits|maintainer commits| maintainer ratio
+-|-|-|-
+GPU|1683|614|36%
+KVM|257|91|35%
+arm-soc|885|259|29%
+linux-media|422|111|26%
+tip (x86, core, ...)|792|125|16%
+linux-pm|201|31|15%
+staging|650|61|9%
+linux-block|249|20|8%
+sound|351|26|7%
+powerpc|235|16|7%
 
 In short there's very few places where it's easier to be a maintainer than in
 the already rather low roughly 15% the kernel scores overall. Looking at all the
@@ -134,19 +134,19 @@ since I only want to show positive examples, we don't need to worry about those.
 A rather low cut-off of at least 10 maintainer commits takes care of the
 complete noise:
 
-|subsystem|total commits|maintainer commits| maintainer review ratio
-|-|-|-|
-|f2fs|72|12|100%
-|XFS|105|78|100%
-|arm64|166|23|91%
-|GPU|1683|614|83%
-|linux-mtd|99|12|75%
-|KVM|257|91|74%
-|linux-pm|201|31|71%
-|pci|145|37|65%
-|remoteproc|19|14|64%
-|clk|139|14|64%
-|dma-mapping|63|60|60%
+subsystem|total commits|maintainer commits| maintainer review ratio
+-|-|-|
+f2fs|72|12|100%
+XFS|105|78|100%
+arm64|166|23|91%
+GPU|1683|614|83%
+linux-mtd|99|12|75%
+KVM|257|91|74%
+linux-pm|201|31|71%
+pci|145|37|65%
+remoteproc|19|14|64%
+clk|139|14|64%
+dma-mapping|63|60|60%
 
 
 Yes, XFS (and also f2fs, but that's much smaller) have their shit together. More

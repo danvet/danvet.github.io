@@ -187,6 +187,22 @@
 			font-size: 18px;
 		}
 	}
+
+	table {
+		border-collapse: collapse;
+		margin-bottom: $vertical-spacing-unit / 2;
+	}
+
+	td {
+		white-space: normal;
+	}
+
+	td, th {
+		border: 1px solid $grey-color-light;
+		padding-left: 0.5em;
+		padding-right: 0.5em;
+		text-align: left;
+	}
 }
 .post-meta {
 	font-size: $small-font-size;
