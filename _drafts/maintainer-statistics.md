@@ -84,7 +84,7 @@ up the hierarchy, which allows filtering on a per-subsystem level. Commits in
 topic branches are accounted to the subsystem that first lands in Linus' tree.
 That's fairly arbitrary, but simplest to implement.
 
-## Last few years of history
+## Last few years of GPU subsystem history
 
 Since I've pitched the GPU subsystem against the kernel at large in my recent
 talks, let's first look at what things look like in graphics:
@@ -141,6 +141,8 @@ scaled faster and managed to make review a standard practice. Most of the
 drivers, and all the core code, are now consistently reviewed. Even for tiny
 drivers with small to single person teams we've managed to pull this off,
 through combining them into larger teams run with a group maintainership model.
+
+## Last few years of kernel ex GPU history
 
 <div style="text-align: left">
 <figure>
