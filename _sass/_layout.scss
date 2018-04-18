@@ -197,6 +197,10 @@
 		white-space: normal;
 	}
 
+	tr:hover {
+		background-color: $grey-color-light;
+	}
+
 	td, th {
 		border: 1px solid $grey-color-light;
 		padding-left: 0.5em;
