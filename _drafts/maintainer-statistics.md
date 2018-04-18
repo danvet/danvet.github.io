@@ -23,7 +23,7 @@ rules to themselves as anyone else, especially around purported quality
 enforcement tools like code review.
 
 For our purposes a **contributor** is someone who submits a patch to a mailing
-lists, but needs a maintainer to apply it for them, to get the patched merged. A
+lists, but needs a maintainer to apply it for them, to get the patch merged. A
 **maintainer** on the other hand can directly apply a patch to a subsystem
 tree, and will then send pull requests up the maintainer hierarchy until the
 patches land in Linus' tree. This is relatively easy to measure accurately in
@@ -102,12 +102,14 @@ you pick, the GPU has grown from being 3% of the kernel to about 10% and trading
 spot for 2nd largest subsystem with arm-soc and staging (depending who's got a
 big pull for that release).
 
+### Maintainer commits keep up with GPU subsystem growth
+
 The relative numbers have a different story. First, commit rights and the fairly
 big roll out of group maintainership we've done in the past 2 years aren't
 extreme by historical graphics subsystem standards. We've always had around
-30-40% of commits by maintainers. There's a bit a downward trend in the
+30-40% maintainer commits. There's a bit a downward trend in the
 years leading towards v4.4, due to the massive growth of the i915 driver.
-Switching to the committer model from v4.5 brought us back to the historical
+Switching to the committer model from v4.5 on forward brought us back to the historical
 trend line.
 
 There's another dip happening right now, starting with AMD's new DC display
@@ -118,9 +120,15 @@ There's a few process holdups, mostly around the CI flow, that need to be fixed
 first. As soon as that's done I expect this recent dip will again be over.
 
 In short, even when facing big growth like the GPU subsystem has, it's very much
-doable to keep training new maintainers to keep up with the increased demand. On
-top of that we've also managed to make review a standard practice, with most of
-the drivers, and all the core code consistently being reviewed. Even for tiny
+doable to keep training new maintainers to keep up with the increased demand.
+
+### Review of maintainer commits established in the GPU subsystem
+
+Looking at relative changes in how consistently maintainer commits are reviewed
+there's a clear grow from pretty much nothing to 80+% of all maintainer commits
+who have seen some formal oversight. We didn't just keep up with the growth, but
+scaled faster and managed to make review a standard practice. Most of the
+drivers, and all the core code are now consistently reviewed. Even for tiny
 drivers with small to single person teams we've managed to pull this off,
 through combining them into larger teams run with a group maintainership model.
 
@@ -133,8 +141,10 @@ small upward trend, both in absolute and relative numbers. But it's very slow,
 and will likely take decades until there's no more a double standard on review
 between contributors and maintainers.
 
+### Maintainers are not keeping up with the kernel growth overall
+
 Much more worrying is the trend on maintainer commits. Both in absolute, and
-much more in relative numbers there's a clear downward trend, going from around
+much more in relative numbers, there's a clear downward trend, going from around
 25% to below 15%. This indicates that the kernel community fails to mentor and
 train new maintainers at a pace sufficient to keep up with growth. Current
 maintainers are ever more overloaded, leaving ever less time for them to write
@@ -156,6 +166,8 @@ ignoring all the issues around conduct that I've raised.
 
 Let's zoom into how this all looks at a subsystem level, looking at just the
 recently released 4.16 kernel.
+
+### Most subsystems have unsustainable maintainer ratios
 
 Trying to come up with a reasonable list of subsystems that have high maintainer
 commit ratios is tricky: Some rather substantial pull requests are essentially
@@ -215,6 +227,8 @@ history a bit. f2fs is a bit an outlier in 4.16, barely getting above the
 cut-off. Usually it has fewer patches and would have been excluded.
 
 Everyone not in the top ten taken together has a review ratio of 27%.
+
+### Review double standards in many big subsystems
 
 Looking at the big subsystems with multiple maintainers and huge groups of
 contributors - I picked 500 patches as the cut-off - there's some really low
