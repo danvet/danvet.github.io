@@ -207,6 +207,14 @@
 		padding-right: 0.5em;
 		text-align: left;
 	}
+
+	figure {
+		margin-top: $vertical-spacing-unit;
+	}
+
+	figcaption {
+		text-align: center
+	}
 }
 .post-meta {
 	font-size: $small-font-size;

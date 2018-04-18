@@ -89,12 +89,20 @@ That's fairly arbitrary, but simplest to implement.
 Since I've pitched the GPU subsystem against the kernel at large in my recent
 talks, let's first look at what things look like in graphics:
 
-FIXME:
-- graph with absolute numbers for 1) total commits per release 2) maintainer
-  commits per release 3) reviewed maintainer self-commits per release
-
-- graph with relative numbers for 1) maintainer self-commits / total commits ratio
-  2) reviewed maintainer self-commits / maintainer self-commits ratio
+<div style="text-align: left">
+<figure>
+<img border="0" src="/img/2018-gpu-absolute.svg" width="100%"
+alt="GPU maintainer commit statistics" />
+<figcaption>Fig. 1 GPU total commits, maintainer self-commits and reviewed
+maintainer self-commits</figcaption>
+</figure>
+<figure>
+<img border="0" src="/img/2018-gpu-relative.svg" width="100%" 
+alt="GPU relative maintainer commit statistics" />
+<figcaption>Fig. 2 GPU relative maintainer self-commits and 
+review ratio </figcaption>
+</figure>
+</div>
 
 In absolute numbers it's clear that graphics has grown tremendously over the
 past few years. Much faster than the kernel at large. Depending upon the metric
@@ -109,7 +117,8 @@ big roll out of group maintainership we've done in the past 2 years aren't
 extreme by historical graphics subsystem standards. We've always had around
 30-40% maintainer self-commits. There's a bit a downward trend in the
 years leading towards v4.4, due to the massive growth of the i915 driver.
-Switching to the committer model from v4.5 on forward brought us back to the historical
+Switching to the committer model from v4.5 on forward, first for the i915
+driver, then to cope with the influx of new small drivers, brought us back to the historical
 trend line.
 
 There's another dip happening right now, starting with AMD's new DC display
@@ -125,21 +134,38 @@ doable to keep training new maintainers to keep up with the increased demand.
 ### Review of maintainer self-commits established in the GPU subsystem
 
 Looking at relative changes in how consistently maintainer self-commits are reviewed
-there's a clear grow from pretty much nothing to 80+% of all maintainer self-commits
-who have seen some formal oversight. We didn't just keep up with the growth, but
+there's a clear grow from mostly no review to 80+% of all maintainer self-commits
+having seen some formal oversight. We didn't just keep up with the growth, but
 scaled faster and managed to make review a standard practice. Most of the
-drivers, and all the core code are now consistently reviewed. Even for tiny
+drivers, and all the core code, are now consistently reviewed. Even for tiny
 drivers with small to single person teams we've managed to pull this off,
 through combining them into larger teams run with a group maintainership model.
 
-FIXME: Same graphs as above, but for kernel ex GPU
+<div style="text-align: left">
+<figure>
+<img border="0" src="/img/2018-kernel-absolute.svg" width="100%"
+alt="kernel ex GPU maintainer commit statistics" />
+<figcaption>Fig. 3 kernel ex GPU total commits, maintainer self-commits and reviewed
+maintainer self-commits</figcaption>
+</figure>
+<figure>
+<img border="0" src="/img/2018-kernel-relative.svg" width="100%" 
+alt="kernel ex GPU relative maintainer commit statistics" />
+<figcaption>Fig. 4 kernel ex GPU relative maintainer self-commits and 
+review ratio </figcaption>
+</figure>
+</div>
+
 
 Kernel ex graphics is an entirely different story. Overall, review is much less
 a thing that happens, with only about 30% of all maintainer self-commits having any
-indication of oversight. The positive thing is that there's at least a very
-small upward trend, both in absolute and relative numbers. But it's very slow,
-and will likely take decades until there's no more a double standard on review
-between contributors and maintainers.
+indication of oversight. The low ratio of maintainer self-commits is why a
+removed the total commit number from the absolute graph - it would have dwarfed
+the much more interesting data on self-commits and reviewed self-commits. The
+positive thing is that there's at least a consistent, if very small upward
+trend, both in absolute and relative numbers. But it's very slow, and will
+likely take decades until there's no more a double standard on review between
+contributors and maintainers.
 
 ### Maintainers are not keeping up with the kernel growth overall
 
@@ -156,7 +182,7 @@ preventing everyone else from getting their work merged, not contributing
 anything of their own. The kernel community imploding under its own be autocratic
 weight being the likely outcome of that.
 
-This is a huge contrast for the "everything is getting better, bigger, and the
+This is a huge contrast to the "everything is getting better, bigger, and the
 kernel community is very healthy" fanfare touted at keynotes and the yearly
 kernel report. In my opinion, the kernel community is very much not looking like
 it is coping with its growth well and an overall healthy community. Even when
@@ -196,6 +222,8 @@ the already rather low roughly 15% the kernel scores overall. Outside of these
 few subsystems, the only realistic way is to create a new subsystem, somehow get
 it merged, and become its maintainer. In most subsystems being a maintainer is
 an elite status, and the historical trends suggests it will only become more so.
+If this trend isn't reversed, then maintainer overload will get a lot worse in
+the coming years.
 
 Much more interesting is the review statistics, split up by subsystem. Again we
 need a cut-off for noise and outliers. The big outliers here are all the pull
