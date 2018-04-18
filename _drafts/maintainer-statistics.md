@@ -60,7 +60,7 @@ for all contributor commits it's impossible to tell whether a patch has seen
 any oversight before merging. A reasonable assumption though is that maintainers
 actually look at stuff before applying.
 
-A different story are maintainer self-commits - if there is not tag indicating
+A different story are maintainer self-commits - if there is no tag indicating
 review by someone else, then either it didn't happen, or the maintainer felt
 it's not important enough work to justify the minimal effort to record it.
 Either way, a patch where the git author and committer match, and which sports
@@ -117,14 +117,15 @@ The relative numbers have a different story. First, commit rights and the fairly
 big roll out of group maintainership we've done in the past 2 years aren't
 extreme by historical graphics subsystem standards. We've always had around
 30-40% maintainer self-commits. There's a bit a downward trend in the
-years leading towards v4.4, due to the massive growth of the i915 driver.
+years leading towards v4.4, due to the massive growth of the i915 driver, and
+our failure to add more mainatainers and committers for a few releases.
 Switching to the committer model from v4.5 on forward, first for the i915
 driver, then to cope with the influx of new small drivers, brought us back to the historical
 trend line.
 
-There's another dip happening right now, starting with AMD's new DC display
-driver finally having landed, which brought a big new team of contributors to
-upstream. The AMD team is already using a committer model for their staging and
+There's another dip happening in the last few kernels, due AMD bringing in a big new team of contributors to
+upstream. v4.15 was even more pronounced, in that release the entirely rewritten
+DC display driver for AMD gpus landed. The AMD team is already using a committer model for their staging and
 internal trees, but not (yet) committing directly to their upstream branch.
 There's a few process holdups, mostly around the CI flow, that need to be fixed
 first. As soon as that's done I expect this recent dip will again be over.
@@ -142,25 +143,25 @@ drivers, and all the core code, are now consistently reviewed. Even for tiny
 drivers with small to single person teams we've managed to pull this off,
 through combining them into larger teams run with a group maintainership model.
 
-## Last few years of kernel ex GPU history
+## Last few years of kernel w/o GPU history
 
 <div style="text-align: left">
 <figure>
 <img border="0" src="/img/2018-kernel-absolute.svg" width="100%"
-alt="kernel ex GPU maintainer commit statistics" />
-<figcaption>Fig. 3 kernel ex GPU total commits, maintainer self-commits and reviewed
+alt="kernel w/o GPU maintainer commit statistics" />
+<figcaption>Fig. 3 kernel w/o GPU total commits, maintainer self-commits and reviewed
 maintainer self-commits</figcaption>
 </figure>
 <figure>
 <img border="0" src="/img/2018-kernel-relative.svg" width="100%" 
-alt="kernel ex GPU relative maintainer commit statistics" />
-<figcaption>Fig. 4 kernel ex GPU relative maintainer self-commits and 
+alt="kernel w/o GPU relative maintainer commit statistics" />
+<figcaption>Fig. 4 kernel w/o GPU relative maintainer self-commits and 
 review ratio </figcaption>
 </figure>
 </div>
 
 
-Kernel ex graphics is an entirely different story. Overall, review is much less
+Kernel w/o graphics is an entirely different story. Overall, review is much less
 a thing that happens, with only about 30% of all maintainer self-commits having any
 indication of oversight. The low ratio of maintainer self-commits is why I
 removed the total commit number from the absolute graph - it would have dwarfed
