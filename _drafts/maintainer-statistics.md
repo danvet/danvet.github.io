@@ -27,7 +27,7 @@ lists, but needs a maintainer to apply it for them, to get the patch merged. A
 **maintainer** on the other hand can directly apply a patch to a subsystem
 tree, and will then send pull requests up the maintainer hierarchy until the
 patches land in Linus' tree. This is relatively easy to measure accurately in
-git: If the recorded patch author and committer match, it's a maintainer commit,
+git: If the recorded patch author and committer match, it's a maintainer self-commit,
 if they don't match it's a contributor commit.
 
 There's a few annoying special cases to handle:
@@ -49,7 +49,7 @@ Also note that this is a property of each commit - the same person can be both
 a maintainer and a contributor, depending upon how each of their patches gets
 merged.
 
-The ratio of maintainer commits compared to overall commits then gives us a
+The ratio of maintainer self-commits compared to overall commits then gives us a
 crude, but fairly useful metric to measure how steep the kernel community
 overall is organized.
 
@@ -60,7 +60,7 @@ for all contributor commits it's impossible to tell whether a patch has seen
 any oversight before merging. A reasonable assumption though is that maintainers
 actually look at stuff before applying.
 
-A different story are maintainer commits - if there is not tag indicating
+A different story are maintainer self-commits - if there is not tag indicating
 review by someone else, then either it didn't happen, or the maintainer felt
 it's not important enough work to justify the minimal effort to record it.
 Either way, a patch where the git author and committer match, and which sports
@@ -91,10 +91,10 @@ talks, let's first look at what things look like in graphics:
 
 FIXME:
 - graph with absolute numbers for 1) total commits per release 2) maintainer
-  commits per release 3) reviewed maintainer commits per release
+  commits per release 3) reviewed maintainer self-commits per release
 
-- graph with relative numbers for 1) maintainer commits / total commits ratio
-  2) reviewed maintainer commits / maintainer commits ratio
+- graph with relative numbers for 1) maintainer self-commits / total commits ratio
+  2) reviewed maintainer self-commits / maintainer self-commits ratio
 
 In absolute numbers it's clear that graphics has grown tremendously over the
 past few years. Much faster than the kernel at large. Depending upon the metric
@@ -107,7 +107,7 @@ big pull for that release).
 The relative numbers have a different story. First, commit rights and the fairly
 big roll out of group maintainership we've done in the past 2 years aren't
 extreme by historical graphics subsystem standards. We've always had around
-30-40% maintainer commits. There's a bit a downward trend in the
+30-40% maintainer self-commits. There's a bit a downward trend in the
 years leading towards v4.4, due to the massive growth of the i915 driver.
 Switching to the committer model from v4.5 on forward brought us back to the historical
 trend line.
@@ -122,10 +122,10 @@ first. As soon as that's done I expect this recent dip will again be over.
 In short, even when facing big growth like the GPU subsystem has, it's very much
 doable to keep training new maintainers to keep up with the increased demand.
 
-### Review of maintainer commits established in the GPU subsystem
+### Review of maintainer self-commits established in the GPU subsystem
 
-Looking at relative changes in how consistently maintainer commits are reviewed
-there's a clear grow from pretty much nothing to 80+% of all maintainer commits
+Looking at relative changes in how consistently maintainer self-commits are reviewed
+there's a clear grow from pretty much nothing to 80+% of all maintainer self-commits
 who have seen some formal oversight. We didn't just keep up with the growth, but
 scaled faster and managed to make review a standard practice. Most of the
 drivers, and all the core code are now consistently reviewed. Even for tiny
@@ -135,7 +135,7 @@ through combining them into larger teams run with a group maintainership model.
 FIXME: Same graphs as above, but for kernel ex GPU
 
 Kernel ex graphics is an entirely different story. Overall, review is much less
-a thing that happens, with only about 30% of all maintainer patches having any
+a thing that happens, with only about 30% of all maintainer self-commits having any
 indication of oversight. The positive thing is that there's at least a very
 small upward trend, both in absolute and relative numbers. But it's very slow,
 and will likely take decades until there's no more a double standard on review
@@ -143,7 +143,7 @@ between contributors and maintainers.
 
 ### Maintainers are not keeping up with the kernel growth overall
 
-Much more worrying is the trend on maintainer commits. Both in absolute, and
+Much more worrying is the trend on maintainer self-commits. Both in absolute, and
 much more in relative numbers, there's a clear downward trend, going from around
 25% to below 15%. This indicates that the kernel community fails to mentor and
 train new maintainers at a pace sufficient to keep up with growth. Current
@@ -173,12 +173,12 @@ Trying to come up with a reasonable list of subsystems that have high maintainer
 commit ratios is tricky: Some rather substantial pull requests are essentially
 just maintainers submitting their own work, giving them an easy 100% score. But
 of course that's just an outlier in the larger scope of the kernel overall
-having a maintainer commit ratio of just 15%. To get a more interesting list of
+having a maintainer self-commit ratio of just 15%. To get a more interesting list of
 subsystems we need to look at only those with a group of regular contributors
 and more than just 1 maintainer. A fairly arbitrary cut-off of 200 commits or
 more in total seems to get us there, yielding the following top ten list:
 
-subsystem|total commits|maintainer commits| maintainer ratio
+subsystem|total commits|maintainer self-commits| maintainer ratio
 -|-|-|-
 GPU|1683|614|36%
 KVM|257|91|35%
@@ -201,10 +201,10 @@ Much more interesting is the review statistics, split up by subsystem. Again we
 need a cut-off for noise and outliers. The big outliers here are all the pull
 requests and trees that have seen zero review, not even any *Acked-by* tags. As
 long as we only look at positive examples we don't need to worry about those.  A
-rather low cut-off of at least 10 maintainer commits takes care of other random
+rather low cut-off of at least 10 maintainer self-commits takes care of other random
 noise:
 
-subsystem|total commits|maintainer commits| maintainer review ratio
+subsystem|total commits|maintainer self-commits| maintainer review ratio
 -|-|-|-
 f2fs|72|12|100%
 XFS|105|78|100%
@@ -238,14 +238,14 @@ arm-soc is close to the top ten, with 50%, at the 14th position.
 Staging having no
 standard is kinda the point, but the other core subsystems eschewing review
 is rather worrisome. More than 9 out of 10
-maintainer patches merged into these core subsystem do not carry any indication
+maintainer self-commits merged into these core subsystem do not carry any indication
 that anyone else ever looked at the patch and deemed it a good idea. The only
 other subsystem with more than 500 commits is the GPU subsystem, at 4th position
 with 83% review ratio.
 
 Compared to maintainers overall the review situation is looking a lot less bleak.
 There's a sizeable group of subsystems who at least try to make this work,
-by having similar review criteria for maintainer commits than normal contributors.
+by having similar review criteria for maintainer self-commits than normal contributors.
 This is also supported by the rather slow, but steady overall increase of review
 when looking at historical trend.  But there's clearly other
 subsystems where review only seems to be a gauntlet inflicted on normal
