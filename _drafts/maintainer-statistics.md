@@ -160,7 +160,7 @@ review ratio </figcaption>
 
 Kernel ex graphics is an entirely different story. Overall, review is much less
 a thing that happens, with only about 30% of all maintainer self-commits having any
-indication of oversight. The low ratio of maintainer self-commits is why a
+indication of oversight. The low ratio of maintainer self-commits is why I
 removed the total commit number from the absolute graph - it would have dwarfed
 the much more interesting data on self-commits and reviewed self-commits. The
 positive thing is that there's at least a consistent, if very small upward
