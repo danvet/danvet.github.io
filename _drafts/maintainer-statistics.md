@@ -66,13 +66,13 @@ it's not important enough work to justify the minimal effort to record it.
 Either way, a patch where the git author and committer match, and which sports
 no review tags in the commit message, strongly suggests it has indeed seen none.
 
-An objection would be that these patches get reviewed by the next maintainer
+An objection would be that these patches get reviewed by the next maintainer up,
 when the pull request gets merged. But there's well over a thousand such patches
 each kernel release, and most of the pull requests containing them go directly
 to Linus in the 2 week long merge window. It is unrealistic to assume that Linus
 carefully reviews hundreds of patches himself in just those 2 weeks, while
-getting hammered by pull requests all around. The same applies at a subsystem
-level.
+getting hammered by pull requests all around. Similar considerations apply at a
+subsystem level.
 
 For counting reviews I looked at anything that indicates some kind of patch
 review, even very informal ones. I therefor both included *Reviewed-by* and
@@ -94,7 +94,7 @@ FIXME: Type up pls generate pretty graphs
 - gfx: massive growth, but maintainer ratio roughly stable
 - gfx: doing a decent, but not perfect job on review
 
-## 4.16 by Subsystem
+## 4.16 by subsystem
 
 Let's zoom into how this all looks at a subsystem level, looking at just the
 recently released 4.16 kernel.
@@ -122,17 +122,17 @@ sound|351|26|7%
 powerpc|235|16|7%
 
 In short there's very few places where it's easier to be a maintainer than in
-the already rather low roughly 15% the kernel scores overall. Looking at all the
-outliers filtered out, the only realistic way is to create a new subsystem and
-somehow get it merged. In most subsystems being a maintainer is a rather elite
-status, supporting the historical trend data.
+the already rather low roughly 15% the kernel scores overall. Outside of these
+few subsystems, the only realistic way is to create a new subsystem, somehow get
+it merged, and become its maintainer. In most subsystems being a maintainer is
+an elite status, and the historical trends suggests it will only become more so.
 
 Much more interesting is the review statistics, split up by subsystem. Again we
 need a cut-off for noise and outliers. The big outliers here are all the pull
-requests and trees that have seen zero review, not even any *Acked-by* tags. But
-since I don't want to pick on individual maintainers, we don't need to worry
-about those.  A rather low cut-off of at least 10 maintainer commits takes care
-of the complete noise:
+requests and trees that have seen zero review, not even any *Acked-by* tags. As
+long as we only look at positive examples we don't need to worry about those.  A
+rather low cut-off of at least 10 maintainer commits takes care of other random
+noise:
 
 subsystem|total commits|maintainer commits| maintainer review ratio
 -|-|-|
@@ -160,11 +160,12 @@ Everyone not in the top ten taken together has a review ratio of 27%.
 
 Looking at the big subsystems with multiple maintainers and huge groups of
 contributors - I picked 500 patches as the cut-off - there's some really low
-review ratios: Staging has 7%, networking 9% and tip scores 10%. Only really
-arm-soc is close to the top ten, with 50%, at the 14th position. Staging having no
+review ratios: Staging has 7%, networking 9% and tip scores 10%. Only 
+arm-soc is close to the top ten, with 50%, at the 14th position.
+
+Staging having no
 standard is kinda the point, but the other core subsystems eschewing review
-entirely is rather worrisome - below 10% is easy to achieve, even if you only
-bother to add the various *Acked-by* tags flying around. More than 9 out of 10
+is rather worrisome. More than 9 out of 10
 maintainer patches merged into these core subsystem do not carry any indication
 that anyone else ever looked at the patch and deemed it a good idea. The only
 other subsystem with more than 500 commits is the GPU subsystem, at 4th position
@@ -172,11 +173,11 @@ with 83% review ratio.
 
 Compared to maintainers overall the review situation is looking a lot less bleak.
 There's a sizeable group of subsystems who at least try to make this work,
-having similar review criteria for maintainer commits than normal contributors.
-This is also support by the rather slow, but steady overall increase of review
-when looking at the last few years of kernel releases.  But there's also clearly
+by having similar review criteria for maintainer commits than normal contributors.
+This is also supported by the rather slow, but steady overall increase of review
+when looking at historical trend.  But there's clearly other
 subsystems where review only seems to be a gauntlet inflicted on normal
-contributors, which is entirely optional for maintainers.
+contributors, entirely optional for maintainers themselves.
 
 
 One year ago I've written ["Review, not Rocket
