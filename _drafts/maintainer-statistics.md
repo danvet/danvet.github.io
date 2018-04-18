@@ -106,7 +106,8 @@ review ratio </figcaption>
 
 In absolute numbers it's clear that graphics has grown tremendously over the
 past few years. Much faster than the kernel at large. Depending upon the metric
-you pick, the GPU has grown from being 3% of the kernel to about 10% and trading
+you pick, the GPU subsystem has grown from being 3% of the kernel to about 10%
+and now trading
 spot for 2nd largest subsystem with arm-soc and staging (depending who's got a
 big pull for that release).
 
