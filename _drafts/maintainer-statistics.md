@@ -205,7 +205,7 @@ rather low cut-off of at least 10 maintainer commits takes care of other random
 noise:
 
 subsystem|total commits|maintainer commits| maintainer review ratio
--|-|-|
+-|-|-|-
 f2fs|72|12|100%
 XFS|105|78|100%
 arm64|166|23|91%
