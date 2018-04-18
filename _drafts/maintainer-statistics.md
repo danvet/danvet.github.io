@@ -221,13 +221,21 @@ linux-block|249|20|8%
 sound|351|26|7%
 powerpc|235|16|7%
 
-In short there's very few places where it's easier to be a maintainer than in
+In short there's very few places where it's easier to become a maintainer than in
 the already rather low roughly 15% the kernel scores overall. Outside of these
 few subsystems, the only realistic way is to create a new subsystem, somehow get
 it merged, and become its maintainer. In most subsystems being a maintainer is
 an elite status, and the historical trends suggests it will only become more so.
 If this trend isn't reversed, then maintainer overload will get a lot worse in
 the coming years.
+
+Of course subsystem maintainers are expected to spend more time reviewing and
+managed other people's contribution. When looking at individual maintainers it
+would be natural to expect a slow decline in their own contributions in patch
+form, and hence a decline in self-commits. But below them a new set of
+maintainers should grow and receive mentoring, and those more junior maintainers
+would focus more on their own work. That sustainable maintainer pipeline seems
+to not be present in many kernel subsystems, drawing a bleak future for them.
 
 Much more interesting is the review statistics, split up by subsystem. Again we
 need a cut-off for noise and outliers. The big outliers here are all the pull
@@ -279,13 +287,19 @@ Compared to maintainers overall the review situation is looking a lot less bleak
 There's a sizeable group of subsystems who at least try to make this work,
 by having similar review criteria for maintainer self-commits than normal contributors.
 This is also supported by the rather slow, but steady overall increase of review
-when looking at historical trend.  But there's clearly other
-subsystems where review only seems to be a gauntlet inflicted on normal
-contributors, entirely optional for maintainers themselves.
+when looking at historical trend.
 
+But there's clearly other subsystems where review only seems to be a gauntlet
+inflicted on normal contributors, entirely optional for maintainers themselves.
+Contributors cannot avoid review, because they can't commit their own patches.
+When maintainers outright ignore review for most of their patches this creates a
+clear double standard between maintainers and mere contributors.
 
 One year ago I've written ["Review, not Rocket
 Sciene"](/2017/04/review-howto.html) on how to roll out review in your
 subsystem. Looking at this data here I can close with an even shorter version:
 
 <blockquote>What would Dave Chinner do?</blockquote>
+
+Thanks a lot to Daniel Stone and Sean Paul for reading and commenting on drafts
+of this article.

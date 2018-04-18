@@ -233,6 +233,6 @@
  <text class="TextShape"><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="353px" font-weight="400"><tspan class="TextPosition" x="467" y="299"><tspan fill="rgb(0,0,0)" stroke="none">100%</tspan></tspan></tspan></text>
  <path fill="rgb(0,69,134)" stroke="none" d="M 1975,917 L 1870,917 1870,706 2081,706 2081,917 1975,917 Z"/>
  <path fill="rgb(255,211,32)" stroke="none" d="M 1975,1667 L 1870,1667 1870,1456 2081,1456 2081,1667 1975,1667 Z"/>
- <text class="TextShape"><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="353px" font-weight="400"><tspan class="TextPosition" x="2181" y="890"><tspan fill="rgb(0,0,0)" stroke="none">percentage of kernen w/o GPU commits which were self-commits</tspan></tspan></tspan></text>
+ <text class="TextShape"><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="353px" font-weight="400"><tspan class="TextPosition" x="2181" y="890"><tspan fill="rgb(0,0,0)" stroke="none">percentage of kernel w/o GPU commits which were self-commits</tspan></tspan></tspan></text>
  <text class="TextShape"><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="353px" font-weight="400"><tspan class="TextPosition" x="2181" y="1640"><tspan fill="rgb(0,0,0)" stroke="none">percentage of kernel w/o GPU self-commits with review tag</tspan></tspan></tspan></text>
 </svg>
