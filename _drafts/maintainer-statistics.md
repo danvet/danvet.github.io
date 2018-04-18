@@ -86,13 +86,71 @@ That's fairly arbitrary, but simplest to implement.
 
 ## Last few years of history
 
-FIXME: Type up pls generate pretty graphs
+Since I've pitched the GPU subsystem against the kernel at large in my recent
+talks, let's first look at what things look like in graphics:
 
-- declining maintainer commitsin kernel overall, accelarated without graphics ->
-  we're dead by 2025
-- review going up, but very slowly
-- gfx: massive growth, but maintainer ratio roughly stable
-- gfx: doing a decent, but not perfect job on review
+FIXME:
+- graph with absolute numbers for 1) total commits per release 2) maintainer
+  commits per release 3) reviewed maintainer commits per release
+
+- graph with relative numbers for 1) maintainer commits / total commits ratio
+  2) reviewed maintainer commits / maintainer commits ratio
+
+In absolute numbers it's clear that graphics has grown tremendously over the
+past few years. Much faster than the kernel at large. Depending upon the metric
+you pick, the GPU has grown from being 3% of the kernel to about 10% and trading
+spot for 2nd largest subsystem with arm-soc and staging (depending who's got a
+big pull for that release).
+
+The relative numbers have a different story. First, commit rights and the fairly
+big roll out of group maintainership we've done in the past 2 years aren't
+extreme by historical graphics subsystem standards. We've always had around
+30-40% of commits by maintainers. There's a bit a downward trend in the
+years leading towards v4.4, due to the massive growth of the i915 driver.
+Switching to the committer model from v4.5 brought us back to the historical
+trend line.
+
+There's another dip happening right now, starting with AMD's new DC display
+driver finally having landed, which brought a big new team of contributors to
+upstream. The AMD team is already using a committer model for their staging and
+internal trees, but not (yet) committing directly to their upstream branch.
+There's a few process holdups, mostly around the CI flow, that need to be fixed
+first. As soon as that's done I expect this recent dip will again be over.
+
+In short, even when facing big growth like the GPU subsystem has, it's very much
+doable to keep training new maintainers to keep up with the increased demand. On
+top of that we've also managed to make review a standard practice, with most of
+the drivers, and all the core code consistently being reviewed. Even for tiny
+drivers with small to single person teams we've managed to pull this off,
+through combining them into larger teams run with a group maintainership model.
+
+FIXME: Same graphs as above, but for kernel ex GPU
+
+Kernel ex graphics is an entirely different story. Overall, review is much less
+a thing that happens, with only about 30% of all maintainer patches having any
+indication of oversight. The positive thing is that there's at least a very
+small upward trend, both in absolute and relative numbers. But it's very slow,
+and will likely take decades until there's no more a double standard on review
+between contributors and maintainers.
+
+Much more worrying is the trend on maintainer commits. Both in absolute, and
+much more in relative numbers there's a clear downward trend, going from around
+25% to below 15%. This indicates that the kernel community fails to mentor and
+train new maintainers at a pace sufficient to keep up with growth. Current
+maintainers are ever more overloaded, leaving ever less time for them to write
+patches of their own and get them merged.
+
+Naively extrapolating the relative trend predicts that around the year 2025
+large numbers of kernel maintainers will do nothing else than be the bottleneck,
+preventing everyone else from getting their work merged, not contributing
+anything of their own. The kernel community imploding under its own be autocratic
+weight being the likely outcome of that.
+
+This is a huge contrast for the "everything is getting better, bigger, and the
+kernel community is very healthy" fanfare touted at keynotes and the yearly
+kernel report. In my opinion, the kernel community is very much not looking like
+it is coping with its growth well and an overall healthy community. Even when
+ignoring all the issues around conduct that I've raised.
 
 ## 4.16 by subsystem
 
