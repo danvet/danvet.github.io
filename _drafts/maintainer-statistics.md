@@ -9,7 +9,10 @@ Castle"](/2018/02/lca-sydney.html) and ["Maintainers Don't
 Scale"](/2017/01/maintainers-dont-scale.html) I have looked into how the Kernel's
 maintainer structure can be measured. One very interesting approach is looking
 at the pull request flows, for example done in the LWN article ["How 4.4's
-patches got to the mainline"](https://lwn.net/Articles/670209/). What I'm trying
+patches got to the mainline"](https://lwn.net/Articles/670209/). Note that in
+the [linux kernel
+process](https://www.kernel.org/doc/html/latest/process/2.Process.html#how-patches-get-into-the-kernel), pull requests are only used to submit development from entire
+subsystems, not individual contributions. What I'm trying
 to work out here isn't so much the overall patch flow, but focusing on how
 maintainers work, and how that's different in different subsystems.
 
@@ -39,7 +42,9 @@ There's a few annoying special cases to handle:
   reasonable setups it doesn't seem to matter much, hence I decided to not
   bother.
 
-- There's subsystems not maintained in git, but in quilt. Andrew Morton's tree
+- There's subsystems not maintained in git, but in the [quilt patch management
+  system](https://savannah.nongnu.org/projects/quilt). [Andrew Morton's
+  tree](https://en.wikipedia.org/wiki/Mm_tree)
   is the only one I'm aware of, and I hacked up my scripts to handle this case.
   After that I realized it doesn't matter, since Andrew merged exceedingly few
   of his own patches himself, most have been fixups that landed through other
@@ -73,15 +78,21 @@ no review tags in the commit message, strongly suggests it has indeed seen none.
 An objection would be that these patches get reviewed by the next maintainer up,
 when the pull request gets merged. But there's well over a thousand such patches
 each kernel release, and most of the pull requests containing them go directly
-to Linus in the 2 week long merge window. It is unrealistic to assume that Linus
+to Linus in the [2 week long merge
+window](https://www.kernel.org/doc/html/latest/process/2.Process.html?highlight=merge%20window#the-big-picture),
+when the over 10k features patches of each kernel release land in the mainline
+branch. It is unrealistic to assume that Linus
 carefully reviews hundreds of patches himself in just those 2 weeks, while
 getting hammered by pull requests all around. Similar considerations apply at a
 subsystem level.
 
 For counting reviews I looked at anything that indicates some kind of patch
 review, even very informal ones, to stay consistent with the implied oversight
-the maintainer's *Signed-off-by* line provides for merged contributor patches. I
-therefor both included *Reviewed-by* and *Acked-by* tags, including a plethora
+the maintainer's
+[*Signed-off-by*](https://www.kernel.org/doc/html/v4.16/process/submitting-patches.html#sign-your-work-the-developer-s-certificate-of-origin) line provides for merged contributor patches. I
+therefor both included
+[*Reviewed-by*](https://www.kernel.org/doc/html/v4.16/process/submitting-patches.html#using-reported-by-tested-by-reviewed-by-suggested-by-and-fixes) and
+[*Acked-by*](https://www.kernel.org/doc/html/v4.16/process/submitting-patches.html#when-to-use-acked-by-and-cc) tags, including a plethora
 of misspelled and combined versions of the same.
 
 The scripts also keep track of how pull request percolate
