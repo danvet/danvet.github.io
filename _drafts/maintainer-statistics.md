@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Maintainer Statistics"
+title: "Linux Kernel Maintainer Statistics"
 tags:
 - Maintainer-Stuff
 ---
@@ -317,5 +317,5 @@ subsystem. Looking at this data here I can close with an even shorter version:
 
 <blockquote>What would Dave Chinner do?</blockquote>
 
-Thanks a lot to Daniel Stone, Eric Anholt and Sean Paul for reading and
-commenting on drafts of this article.
+Thanks a lot to Daniel Stone, Eric Anholt, Geoffrey Huntley and Sean Paul for
+reading and commenting on drafts of this article.
