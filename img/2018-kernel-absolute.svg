@@ -221,6 +221,6 @@
  <text class="TextShape"><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="353px" font-weight="400"><tspan class="TextPosition" x="466" y="294"><tspan fill="rgb(0,0,0)" stroke="none">3500</tspan></tspan></tspan></text>
  <path fill="rgb(0,69,134)" stroke="none" d="M 2060,857 L 1955,857 1955,646 2166,646 2166,857 2060,857 Z"/>
  <path fill="rgb(255,211,32)" stroke="none" d="M 2060,1415 L 1955,1415 1955,1204 2166,1204 2166,1415 2060,1415 Z"/>
- <text class="TextShape"><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="353px" font-weight="400"><tspan class="TextPosition" x="2266" y="830"><tspan fill="rgb(0,0,0)" stroke="none">kernel w/o GPU maintainer self-commits</tspan></tspan></tspan></text>
- <text class="TextShape"><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="353px" font-weight="400"><tspan class="TextPosition" x="2266" y="1388"><tspan fill="rgb(0,0,0)" stroke="none">reviewed kernel w/o GPU maintainer self-commits</tspan></tspan></tspan></text>
+ <text class="TextShape"><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="353px" font-weight="400"><tspan class="TextPosition" x="2266" y="830"><tspan fill="rgb(0,0,0)" stroke="none">maintainer self-commits</tspan></tspan></tspan></text>
+ <text class="TextShape"><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="353px" font-weight="400"><tspan class="TextPosition" x="2266" y="1388"><tspan fill="rgb(0,0,0)" stroke="none">reviewed maintainer self-commits</tspan></tspan></tspan></text>
 </svg>

@@ -254,7 +254,7 @@
  <path fill="rgb(255,66,14)" stroke="none" d="M 2020,2293 L 1915,2293 1915,2082 2126,2082 2126,2293 2020,2293 Z"/>
  <path fill="rgb(0,69,134)" stroke="none" d="M 2020,2698 L 1915,2698 1915,2487 2126,2487 2126,2698 2020,2698 Z"/>
  <path fill="rgb(255,211,32)" stroke="none" d="M 2020,3103 L 1915,3103 1915,2892 2126,2892 2126,3103 2020,3103 Z"/>
- <text class="TextShape"><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="353px" font-weight="400"><tspan class="TextPosition" x="2226" y="2266"><tspan fill="rgb(0,0,0)" stroke="none">GPU commits</tspan></tspan></tspan></text>
- <text class="TextShape"><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="353px" font-weight="400"><tspan class="TextPosition" x="2226" y="2671"><tspan fill="rgb(0,0,0)" stroke="none">GPU maintainer self-commits</tspan></tspan></tspan></text>
- <text class="TextShape"><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="353px" font-weight="400"><tspan class="TextPosition" x="2226" y="3076"><tspan fill="rgb(0,0,0)" stroke="none">reviewed GPU maintainer self-commits</tspan></tspan></tspan></text>
+ <text class="TextShape"><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="353px" font-weight="400"><tspan class="TextPosition" x="2226" y="2266"><tspan fill="rgb(0,0,0)" stroke="none">total commits</tspan></tspan></tspan></text>
+ <text class="TextShape"><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="353px" font-weight="400"><tspan class="TextPosition" x="2226" y="2671"><tspan fill="rgb(0,0,0)" stroke="none">maintainer self-commits</tspan></tspan></tspan></text>
+ <text class="TextShape"><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="353px" font-weight="400"><tspan class="TextPosition" x="2226" y="3076"><tspan fill="rgb(0,0,0)" stroke="none">reviewed maintainer self-commits</tspan></tspan></tspan></text>
 </svg>

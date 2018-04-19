@@ -233,6 +233,6 @@
  <text class="TextShape"><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="353px" font-weight="400"><tspan class="TextPosition" x="466" y="297"><tspan fill="rgb(0,0,0)" stroke="none">100%</tspan></tspan></tspan></text>
  <path fill="rgb(0,69,134)" stroke="none" d="M 1899,1012 L 1794,1012 1794,801 2005,801 2005,1012 1899,1012 Z"/>
  <path fill="rgb(255,211,32)" stroke="none" d="M 1899,1759 L 1794,1759 1794,1548 2005,1548 2005,1759 1899,1759 Z"/>
- <text class="TextShape"><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="353px" font-weight="400"><tspan class="TextPosition" x="2105" y="985"><tspan fill="rgb(0,0,0)" stroke="none">percentage of GPU commits which were self-commits</tspan></tspan></tspan></text>
- <text class="TextShape"><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="353px" font-weight="400"><tspan class="TextPosition" x="2105" y="1732"><tspan fill="rgb(0,0,0)" stroke="none">percentage of GPU self-commits with review tag</tspan></tspan></tspan></text>
+ <text class="TextShape"><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="353px" font-weight="400"><tspan class="TextPosition" x="2105" y="985"><tspan fill="rgb(0,0,0)" stroke="none">percentage of commits which were self-commits</tspan></tspan></tspan></text>
+ <text class="TextShape"><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="353px" font-weight="400"><tspan class="TextPosition" x="2105" y="1732"><tspan fill="rgb(0,0,0)" stroke="none">percentage of self-commits with review tag</tspan></tspan></tspan></text>
 </svg>

@@ -59,8 +59,8 @@ crude, but fairly useful metric to measure how steep the kernel community
 overall is organized.
 
 Measuring review is much harder. For contributor commits review is not recorded
-consistently. Many maintainers forgo adding an explicit *Reviewed-by* tag since
-they're adding their own *Signed-off-by* tag anyway. And since that's required
+consistently. Many maintainers forgo adding an explicit [*Reviewed-by*](https://www.kernel.org/doc/html/v4.16/process/submitting-patches.html#using-reported-by-tested-by-reviewed-by-suggested-by-and-fixes) tag since
+they're adding their own [*Signed-off-by*](https://www.kernel.org/doc/html/v4.16/process/submitting-patches.html#sign-your-work-the-developer-s-certificate-of-origin) tag anyway. And since that's required
 for all contributor commits it's impossible to tell whether a patch has seen
 formal review before merging. A reasonable assumption though is that maintainers
 actually look at stuff before applying. For a minimal definition of review of "a
@@ -115,8 +115,8 @@ maintainer self-commits</figcaption>
 <figure>
 <img border="0" src="/img/2018-gpu-relative.svg" width="100%" 
 alt="GPU relative maintainer commit statistics" />
-<figcaption>Fig. 2 GPU relative maintainer self-commits and 
-review ratio </figcaption>
+<figcaption>Fig. 2 GPU percentage maintainer self-commits and 
+reviewed maintainer self-commits</figcaption>
 </figure>
 </div>
 
@@ -129,13 +129,14 @@ big pull for that release).
 
 ### Maintainer commits keep up with GPU subsystem growth
 
-The relative numbers have a different story. First, commit rights and the fairly
+The relative numbers have a different story. First, [commit
+rights](http://blog.ffwll.ch/2016/09/commit-rights-in-the-linux-kernel.html) and the fairly
 big roll out of group maintainership we've done in the past 2 years aren't
 extreme by historical graphics subsystem standards. We've always had around
 30-40% maintainer self-commits. There's a bit a downward trend in the
 years leading towards v4.4, due to the massive growth of the i915 driver, and
 our failure to add more mainatainers and committers for a few releases.
-Switching to the committer model from v4.5 on forward, first for the i915
+Adding lots more committers and creating bigger maintainer groups from v4.5 on forward, first for the i915
 driver, then to cope with the influx of new small drivers, brought us back to the historical
 trend line.
 
@@ -165,14 +166,14 @@ through combining them into larger teams run with a group maintainership model.
 <figure>
 <img border="0" src="/img/2018-kernel-absolute.svg" width="100%"
 alt="kernel w/o GPU maintainer commit statistics" />
-<figcaption>Fig. 3 kernel w/o GPU total commits, maintainer self-commits and reviewed
+<figcaption>Fig. 3 kernel w/o GPU maintainer self-commits and reviewed
 maintainer self-commits</figcaption>
 </figure>
 <figure>
 <img border="0" src="/img/2018-kernel-relative.svg" width="100%" 
 alt="kernel w/o GPU relative maintainer commit statistics" />
-<figcaption>Fig. 4 kernel w/o GPU relative maintainer self-commits and 
-review ratio </figcaption>
+<figcaption>Fig. 4 kernel w/o GPU percentage maintainer self-commits and 
+reviewed maintainer self-commits</figcaption>
 </figure>
 </div>
 
@@ -207,6 +208,14 @@ kernel community is very healthy" fanfare touted at keynotes and the yearly
 kernel report. In my opinion, the kernel community is very much not looking like
 it is coping with its growth well and an overall healthy community. Even when
 ignoring all the issues around conduct that I've raised.
+
+It is also a huge contrast to what we've experienced in the GPU subsystem since
+aggressively rolling out group maintainership starting with the v4.5 release: By
+spreading the bureaucratic side of applying patches over many more people
+maintainers have much more time to create their own patches and get them merged.
+More crucially, experienced maintainers can focus their limited review
+bandwidth on the big architectural design questions since they won't get bogged
+down in the minutiae of ever single simple patch.
 
 ## 4.16 by subsystem
 
@@ -277,8 +286,9 @@ dma-mapping|63|60|60%
 
 Yes, XFS and f2fs have their shit together. More interesting is how wide the
 spread in the filesystem code is: There's a bunch of substantial fs pulls with a
-review ratio of flat out zero. Not even a single *Acked-by*. XFS on the other
-hand seems to insist on full formal review of everything - I spot checked the
+review ratio of flat out zero. Not even a single *Acked-by*. [XFS on the other
+hand insists on full formal review of
+everything](https://youtu.be/SMcVdZk7wV8?t=2768) - I spot checked the
 history a bit. f2fs is a bit an outlier in 4.16, barely getting above the
 cut-off. Usually it has fewer patches and would have been excluded.
 
@@ -317,5 +327,5 @@ subsystem. Looking at this data here I can close with an even shorter version:
 
 <blockquote>What would Dave Chinner do?</blockquote>
 
-Thanks a lot to Daniel Stone, Eric Anholt, Geoffrey Huntley and Sean Paul for
-reading and commenting on drafts of this article.
+Thanks a lot to Daniel Stone, Dave Chinner, Eric Anholt, Geoffrey Huntley and
+Sean Paul for reading and commenting on drafts of this article.
