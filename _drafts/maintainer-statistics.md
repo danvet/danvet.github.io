@@ -57,8 +57,12 @@ Measuring review is much harder. For contributor commits review is not recorded
 consistently. Many maintainers forgo adding an explicit *Reviewed-by* tag since
 they're adding their own *Signed-off-by* tag anyway. And since that's required
 for all contributor commits it's impossible to tell whether a patch has seen
-any oversight before merging. A reasonable assumption though is that maintainers
-actually look at stuff before applying.
+formal review before merging. A reasonable assumption though is that maintainers
+actually look at stuff before applying. For a minimal definition of review of "a
+second person looked at the patch before merging and deemed the patch a good
+idea" we can assume that merged contributor patches have a review ratio of 100%.
+Whether that's full formal review or not can unfortunately not be measured with
+the available data.
 
 A different story are maintainer self-commits - if there is no tag indicating
 review by someone else, then either it didn't happen, or the maintainer felt
@@ -75,9 +79,10 @@ getting hammered by pull requests all around. Similar considerations apply at a
 subsystem level.
 
 For counting reviews I looked at anything that indicates some kind of patch
-review, even very informal ones. I therefor both included *Reviewed-by* and
-*Acked-by* tags, including a plethora of misspelled and combined versions of the
-same.
+review, even very informal ones, to stay consistent with the implied oversight
+the maintainer's *Signed-off-by* line provides for merged contributor patches. I
+therefor both included *Reviewed-by* and *Acked-by* tags, including a plethora
+of misspelled and combined versions of the same.
 
 The scripts also keep track of how pull request percolate
 up the hierarchy, which allows filtering on a per-subsystem level. Commits in
@@ -281,7 +286,7 @@ is rather worrisome. More than 9 out of 10
 maintainer self-commits merged into these core subsystem do not carry any indication
 that anyone else ever looked at the patch and deemed it a good idea. The only
 other subsystem with more than 500 commits is the GPU subsystem, at 4th position
-with 83% review ratio.
+with a 83% review ratio.
 
 Compared to maintainers overall the review situation is looking a lot less bleak.
 There's a sizeable group of subsystems who at least try to make this work,
