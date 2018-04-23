@@ -42,7 +42,7 @@ There's a few annoying special cases to handle:
   reasonable setups it doesn't seem to matter much, hence I decided not to
   bother.
 
-- There's subsystems not maintained in git, but in the [quilt patch management
+- There are subsystems not maintained in git, but in the [quilt patch management
   system](https://savannah.nongnu.org/projects/quilt). [Andrew Morton's
   tree](https://en.wikipedia.org/wiki/Mm_tree)
   is the only one I'm aware of, and I hacked up my scripts to handle this case.
