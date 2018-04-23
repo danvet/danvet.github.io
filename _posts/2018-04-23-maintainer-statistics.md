@@ -4,7 +4,7 @@ title: "Linux Kernel Maintainer Statistics"
 tags:
 - Maintainer-Stuff
 ---
-As part of my last two talks at LCA on the kernel community, ["Burning Down the
+As part of preparing my last two talks at LCA on the kernel community, ["Burning Down the
 Castle"](/2018/02/lca-sydney.html) and ["Maintainers Don't
 Scale"](/2017/01/maintainers-dont-scale.html), I have looked into how the Kernel's
 maintainer structure can be measured. One very interesting approach is looking
@@ -80,7 +80,7 @@ when the pull request gets merged. But there's well over a thousand such patches
 each kernel release, and most of the pull requests containing them go directly
 to Linus in the [2 week long merge
 window](https://www.kernel.org/doc/html/latest/process/2.Process.html?highlight=merge%20window#the-big-picture),
-when the over 10k features patches of each kernel release land in the mainline
+when the over 10k feature patches of each kernel release land in the mainline
 branch. It is unrealistic to assume that Linus
 carefully reviews hundreds of patches himself in just those 2 weeks, while
 getting hammered by pull requests all around. Similar considerations apply at a
@@ -184,7 +184,7 @@ indication of oversight. The low ratio of maintainer self-commits is why I
 removed the total commit number from the absolute graph - it would have dwarfed
 the much more interesting data on self-commits and reviewed self-commits. The
 positive thing is that there's at least a consistent, if very small upward
-trend, both in absolute and relative numbers. But it's very slow, and will
+trend in maintainer self-commit reviews, both in absolute and relative numbers. But it's very slow, and will
 likely take decades until there's no longer a double standard on review between
 contributors and maintainers.
 
@@ -200,7 +200,7 @@ patches of their own and get them merged.
 Naively extrapolating the relative trend predicts that around the year 2025
 large numbers of kernel maintainers will do nothing else than be the bottleneck,
 preventing everyone else from getting their work merged and not contributing
-anything of their own. The kernel community imploding under its own autocratic
+anything of their own. The kernel community imploding under its own bureaucratic
 weight being the likely outcome of that.
 
 This is a huge contrast to the "everything is getting better, bigger, and the
@@ -327,5 +327,6 @@ subsystem. Looking at this data here I can close with an even shorter version:
 
 <blockquote>What would Dave Chinner do?</blockquote>
 
-Thanks a lot to Daniel Stone, Dave Chinner, Eric Anholt, Geoffrey Huntley and
+Thanks a lot to Daniel Stone, Dave Chinner, Eric Anholt, Geoffrey Huntley, Luce
+Carter and
 Sean Paul for reading and commenting on drafts of this article.
