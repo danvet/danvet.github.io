@@ -135,7 +135,7 @@ big roll out of group maintainership we've done in the past 2 years aren't
 extreme by historical graphics subsystem standards. We've always had around
 30-40% maintainer self-commits. There's a bit of a downward trend in the
 years leading towards v4.4, due to the massive growth of the i915 driver, and
-our failure to add more mainatainers and committers for a few releases.
+our failure to add more maintainers and committers for a few releases.
 Adding lots more committers and creating bigger maintainer groups from v4.5 on forward, first for the i915
 driver, then to cope with the influx of new small drivers, brought us back to the historical
 trend line.
