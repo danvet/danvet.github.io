@@ -322,7 +322,7 @@ When maintainers outright ignore review for most of their patches this creates a
 clear double standard between maintainers and mere contributors.
 
 One year ago I wrote ["Review, not Rocket
-Sciene"](/2017/04/review-howto.html) on how to roll out review in your
+Science"](/2017/04/review-howto.html) on how to roll out review in your
 subsystem. Looking at this data here I can close with an even shorter version:
 
 <blockquote>What would Dave Chinner do?</blockquote>
