@@ -16,7 +16,7 @@ youtueb"](https://www.youtube.com/watch?v=BB0luXmuo3g&t=90s). For those who
 prefer reading, LWN has you covered with ["Too many lords, not enough
 stewards"](https://lwn.net/Articles/745817/). I think Jake Edge and Jon Corbet
 have done an excellent job in capturing my talk in a balanced fashion. I have
-also uploaded my [slides](slides/lca-2018.pdf).
+also uploaded my [slides](/slides/lca-2018.pdf).
 
 ## Further Discussion
 
