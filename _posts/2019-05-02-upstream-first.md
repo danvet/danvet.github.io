@@ -25,24 +25,24 @@ it's all based on economical considerations of why open source is succeeding.
 Fundamentally it's not about the better software, or the cheaper prize, or that
 the software freedoms are a good thing worth supporting.
 
-Instead open source is eating the world, because it enables a much more
+Instead open source is eating the world because it enables a much more
 competitive software market. And all the best practices around open development
-are just to enable that highly competitive market. So instead of arguing that
+are just to enable that highly competitive market. Instead of arguing that
 open source has open development and strongly favours public discussions because
 that results in better collaboration and better software we put on the economic
 lens, and private discussions become insider trading and collusions. And that's
-just not cool in a competitive market. And similar arguments can be made with
-everything else going on in open source projects.
+just not considered cool in a competitive market. Similar arguments can be made
+with everything else going on in open source projects.
 
-Circling back to the list of articles I think it's worth looking at the
-sustainability of open source as an economic issue of an extremely competitive
-market, in other words, as a market failure: Occasionally the result is that no
-one gets paid, and the customers only receive a subpar product with all costs
-externalized - costs like keeping up with security issues. And like with other
-market failures, a solution needs to be externally imposed through regulations,
-taxation and transfers to internalize all the costs again into the product's
-prize. Frankly no idea how that would look like in practice though.
+Circling back to the list of articles at the top I think it's worth looking at
+the sustainability of open source as an economic issue of an extremely
+competitive market, in other words, as a market failure: Occasionally the result
+is that no one gets paid, the customers only receive a sub-par product with
+all costs externalized - costs like keeping up with security issues. And like
+with other market failures, a solution needs to be externally imposed through
+regulations, taxation and transfers to internalize all the costs again into the
+product's prize. Frankly no idea how that would look like in practice though.
 
-Anyway, just a thought. At least a good enough reason to finally publish the
+Anyway, just a thought, but good enough a reason to finally publish the
 recording and slides of my talk, which covers this just in passing in an offhand
 remark.
