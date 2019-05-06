@@ -14,7 +14,7 @@ take on all this:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/eJDcdYyOwko" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-[The slides](slides-siemens-2018.pdf) for those who don't like videos.
+[The slides](/slides/siemens-2018.pdf) for those who don't like videos.
 
 This talk was mostly aimed at managers of engineering teams and projects with
 fairly little experience in shipping open source, and much less experience in
@@ -46,3 +46,5 @@ product's prize. Frankly no idea how that would look like in practice though.
 Anyway, just a thought, but good enough a reason to finally publish the
 recording and slides of my talk, which covers this just in passing in an offhand
 remark.
+
+*Update:* Fix slides link.
