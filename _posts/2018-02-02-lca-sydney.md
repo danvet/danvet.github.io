@@ -11,8 +11,8 @@ feedback I've received thus far I think it was on the spot, and started a lot of
 uncomfortable, but necessary discussion. I don't think it's time yet to give up
 on this project, even if it will take years.
 
-Without further ado [the recording of my talk "Burning Down the Castle is on
-youtueb"](https://www.youtube.com/watch?v=BB0luXmuo3g&t=90s). For those who
+Without further ado [the recording of my talk "Burning Down the Castle" is on
+youtube](https://www.youtube.com/watch?v=BB0luXmuo3g&t=90s). For those who
 prefer reading, LWN has you covered with ["Too many lords, not enough
 stewards"](https://lwn.net/Articles/745817/). I think Jake Edge and Jon Corbet
 have done an excellent job in capturing my talk in a balanced fashion. I have
