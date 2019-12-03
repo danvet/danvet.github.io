@@ -8,7 +8,9 @@ At ELC Europe in Lyon I held a nice little presentation about the state of
 upstream graphics drivers, and how absolutely awesome it all is. Of course with
 a big focus on SoC and embedded drivers. [Slides](/slides/elce-2019-upstream.pdf)
 and the [video
-recording](https://www.youtube.com/watch?v=kVzHOgt6WGE&list=PLbzoR-pLrL6pamOj4UifcMJf560Ph6mJp&index=25&t=0s)
+recording](https://www.youtube.com/watch?v=kVzHOgt6WGE)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/kVzHOgt6WGE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Key takeaways for the busy:
 
