@@ -40,14 +40,14 @@ Now despite all this justified celebrating, there is one sticking point still:
 
 ## NVIDIA
 
-The trouble with team green from an open source perspective - from them it's a
+The trouble with team green from an open source perspective - for them it's a
 great boon - is that they own the GPU software stack in two crucial ways:
 
 * NVIDIA defines how desktop GL works. Not so relevant anymore, and at least the
-  core profile is a solid spec and full open source test suite from Khronos by
-  now. But the compatability profile, which didn't throw out all the legacy
-  features from GL1.x days in the 90s, does not have all the interactions with
-  all the new features specced out and covered with tests - NVIDIA's binary
+  core profile is a solid spec and has fully open source test suite from Khronos
+  by now. But the compatability profile, which didn't throw out all the legacy
+  features from the GL1.x days in the 90s, does not have any of the interactions
+  with all the new features specced out and covered with tests - NVIDIA's binary
   driver is that standard, and that since roughly 20 years.
 
 * More relevant today is CUDA, not quite as long as desktop GL, but for a market
@@ -57,17 +57,19 @@ great boon - is that they own the GPU software stack in two crucial ways:
 
 Together these are a huge software moat around the high margin hardware
 business. All an open stack would achieve is filling in that moat and inviting
-competition to eat the nice margins. In other words, stupid to even attempt.
+competition to eat the nice surplus. In other words, stupid to even attempt,
+vendor lock-in just pays too well.
 
-Now of course the reverse engineered driver still exists. But if you have to pay
-for reverse engineering already, then might as well also go with someone else's
-hardware, since you're not going to get any of the CUDA/GL lock-in goodies.
+Now of course the reverse engineered nouveau driver still exists. But if you
+have to pay for reverse engineering already, then you might as well go with
+someone else's hardware, since you're not going to get any of the CUDA/GL
+goodies.
 
 And the business case for open source drivers indeed exists so much that even
 paying for reverse engineering a full stack is no problem. The result is a
 vibrant community of hardware vendors, customers, distros and consulting shops
-who pay the bills for all the open driver work that's being done. And at least
-in userspace even "upstream first" works - releases happen quickly and often
+who pay the bills for all the open driver work that's being done. And in
+userspace even "upstream first" works - releases happen quickly and often
 enough, with sufficiently smooth merge process that having a vendor tree is
 simply not needed. Plus customer's willingness to upgrade if necessary, because
 it's usually a well-contained component to enable new hardware support.
@@ -80,13 +82,13 @@ not going to happen, viz. NVIDIA.
 Unfortunately the business case for "upstream first" on the kernel side is
 completely broken. Not for open source, and not for any fundamental reasons, but
 simply because the kernel moves too slowly, is too big, drivers aren't well
-contained enough and therefor customer will not upgrade.
+contained enough and therefor customer will not or even can not upgrade.
 
-This means for an "upstream first" to shipping graphics drivers you first need
-to polish your driver, refactor out common components, and push it to upstream.
-Only to then pay a second team to re-add all the crap so you can ship your
-driver on all the old kernels, where all the helpers and new common code don't
-exist.
+This means for an "upstream first" approach to shipping graphics drivers you
+first need to polish your driver, refactor out common components, and push it to
+upstream.  Only to then pay a second team to re-add all the crap so you can ship
+your driver on all the old kernels, where all the helpers and new common code
+don't exist.
 
 This is entirely unlike the userspace side, where refactoring and code sharing
 in a cross-vendor shared upstream project actually pays off. Even in the short
@@ -98,23 +100,29 @@ kernel:
 * Stable kernel ABI for driver modules, so that you can upgrade the core kernel
   and drivers independently. Google Android is very much aiming this solution at
   their huge vendor tree problem. Traditionally enterprise distros do the same.
+  This works, safe that stable kernel-internal ABI isn't a notion that's [very
+  popular with kernel maintainers
+  ...](https://www.kernel.org/doc/html/latest/process/stable-api-nonsense.html)
 
 * Pay your distro or OS vendor to just backport the new helpers before they even
-  landed in an upstream release. Which means instead of a backporting team for
-  the driver you now pay for backporting the entire subsystem - which in many
-  cases is cheaper, but an even harder sell to beancounters. And sometimes not
-  possible because other driver teams from the competition aren't on board.
+  have landed in an upstream release. Which means instead of a backporting team
+  for the driver on your payroll you now pay for backporting the entire
+  subsystem - which in many cases is cheaper, but an even harder sell to
+  beancounters. And sometimes not possible because other driver teams from
+  competitors might not be on board.
 
 * Also, there just isn't a single LTS kernel. Even upstream has multiple, plus
   every distro has their own flavour, plus customers love to grow their own
   varieté trees too. Often they're not even coordinated on the same upstream
-  release. Best cheapest way to support this entire madness is to completely
+  release. Cheapest way to support this entire madness is to completely
   ignore upstream and just write your own subsystem. Or at least not use any of
   the helper libraries provided by kernel subsystems, completely defeating the
   supposed benefit of upstreaming code.
 
-In conclusion, upstream first needs a business case, like an open source
-graphics stack in general. And that business case is very much real. But for
+No matter the strategy, they all boil down to paying twice, if you want to
+upstream your code, and there's no added return for the doubled bill. In
+conclusion, upstream first needs a business case, like an open source graphics
+stack in general. And that business case is very much real, except for
 upstreaming, it's only real in userspace.
 
-But in the kernel, "upstream first" is a sham.
+In the kernel, "upstream first" is a sham, at least for graphics drivers.
