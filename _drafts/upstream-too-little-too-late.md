@@ -82,13 +82,13 @@ not going to happen, viz. NVIDIA.
 Unfortunately the business case for "upstream first" on the kernel side is
 completely broken. Not for open source, and not for any fundamental reasons, but
 simply because the kernel moves too slowly, is too big, drivers aren't well
-contained enough and therefor customer will not or even can not upgrade.
-
-This means for an "upstream first" approach to shipping graphics drivers you
-first need to polish your driver, refactor out common components, and push it to
-upstream.  Only to then pay a second team to re-add all the crap so you can ship
-your driver on all the old kernels, where all the helpers and new common code
-don't exist.
+contained enough and therefore customer will not or even can not upgrade. For
+some hardware upstreaming early enough is possible, but graphics simply moves
+too fast: By the time the upstreamed driver is actually in shipping distros,
+it's already one generation behind. And missing almost a year of tuning and
+performance improvements. Worse it's not just new hardware, but also GL and
+Vulkan versions that won't work on older kernels due to missing features,
+fragementing the ecosystem further.
 
 This is entirely unlike the userspace side, where refactoring and code sharing
 in a cross-vendor shared upstream project actually pays off. Even in the short
@@ -104,6 +104,12 @@ kernel:
   popular with kernel maintainers
   ...](https://www.kernel.org/doc/html/latest/process/stable-api-nonsense.html)
 
+* If you go with an "upstream first" approach to shipping graphics drivers you
+  first need to polish your driver, refactor out common components, and push it
+  to upstream.  Only to then pay a second team to re-add all the crap so you can
+  ship your driver on all the old kernels, where all the helpers and new common
+  code don't exist.
+
 * Pay your distro or OS vendor to just backport the new helpers before they even
   have landed in an upstream release. Which means instead of a backporting team
   for the driver on your payroll you now pay for backporting the entire
@@ -111,18 +117,20 @@ kernel:
   beancounters. And sometimes not possible because other driver teams from
   competitors might not be on board.
 
-* Also, there just isn't a single LTS kernel. Even upstream has multiple, plus
-  every distro has their own flavour, plus customers love to grow their own
-  variety trees too. Often they're not even coordinated on the same upstream
-  release. Cheapest way to support this entire madness is to completely
-  ignore upstream and just write your own subsystem. Or at least not use any of
-  the helper libraries provided by kernel subsystems, completely defeating the
-  supposed benefit of upstreaming code.
+Also, there just isn't a single LTS kernel. Even upstream has multiple, plus
+every distro has their own flavour, plus customers love to grow their own
+variety trees too. Often they're not even coordinated on the same upstream
+release. Cheapest way to support this entire madness is to completely ignore
+upstream and just write your own subsystem. Or at least not use any of the
+helper libraries provided by kernel subsystems, completely defeating the
+supposed benefit of upstreaming code.
 
-No matter the strategy, they all boil down to paying twice, if you want to
-upstream your code, and there's no added return for the doubled bill. In
+No matter the strategy, they all boil down to paying twice - if you want to
+upstream your code. And there's no added return for the doubled bill. In
 conclusion, upstream first needs a business case, like an open source graphics
 stack in general. And that business case is very much real, except for
 upstreaming, it's only real in userspace.
 
 In the kernel, "upstream first" is a sham, at least for graphics drivers.
+
+Thanks to Alex Deucher for reading and commenting on drafts of this text.
