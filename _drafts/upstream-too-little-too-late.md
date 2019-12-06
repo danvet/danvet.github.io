@@ -27,10 +27,10 @@ that is to your taste, read below the break for the written summary.
 promises to come. Kernel display modeset just landed, finally bringing a
 somewhat modern display driver userspace API to linux. And GEM landed, bringing
 proper GPU memory management and multi client rendering. Realistically a lot
-needed to be done still, from rendering drivers for all the various SoC, to a
+needed to be done still, from rendering drivers for all the various SoC, to 
 an atomic display API that can expose all the features, not just what was needed
 to light up a linux desktop back in the days. And lots of work to improve the
-codebased and make it much easier and quicker to write drivers.
+codebase and make it much easier and quicker to write drivers.
 
 There's obviously still a lot to do, but I think we've achieved that - for full
 details, check out my [ELCE talk about everything great for upstream
@@ -45,7 +45,7 @@ great boon - is that they own the GPU software stack in two crucial ways:
 
 * NVIDIA defines how desktop GL works. Not so relevant anymore, and at least the
   core profile is a solid spec and has fully open source test suite from Khronos
-  by now. But the compatability profile, which didn't throw out all the legacy
+  by now. But the compatibility profile, which didn't throw out all the legacy
   features from the GL1.x days in the 90s, does not have any of the interactions
   with all the new features specced out and covered with tests - NVIDIA's binary
   driver is that standard, and that since roughly 20 years.
@@ -113,7 +113,7 @@ kernel:
 
 * Also, there just isn't a single LTS kernel. Even upstream has multiple, plus
   every distro has their own flavour, plus customers love to grow their own
-  varieté trees too. Often they're not even coordinated on the same upstream
+  variety trees too. Often they're not even coordinated on the same upstream
   release. Cheapest way to support this entire madness is to completely
   ignore upstream and just write your own subsystem. Or at least not use any of
   the helper libraries provided by kernel subsystems, completely defeating the
