@@ -6,12 +6,11 @@ tags:
 - Conferences
 ---
 Unlike the tradition of my past few talks at Linux Plumbers or Kernel
-conferences this time around in Lisboa I did not start out with a rant proposing
+conferences, this time around in Lisboa I did not start out with a rant proposing
 to change everything. Instead I celebrated roughly 10 years of upstream graphics
-progress and [finally achieving paradise, like in my ELCE
-talk](/2019/12/elce-lyon-everything-great.html). But that was all just prelude
-to a few bait-and-switches later fulfill expectations on what's broken this time
-around in upstream, totally, and what needs to be fixed and changed, maybe.
+progress and finally achieving paradise.  But that was all just prelude to a few
+bait-and-switches later fulfill expectations on what's broken this time around
+in upstream, totally, and what needs to be fixed and changed, maybe.
 
 The [LPC video recording](https://www.youtube.com/watch?v=S1I34t5RpnI) is now
 released, [slides](/slides/lpc-2019-upstream.pdf) are uploaded. If neither of
@@ -23,14 +22,16 @@ that is to your taste, read below the break for the written summary.
 
 ## Mission Accomplished
 
-10 or so years ago upstream graphics was essentially a proof of concept of the
-promises to come. Kernel display modeset just landed, finally bringing a
-somewhat modern display driver userspace API to linux. And GEM landed, bringing
-proper GPU memory management and multi client rendering. Realistically a lot
-needed to be done still, from rendering drivers for all the various SoC, to 
-an atomic display API that can expose all the features, not just what was needed
-to light up a linux desktop back in the days. And lots of work to improve the
-codebase and make it much easier and quicker to write drivers.
+10 or so years ago upstream graphics was essentially a proof of concept for the
+promised to come. Kernel display modeset just landed, finally bringing a
+somewhat modern display driver userspace API to linux. And GEM, the graphics
+execution manager landed, bringing proper GPU memory management and multi client
+rendering. Realistically a lot needed to be done still, from rendering drivers
+for all the various SoC, to an [atomic display
+API](/2015/08/atomic-modesetting-design-overview.html) that can expose all the
+features, not just what was needed to light up a linux desktop back in the days.
+And lots of work to improve the codebase and make it much easier and quicker to
+write drivers.
 
 There's obviously still a lot to do, but I think we've achieved that - for full
 details, check out my [ELCE talk about everything great for upstream
@@ -55,7 +56,7 @@ great boon - is that they own the GPU software stack in two crucial ways:
   general purpose GPU compute hill. Anything and everything that matters runs on
   top of it, often exclusively.
 
-Together these are a huge software moat around the high margin hardware
+Together these create a huge software moat around the high margin hardware
 business. All an open stack would achieve is filling in that moat and inviting
 competition to eat the nice surplus. In other words, stupid to even attempt,
 vendor lock-in just pays too well.
@@ -74,8 +75,8 @@ enough, with sufficiently smooth merge process that having a vendor tree is
 simply not needed. Plus customer's willingness to upgrade if necessary, because
 it's usually a well-contained component to enable new hardware support.
 
-Because without a solid business case behind open graphics drivers, they're just
-not going to happen, viz. NVIDIA.
+In short without a solid business case behind open graphics drivers, they're
+just not going to happen, viz. NVIDIA.
 
 ## Not Shipping Upstream
 
@@ -85,8 +86,8 @@ simply because the kernel moves too slowly, is too big, drivers aren't well
 contained enough and therefore customer will not or even can not upgrade. For
 some hardware upstreaming early enough is possible, but graphics simply moves
 too fast: By the time the upstreamed driver is actually in shipping distros,
-it's already one generation behind. And missing almost a year of tuning and
-performance improvements. Worse it's not just new hardware, but also GL and
+it's already one hardware generation behind. And missing almost a year of tuning
+and performance improvements. Worse it's not just new hardware, but also GL and
 Vulkan versions that won't work on older kernels due to missing features,
 fragementing the ecosystem further.
 
