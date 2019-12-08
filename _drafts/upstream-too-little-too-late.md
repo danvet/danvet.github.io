@@ -116,7 +116,8 @@ kernel:
   for the driver on your payroll you now pay for backporting the entire
   subsystem - which in many cases is cheaper, but an even harder sell to
   beancounters. And sometimes not possible because other driver teams from
-  competitors might not be on board.
+  competitors might not be on board and insist on not breaking the stable driver
+  ABI for a given distro release kernel.
 
 Also, there just isn't a single LTS kernel. Even upstream has multiple, plus
 every distro has their own flavour, plus customers love to grow their own
@@ -128,7 +129,7 @@ supposed benefit of upstreaming code.
 
 No matter the strategy, they all boil down to paying twice - if you want to
 upstream your code. And there's no added return for the doubled bill. In
-conclusion, upstream first needs a business case, like an open source graphics
+conclusion, upstream first needs a business case, like the open source graphics
 stack in general. And that business case is very much real, except for
 upstreaming, it's only real in userspace.
 
