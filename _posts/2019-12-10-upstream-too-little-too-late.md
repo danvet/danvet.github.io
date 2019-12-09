@@ -101,7 +101,7 @@ kernel:
 * Stable kernel ABI for driver modules, so that you can upgrade the core kernel
   and drivers independently. Google Android is very much aiming this solution at
   their huge vendor tree problem. Traditionally enterprise distros do the same.
-  This works, safe that stable kernel-internal ABI isn't a notion that's [very
+  This works, safe that stable kernel-internal ABI is [not a notion that's very
   popular with kernel maintainers
   ...](https://www.kernel.org/doc/html/latest/process/stable-api-nonsense.html)
 
