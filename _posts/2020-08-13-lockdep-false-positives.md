@@ -9,8 +9,9 @@ tags:
 Recently we've looked a bit at lockdep annotations in the GPU subsystems, and I
 figured it's a good opportunity to explain how this all works, and what the
 tradeoffs are. Creating working locking hierarchies for the kernel isn't easy,
-making sure the kernel's locking validator *lockdep* is happy and reviewers
-don't have their brains explode even more so.
+making sure the kernel's locking validator
+[lockdep](https://www.kernel.org/doc/html/v5.6/locking/lockdep-design.html) is
+happy and reviewers don't have their brains explode even more so.
 
 First things first, and the fundamental issue:
 
