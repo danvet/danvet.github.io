@@ -17,7 +17,7 @@ twitter_username: danvet
 github_username:  danvet
 permalink: /:year/:month/:title.html
 
-gems:
+plugins:
 - jekyll-redirect-from
 - jekyll-sitemap
 
