@@ -30,7 +30,7 @@ Most of my own code and development about all things graphic can be found at:
 
 I occasionally post nonsense on twitter as [@danvet](https://twitter.com/danvet)
 but the more reliable way to contact me is to send a mail to: daniel PUNGGT
-vetter ÄT ffwll PUNGGT ch. Or ping me on IRC, I'm `danvet` on FreeNode and
+vetter ÄT ffwll PUNGGT ch. Or ping me on IRC, I'm `danvet` on OFTC and
 generally hang around on `#dri-devel` and `#intel-gfx`.
 
 Legal boilerplate: The opinions expressed on this site are mine alone and do not
