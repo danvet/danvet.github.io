@@ -327,6 +327,6 @@ subsystem. Looking at this data here I can close with an even shorter version:
 
 <blockquote>What would Dave Chinner do?</blockquote>
 
-Thanks a lot to Daniel Stone, Dave Chinner, Eric Anholt, Geoffrey Huntley, Luce
+Thanks a lot to Daniel Stone, Dave Chinner, Emma Anholt, Geoffrey Huntley, Luce
 Carter and
 Sean Paul for reading and commenting on drafts of this article.

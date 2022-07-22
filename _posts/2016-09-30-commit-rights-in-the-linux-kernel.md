@@ -28,7 +28,7 @@ documented](https://01.org/linuxgraphics/gfx-docs/maintainer-tools/drm-intel.htm
 scroll down to the bottom for the more interesting bits around what's
 expected of committers.
 
-On a related note: At XDC, and a bit before, Eric Anholt started a discussion
+On a related note: At XDC, and a bit before, Emma Anholt started a discussion
 about improving our patch submission process, especially for new contributors.
 He used the Rust community as a great example, and [presented about it at
 XDC](https://youtu.be/KIHrjgZJHZA?t=18480). Rather interesting to hear

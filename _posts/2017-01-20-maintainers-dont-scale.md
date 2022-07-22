@@ -314,6 +314,6 @@ mandatory sentence than something done by choice. What I object to is the
 world domination, then you as the maintainer need to serve that community. And
 not that the community serves you.
 
-Thanks a lot to Ben Widawsky, Daniel Stone, Eric Anholt, Jani Nikula, Karen
+Thanks a lot to Ben Widawsky, Daniel Stone, Emma Anholt, Jani Nikula, Karen
 Sandler, Kimmo Nikkanen and Laurent Pinchart for reading and commenting on
 drafts of this text.
