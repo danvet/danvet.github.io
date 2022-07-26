@@ -16,9 +16,9 @@ Think of it as Dante's Inferno, but for locking.
 
 As a reminder from the intro of the first part, with locking engineering I mean
 the art of ensure that there's sufficient consistency in reading and
-manipulating data structures, and not just sprinklock <code>mutex_lock</code>
-and <code>mutex_unlock</code> calls around until the result looks reasonable and
-lockdep has gone quiet.
+manipulating data structures, and not just sprinklock <code>mutex_lock()</code>
+and <code>mutex_unlock()</code> calls around until the result looks reasonable
+and lockdep has gone quiet.
 <!--more-->
 
 ## Level 0: No Locking
@@ -32,7 +32,7 @@ architecturaly level.
 
 There's a few standard patterns to achieve locking nirvana.
 
-### Pattern: Immutable State
+### Locking Pattern: Immutable State
 
 _The_ lesson in graphics API design over the last decide is that immutable state
 objects rule, because they both lead to simpler driver stacks and also better
@@ -64,7 +64,7 @@ instead of using existing standard interfaces you are on a fast path to level
 3. From this point there is not consistency issues anymore and all threads can
 access the object without any locking.
 
-### Pattern: Single Owner
+### Locking Pattern: Single Owner
 
 Another way to ensure there's no concurrent access is by only allowing one
 thread to own an object at a given point of time, and have well defined handover
@@ -103,7 +103,7 @@ involved:
   done through <code>struct completion</code> to ensure that there's only ever a
   single worker which owns a state structure and is allowed to change it.
 
-### Pattern: Reference Counting
+### Locking Pattern: Reference Counting
 
 Users generally don't appreciate if the kernel leaks memory too much, and
 cleaning up objects by freeing their memory and releasing any other resources
@@ -139,29 +139,186 @@ to implement clever caching of any kind.
 ## Level 1: Big Dumb Lock
 
 It would be great if nothing ever changes, but sometimes that cannot be avoided.
+At that point you add a single lock for each logical object. An object could be
+just a single structure, but it could also be multiple structure that are
+dynamically allocated and freed under the protection of that single big dumb
+lock, e.g. when managing GPU virtual address space with different mappings.
 
+The tricky part is figuring out what is an object to ensure that your lock is
+neither too big nor too small:
+
+* If you make your lock too big you run the risk of creating a dreaded subsystem
+  lock, or violating the ["Protect Data, not
+  Code"](/2022/07/locking-engineering.html#protect-data-not-code) principle in
+  some other way. Split your locking further so that a single lock really only
+  protects a single object, and not a random collection of unrelated ones. So
+  one lock per device instance, not one lock for all the device instances in a
+  driver or worse in an entire subsystem.
+
+  The trouble is that once a lock is too big and has firmly moved into "protects
+  some vague collection of code" territory, it's very hard to get out of that
+  hole.
+
+* Different problems strike when the locking scheme is too fine-grained, e.g. in
+  the GPU virtual memory management example when every address mapping in the
+  big vma tree has its own private lock. Or when a structure has a lot of
+  different locks for different member fields.
+
+  On one hand locks aren't free, the overhead of fine grained locking can
+  seriously hurt, especially when common operations have to take most of the
+  locks anyway and so there's no chance of any concurrence benefit. Furthermore
+  fine-grained locking leads to the temption of solving locking overhead with
+  ever more clever lockless tricks, instead of radically simplifying the
+  approach.
+
+  The other main issue is that more locks improve the odds for lockiing
+  inversions, and those can be tough nuts to crack. Again trying to solve this
+  with more lockless tricks to avoid inversions is tempting, and again in most
+  cases the wrong approach.
+
+Ideal big dumb locking therefore needs to be right-sized everytime the
+requirements on the datastructures changes. If not done there's a high chance
+the locking complexity tailspinning into ever bigger locking, or ever smaller
+more complex locking, depending upon on which side of the optimal track you've
+fallen of the wagon train.
 
 <h2 style="background:yellow;"> Level 2: Fine-grained Locking</h2>
 
-### Pattern: Object Tracking Lists
+It would be great if this is all the locking we ever need, but sometimes there's
+functional reasons that force us to go beyond the single lock for each logical
+object approach. This section will go through a few of the common examples, and
+the usual pitfalls to avoid.
 
-- lru lists
+But before we dwelve into details remember to document in kerneldoc with the
+inline per-member kerneldoc comment style once you go beyond a simple single
+lock per object approach. It's the best place for future bug fixers and
+reviewers - meaning you - to find the rules for how at least things were meant
+to work.
 
-### Pattern: Interrupt Handler State
+### Locking Pattern: Object Tracking Lists
 
-- irq handler
+One of the main duties of the kernel is to track everything, least to make sure
+there's no leaks and everything gets cleaned up again. But there's other reasons
+to maintain lists (or other container structures) of objects.
 
-### Pattern: Weak References
+Now sometimes there's a clear parent object, with its own lock, which could also
+protect the list with all the objects, but this does not always work:
 
-- weak references
+* It might force the lock of the parent object to essentially become a subsystem
+  lock and so protect much more than it should when following the ["Protect Data, not
+  Code"](/2022/07/locking-engineering.html#protect-data-not-code) principle. In
+  that case it's better to have a separate (spin-)lock just for the list to be
+  able to clearly untangle what the parent and subordinate object's lock each
+  protect.
 
-### Pattern: Async Processing
+* Different code paths might need to walk and possibly manipulate the list both
+  from the container object and contained object, which would lead to locking
+  inversion if the list isn't protected by it's own stand-alone (nested) lock.
+  This tends to especially happen when an object can be attached to multiple
+  other objects, like a GPU buffer object can be mapped into multiple GPU
+  virtual address spaces of different processes.
 
-- async processing
+* The calling contexts for adding or removing objects from the list walking
+  need itself. The main example here are LRU lists where the shrinker needs to
+  be able to walk the list from reclaim context, whereas the superior object
+  locks often have a need to allocate memory while holding each lock. Those
+  object locks the shrinker can then only trylock, which is generally good
+  enough, but only being able to trylock the LRU is not.
 
-Document in kerneldoc with the inline per-member kerneldoc comment style.
+Simplicity should still win, therefore only add a (nested) lock for lists or
+other container objects if there's really no suitable object lock that could do
+the same job.
 
-## Antipattern: Confusing Object Lifetime and Consistency
+### Locking Pattern: Interrupt Handler State
+
+Another example that requires nested locking is when part of the object is
+manipulated from a different execution context. The prime example here are
+interrupt handlers. Interrupt handlers can only use interrupt safe spinlocks,
+but often the main object lock must be a mutex to allow sleeping or allocating
+memory or nesting with other mutexes.
+
+Hence the need for a nested spinlock to just protect the object state shared
+between the interrupt handler and code running from process context. Process
+context should generally only acquire the spinlock nested with the main object
+lock, to avoid surprises and limit any concurrency issues to just the singleton
+interrupt handler.
+
+### Locking Pattern: Async Processing
+
+Very similar is coordination with async workers. The best approach is the [single
+owner pattern](#locking-pattern-single-owner), but often state needs to be shared between the worker and other
+threads operating on the same object.
+
+The naive approach of just using a single object lock tends to deadlock:
+
+```
+start_processing(obj)
+{
+	mutex_lock(&obj->lock);
+	/* set up the data for the async work */;
+	schedule_work(&obj->work);
+	mutex_unlock(&obj->lock);
+}
+
+stop_processing(obj)
+{
+	mutex_lock(&obj->lock);
+	/* clear the data for the async work */;
+	cancel_work_sync(&obj->work);
+	mutex_unlock(&obj->lock);
+}
+
+work_fn(work)
+{
+	obj = container_of(work, work);
+
+	mutex_lock(&obj->lock);
+	/* do some processing */
+	mutex_unlock(&obj->lock);
+}
+```
+
+There's a bunch of variations of this theme, with problems in different
+scenarios:
+
+* Replacing the <code>cancel_work_sync()</code> with <code>cancel_work()</code>
+  avoids the deadlock, but often means the <code>work_fn()</code> is prone to
+  use-after-free issues.
+
+* Calling <code>cancel_work_sync()</code>before taking the mutex can work in
+  some cases, but falls apart when the work is self-rearming. Or maybe the
+  work or overall object isn't guaranteed to exist without holding it's lock,
+  e.g. if this is part of an async processing queue for a parent structure.
+
+* Cancelling the work after the call to <code>mutex_unlock()</code> might race
+  with concurrent restarting of the work and upset the bookkeeping.
+
+Like with interrupt handlers the clean solution tends to be an additional nested
+lock which protects just the mutable state shared with the work function and
+nests within the main object lock. That way work can be cancelled while the main
+object lock, which avoids a ton of races, but without holding the sublock that
+<code>work_fn()</code> needs, which avoids the deadlock.
+
+Note that in some cases the superior lock doesn't need to exist, e.g.
+<code>struct drm_connector_state</code> is protected by the [single
+owner pattern](#locking-pattern-single-owner), but drivers might have some need
+for some further decoupled asynchronous processing, e.g. for handling the
+content protect or link training machinery.
+
+### Locking Pattern: Weak References
+
+[Reference counting](#locking-pattern-refernce-counting) is a great pattern, but
+sometimes you need be able to store pointers without them holding a full
+reference. This could be for lookup caches, or because your userspace API
+mandates that some references do not keep the object alive - we've unfortunately
+committed that mistake in the GPU world. Or because holding full references
+everywhere would lead to unreclaimable references loops and there's no better
+way to break them than to make some of the references weak.
+
+Since weak references are such a standard pattern <code>struct kref</code> has
+ready-made support for them:
+
+## Locking Antipattern: Confusing Object Lifetime and Consistency
 
 <h2 style="background:orange;"> Level 2.5: Splitting Locks for Performance
 Reasons</h2>
