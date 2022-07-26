@@ -117,7 +117,7 @@ you need simplicity first.
 Speed doesn't matter if all you're doing is crashing faster. You need
 correctness before speed.
 
-And finally speed doesn't matter where users don't notice it. If you
+Finally speed doesn't matter where users don't notice it. If you
 micro-optimize a path that doesn't even show up in real world workloads users
 care about, all you've done is wasted time and committed to future maintenance
 pain for no gain at all.
@@ -156,7 +156,7 @@ approach is to design locking for the data structures, which means specifying
 for each structure or member field how it is protected against concurrent
 changes, and how the necessary amount of consistency is maintained across the
 entire data structure with rules that stay invariant, irrespective of how code
-operates on the data. And then roll it out consistently to all the functions,
+operates on the data. Then roll it out consistently to all the functions,
 because the code-first approach tends to have a lot of issues:
 
 * A code centric approach to locking often leads to locking rules changing over
