@@ -24,7 +24,7 @@ and lockdep has gone quiet.
 ## Level 0: No Locking
 
 The dumbest possible locking is no need for locking at all. Which does not mean
-extremely clever lockless tricks for a "look, not calls to
+extremely clever lockless tricks for a "look, no calls to
 <code>mutex_lock()</code>" feint, but an overall design which guarantees that
 any writers cannot exist concurrently with any other access at all. This
 removes the need for consistency guarantees while accessing an object at the
@@ -50,7 +50,7 @@ objects that driver can subclass through embedding, e.g.
 object. Often the subsystem provides additional functions to set up different
 or optional aspects of an object, e.g.
 <code>drm_connector_attach_encoder()</code> sets up the invariant links to the
-preceeding element in a kernel modesetting display chain.
+preceding element in a kernel modesetting display chain.
 
 2. The fully formed object is published to the world, in the kernel this often
 happens by registering it under some kind of identifier. This could be a global
@@ -73,7 +73,7 @@ points if that is necessary.
 Most often this pattern is used for asynchronously processing a userspace
 request:
 
-1. The syscall or IOCTL constructs an object with suifficient information to
+1. The syscall or IOCTL constructs an object with sufficient information to
 process the userspace's request.
 
 2. That object is handed over to a worker thread with e.g.
@@ -83,7 +83,7 @@ process the userspace's request.
 whatever it feels like with it.
 
 Again the second step requires memory barriers, which means if you hand roll
-your own lockless queue you're firmly in level 3 territory and wont get rid of
+your own lockless queue you're firmly in level 3 territory and won't get rid of
 the burned in red hot afterglow in your retina for quite some time. Use standard
 interfaces like <code>struct completion</code> or even better libraries like the
 workqueue subsystem here.
@@ -113,7 +113,7 @@ the rescue!
 * Every pointer to the reference counted object must guarantee that a reference
   exists for as long as the pointer is in use. Usually that's done by calling
   <code>kref_get()</code> when making a copy of the pointer, but implied
-  refernces by e.g. continuing to hold a lock that protects a different pointer
+  references by e.g. continuing to hold a lock that protects a different pointer
   are fine too.
 
 * The cleanup code runs when the last reference is released with
@@ -307,7 +307,7 @@ content protect or link training machinery.
 
 ### Locking Pattern: Weak References
 
-[Reference counting](#locking-pattern-refernce-counting) is a great pattern, but
+[Reference counting](#locking-pattern-reference-counting) is a great pattern, but
 sometimes you need be able to store pointers without them holding a full
 reference. This could be for lookup caches, or because your userspace API
 mandates that some references do not keep the object alive - we've unfortunately
@@ -324,6 +324,8 @@ ready-made support for them:
 Reasons</h2>
 
 - read-write locks might apply
+
+- w/w mutex
 
 <h2 style="background:red"> Level 3: Lockless Tricks</h2>
 
