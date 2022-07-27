@@ -57,12 +57,13 @@ happens by registering it under some kind of identifier. This could be a global
 identifier like <code>register_chrdev()</code> for character devices, something attached to a device like
 registering on a driver like <code>drm_connector_register()</code> or some
 <code>struct xarray</code> in the file private structure. Note that this step
-here requires memory barriers of some sort, which means if you hand roll it
-instead of using existing standard interfaces you are on a fast path to level
-3 locking hell. Don't do that.
+here requires memory barriers of some sort. This means if you hand roll the data
+structure like a list or lookup tree with your own fancy locking scheme instead
+of using existing standard interfaces you are on a fast path to level 3 locking
+hell. Don't do that.
 
-3. From this point there is not consistency issues anymore and all threads can
-access the object without any locking.
+3. From this point on there are no consistency issues anymore and all threads
+can access the object without any locking.
 
 ### Locking Pattern: Single Owner
 
@@ -127,14 +128,14 @@ deal with these zombies and ensure there's no confusion, and vice versa any code
 that resurrects a zombie needs to deal wooden spikes the cleanup code might
 throw at an inopportune time. The worst example of this kind is
 <code>SLAB_TYPESAFE_BY_RCU</code>, where readers only protected with
-<code>rcu_read_lock()</code> need to deal with objects potentially going through
-multiple zombie resurrections, while they're trying to figure out what is going
-on. Unfortunately <code>struct dma_fence</code>, mostly used in the GPU
-subsystem, is operating under these rules and has lead to lots of sorrow,
-wailing and ill-tempered maintainers.
+<code>rcu_read_lock()</code> may need to deal with objects potentially going
+through simultaneous zombie resurrections, potentially multiple times, while
+the readers are trying to figure out what is going on. This generally leads to 
+lots of sorrow, wailing and ill-tempered maintainers, as the GPU subsystem
+has and continues to experience with <code>struct dma_fence</code>.
 
-Hence use standard reference count, and don't be tempted by the siren of trying
-to implement clever caching of any kind.
+Hence use standard reference counting, and don't be tempted by the siren of
+trying to implement clever caching of any kind.
 
 ## Level 1: Big Dumb Lock
 
@@ -176,11 +177,12 @@ neither too big nor too small:
   with more lockless tricks to avoid inversions is tempting, and again in most
   cases the wrong approach.
 
-Ideal big dumb locking therefore needs to be right-sized everytime the
-requirements on the datastructures changes. If not done there's a high chance
-the locking complexity tailspinning into ever bigger locking, or ever smaller
-more complex locking, depending upon on which side of the optimal track you've
-fallen of the wagon train.
+Ideally, your big dumb would always be right-sized, even everytime the
+requirements on the datastructures changes. But magic 8 balls tend to be on
+short supply, and you tend to only find out that your guess was wrong when the
+pain if the lock being too big or too small is already substantial, and the
+inherit struggles of resizing a lock as the code evolves keeps pushing you
+further away from the optimum instead of closer. Good luck!
 
 <h2 style="background:yellow;"> Level 2: Fine-grained Locking</h2>
 
@@ -218,16 +220,17 @@ protect the list with all the objects, but this does not always work:
   other objects, like a GPU buffer object can be mapped into multiple GPU
   virtual address spaces of different processes.
 
-* The calling contexts for adding or removing objects from the list walking
-  need itself. The main example here are LRU lists where the shrinker needs to
+* The constraints of calling contexts for adding or removing objects from the
+  list are different and incompatible from the requirements when walking the
+  list itself. The main example here are LRU lists where the shrinker needs to
   be able to walk the list from reclaim context, whereas the superior object
   locks often have a need to allocate memory while holding each lock. Those
   object locks the shrinker can then only trylock, which is generally good
-  enough, but only being able to trylock the LRU is not.
+  enough, but only being able to trylock the LRU list lock itself is not.
 
 Simplicity should still win, therefore only add a (nested) lock for lists or
 other container objects if there's really no suitable object lock that could do
-the same job.
+the job instead.
 
 ### Locking Pattern: Interrupt Handler State
 
@@ -245,9 +248,10 @@ interrupt handler.
 
 ### Locking Pattern: Async Processing
 
-Very similar is coordination with async workers. The best approach is the [single
-owner pattern](#locking-pattern-single-owner), but often state needs to be shared between the worker and other
-threads operating on the same object.
+Very similar to the interrupt handler problems is coordination with async
+workers. The best approach is the [single owner
+pattern](#locking-pattern-single-owner), but often state needs to be shared
+between the worker and other threads operating on the same object.
 
 The naive approach of just using a single object lock tends to deadlock:
 
@@ -296,14 +300,15 @@ scenarios:
 Like with interrupt handlers the clean solution tends to be an additional nested
 lock which protects just the mutable state shared with the work function and
 nests within the main object lock. That way work can be cancelled while the main
-object lock, which avoids a ton of races, but without holding the sublock that
-<code>work_fn()</code> needs, which avoids the deadlock.
+object lock is held, which avoids a ton of races. But without holding the
+sublock that <code>work_fn()</code> needs, which avoids the deadlock.
 
 Note that in some cases the superior lock doesn't need to exist, e.g.
 <code>struct drm_connector_state</code> is protected by the [single
 owner pattern](#locking-pattern-single-owner), but drivers might have some need
 for some further decoupled asynchronous processing, e.g. for handling the
-content protect or link training machinery.
+content protect or link training machinery. In that case only the sublock for
+the mutable state shared with the worker exists.
 
 ### Locking Pattern: Weak References
 
@@ -330,5 +335,31 @@ Reasons</h2>
 <h2 style="background:red"> Level 3: Lockless Tricks</h2>
 
 Do not go here wanderer!
+
+Seriously, I have seen a lot of very fancy driver subsystem locking designs, I
+have not yet found a lot that were actually justified. Because only real world,
+non-contrived performance issues can ever justify reaching for this level, and
+in almost all cases algorithmic or architectural fixes yield much better
+improvements than any kind of (locking) micro-optimization could ever hope for.
+
+Hence this is just a long list of antipatterns, so that people who have not yet
+a grumpy expression permanently chiseled into their facial structure know when
+they're in trouble.
+
+Note that this section isn't limited to lockless tricks in the academic sense of
+guaranteed constant overhead forward progress, meaning no spinning or retrying
+anywhere at all. It's for everything which doesn't use standard locks like
+<code>struct mutex</code>, <code>spinlock_t</code>, <code>struct
+rw_semaphore</code>, or any of the others provided in the Linux kernel.
+
+### Locking Antipattern: Using RCU
+
+- weak reference lookup: ok
+
+- bad: zombie objects, unless stale state is semantically no issue
+
+- bad: lifetime vs consistency
+
+### Locking Antipattern: Atomics
 
 

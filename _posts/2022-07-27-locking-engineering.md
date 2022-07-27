@@ -162,8 +162,8 @@ because the code-first approach tends to have a lot of issues:
 * A code centric approach to locking often leads to locking rules changing over
   the lifetime of an object, e.g. with different rules for a structure or member
   field depending upon whether an object is in active use, maybe just cached or
-  undergoing reclaim. This is hard to teach to lockdep, especially when also the
-  nesting rules change for different states, because lockdep assumes that the
+  undergoing reclaim. This is hard to teach to lockdep, especially when the
+  nesting rules change for different states. Lockdep assumes that the
   locking rules are completely invariant over the lifetime of the entire kernel,
   not just over the lifetime of an individual object or structure even.
 
@@ -171,12 +171,13 @@ because the code-first approach tends to have a lot of issues:
   rules stay the same for a structure or member field.
 
 * Locking design that changes depending upon the code that can touch the data
-  would need either need complicated documentation entirely separate from the
-  code - so high risk of becoming stale. Or it's sprinkled over the various
-  functions, which means reviewers need to reacquire the entire relevant chunks
-  of the code base again to make sure they don't miss an odd corner cases.
+  would need either complicated documentation entirely separate from the
+  code - so high risk of becoming stale. Or the explanations, if there are any
+  are sprinkled over the various functions, which means reviewers need to
+  reacquire the entire relevant chunks of the code base again to make sure they
+  don't miss an odd corner cases.
 
-  With data structure driven locking design there's a perfect because unique
+  With data structure driven locking design there's a perfect, because unique
   place to document the rules - in the kerneldoc of each structure or member
   field. 
 
@@ -186,9 +187,9 @@ because the code-first approach tends to have a lot of issues:
   done you might miss a corner cases where the locking falls apart with a race
   condition or could deadlock.
 
-  With a data first approach to locking though changes can be reviewed
-  incrementally against the invariant rules, which means review of especially
-  big or complex subsystems actually scales.
+  With a data first approach to locking changes can be reviewed incrementally
+  against the invariant rules, which means review of especially big or complex
+  subsystems actually scales.
 
 * When facing a locking bug it's tempting to try and fix it just in the affected
   code. By repeating that often enough a locking scheme that protects data
