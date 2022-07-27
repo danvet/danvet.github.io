@@ -165,7 +165,7 @@ neither too big nor too small:
   big vma tree has its own private lock. Or when a structure has a lot of
   different locks for different member fields.
 
-  On one hand locks aren't free, the overhead of fine grained locking can
+  On one hand locks aren't free, the overhead of fine-grained locking can
   seriously hurt, especially when common operations have to take most of the
   locks anyway and so there's no chance of any concurrence benefit. Furthermore
   fine-grained locking leads to the temption of solving locking overhead with
@@ -321,16 +321,167 @@ everywhere would lead to unreclaimable references loops and there's no better
 way to break them than to make some of the references weak.
 
 Since weak references are such a standard pattern <code>struct kref</code> has
-ready-made support for them:
+ready-made support for them. The simple approach is using
+<code>kref_put_mutex()</code> with the same lock that also protects the
+structure with the weak reference. This guarantees that either the weak
+reference pointer is gone too, or there is at least somewhere still a strong
+reference around and it is therefore safe to call <code>kref_get()</code>. But
+there are some issues with this approach:
+
+* It doesn't compose to multiple weak references, at least if they are protected
+  by different locks - all the locks need to be taken before the final
+  <code>kref_put()</code> is called, which means minimally pain with lock
+  nesting and you get to hand-roll it all.
+
+* The mutex required to be held during the final put is the one which protects
+  the structure with the weak reference, and often has littel to do with the
+  object that's being destroyed. So a pretty nasty violation of the [big dumb
+  lock pattern](#level-1-big-dumb-lock). Furthermore the lock is held
+  over the entire cleanup function, which defeats the point of the [reference
+  counting pattern](#locking-pattern-reference-counting), which is meant to
+  enable "no locking" cleanup code. It becomes very tempting to stuff random
+  other pieces of code under the protection of this look, making it a sprawling
+  mess and violating the [principle to protect data, not
+  code](/2022/07/locking-engineering.html#protect-data-not-code) because the
+  lock held during the entire cleanup operation is protecting against that
+  cleanup code doing things, and not anymore a specific data structure.
+
+The much better approach is using <code>kref_get_unless_zero()</code>, together
+with a spinlock for your data structure containing the weak reference. This
+looks especially nifty in combination with <code>struct xarray</code>.
+
+```
+obj_find_in_cache(id)
+{
+	xa_lock();
+	obj = xa_find(id);
+	if (!kref_get_unless_zero(&obj->kref))
+		obj = NULL;
+	xa_unlock();
+
+	return obj;
+}
+```
+
+With this all the issues are resolved:
+
+* Arbitrary amounts of weak references in any kind of structures protected by
+  their own spinlock can be added, without causing dependencies between them.
+
+* In the object's cleanup function the same spinlock only needs to be held right
+  around when the weak references are removed from the lookup structure. The
+  lock critical section is no longer needlessly enlarged.
+
+
+The locking does not leak beyond the lookup structure and it's associated code
+any more, unlike with <code>kref_put_mutex()</code> and similar approaches.
+Thankfully <code>kref_get_unless_zero()</code> has become the much more popular
+approach since it was added 10 years ago!
 
 ## Locking Antipattern: Confusing Object Lifetime and Consistency
+
+We've now seen a few examples where the [no locking patterns from level
+0](#level-0-no-locking) collide in annoying ways when more locking is added to
+the point where we seem to violate the [principle to protect data, not
+code](/2022/07/locking-engineering.html#protect-data-not-code). It's worth to
+look at this a bit closer, since we can generalize what's going on here to a
+fairly abstract antipattern.
+
+The key insight is that the no locking patterns all rely memory barrier
+primitives in disguise, not classic locks, to synchronize access between
+multiple threads. In the case of the [single owner
+pattern](#locking-pattern-single-owner) there might also be blocking semantics
+involved, when the next owner needs to wait for the previous owner to finish
+processing first. These are functions like <code>flush_work()</code> or the
+various wait functions like <code>wait_event()</code> or
+<code>wait_completion()</code>.
+
+Calling these barrier functions while holding locks commonly leads to issues:
+
+* Blocking functions like <code>flush_work()</code> pull in every lock or other
+  dependency the work we wait on, or more generally, any of the previous owner
+  of an object needed as a so called cross-release dependency. Unfortuantely
+  lockdep does not understand these natively, and the usual tricks to add manual
+  annotations have severe limitations. There's work ongoing to add
+  [cross-release dependency tracking to
+  lockdep](https://lwn.net/Articles/709849/), but nothing looks anywhere near
+  ready to merge. Since these dependency chains can be really long and get ever
+  longer when more code is added to a worker - dependencies are pulled in even
+  if only a single lock is held at any given time - this can quickly become a
+  nightmare to untangle.
+
+* Often the requirement to hold a lock over these barrier type functions comes
+  from the fact that the object would disappear. Or otherwise undergo some
+  serious confusion about it's lifetime state - not just whether it's still
+  alive or getting destroyed, but also who exactly owns it or whether it's maybe
+  a resurrected zombie representing a different instance now. This encourages
+  that the lock morphes from a "protects some specific data" to "protects
+  specific code from running" design, leading to all the code maintenance issues
+  discussed in the [protect data, not code
+  principle](/2022/07/locking-engineering.html#protect-data-not-code).
+
+For these reasons try as hard as possible to not hold any locks, or as few as
+feasible, when calling any of these memory barriers in disguise functions used
+to manage object lifetime or ownership in general. Or the inverted antipattern,
+when this is not the case. We have seen two specific instances thus far:
+
+* <code>kref_put_mutex</code> instead of <code>kref_get_unless_zero()</code> in
+  the [weak reference pattern](#locking-pattern-weak-reference). This is a
+  special case of the [reference counting
+  pattern](#locking-pattern-reference-counting), but with some finer-grained
+  locking added to support weak references.
+
+* Calling <code>flush_work()</code> while holding locks in the [async
+  worker](#locking-pattern-async-processing). This is a special case of the
+  [single owner pattern](#locking-pattern-single-owner), again with a bit more
+  locking added to support some mutable state.
+
+We will see some more, but the antipattern holds in general as a source of
+troubles.
 
 <h2 style="background:orange;"> Level 2.5: Splitting Locks for Performance
 Reasons</h2>
 
-- read-write locks might apply
+We've locked at a pile of functional reasons for complicating the locking
+design, but sometimes you need to add more fine-grained locking for performance
+reasons. This is already getting dangerous, because it's very tempting to tune
+some microbenchmark just because we can, or maybe delude ourselves that it will
+be needed in the future. Therefore only complicate your locking if:
 
-- w/w mutex
+* You have actual real world benchmarks with workloads relevant to users that
+  show measurbale gains outside of statistical noise.
+
+* You've fully exhausted architectural changes to outright avoid the overhead,
+  like io_uring pre-registering file descriptors locally to avoid manipulating
+  the file descriptor table.
+
+* You've fully exhausted algorithim improvements like batching up operations to
+  amortize locking overhead better.
+
+Only then make your future maintenance pain guaranteed worse by applying more
+tricky locking than the bare minimum necessary for correctness. Still, go with the simplest approach, often converting a lock to its read-write
+variant is good enough. Sometimes this isn't enough, and you actually have to
+split up a lock into more fine-grained locks to achieve more parallelism and
+less contention among threads. Note that doing so blindly will backfire because
+locks are not free. When common operations still have to take most of the locks
+anyway, even if it's only for short time and in strict succession, the
+performance hit on single threaded workloads will not justify any benefit in
+more threaded use-cases.
+
+Another issue with more fine-grained locking is that often you cannot define a
+strict nesting hierarchy, or worse might need to take multiple locks of the same
+object or lock class. I've written previously about this specific issues, and
+more importantly, [how to teach lockdep about lock nesting, the bad and the
+good ways](/2020/08/lockdep-false-positives.html#fighting-lockdep-badly).
+
+One really entertaining, for bystanders, story from the GPU subsystem is that we
+really screwed this up for good by defacto allowing userspace to control the
+lock order of all the objects invovled, and furthermore expecting that disjoint
+operations can actually proceed without contention. If you ever manage to repeat
+this feat you can take a look at the [wait-wound
+mutexes](https://www.kernel.org/doc/html/latest/locking/ww-mutex-design.html).
+Or if you just want some pretty graphs, [LWN has an old article about wait-wound
+mutexes too](https://lwn.net/Articles/548909/).
 
 <h2 style="background:red"> Level 3: Lockless Tricks</h2>
 
@@ -362,4 +513,14 @@ rw_semaphore</code>, or any of the others provided in the Linux kernel.
 
 ### Locking Antipattern: Atomics
 
+Reasons why Linux atomics are bad:
 
+- Full list with all the non-atomic atomics
+- Not ordered by default, and people don't understand memory barriers
+
+Plus use-cases that are all terrible:
+- half-asses ill defined rwsem without lockdep support
+
+- stat counter
+
+- terrible attempts at reinventing level 0 patterns
