@@ -378,7 +378,7 @@ any more, unlike with <code>kref_put_mutex()</code> and similar approaches.
 Thankfully <code>kref_get_unless_zero()</code> has become the much more popular
 approach since it was added 10 years ago!
 
-## Locking Antipattern: Confusing Object Lifetime and Consistency
+## Locking Antipattern: Confusing Object Lifetime and Data Consistency
 
 We've now seen a few examples where the [no locking patterns from level
 0](#level-0-no-locking) collide in annoying ways when more locking is added to
@@ -524,3 +524,43 @@ Plus use-cases that are all terrible:
 - stat counter
 
 - terrible attempts at reinventing level 0 patterns
+
+### Locking Antipattern: <code>preempt/local_irq/bh_disable()</code> and Friends ...
+
+This one is simple: Lockdep doesn't understand them. The real-time folks hate
+them. Whatever it is you're doing, user proper primitives instead, and if you
+need some kind of synchronization primitive - maybe to avoid the [lifetime vs.
+consistency antipattern
+pitfalls](#locking-antipattern-confusing-object-lifetime-and-data-consistency) -
+then use the proper functions for that like <code>synchronize_irq()</code>.
+
+### Locking Antipattern: Memory Barriers
+
+Or more often, lack of them, incorrect or imbalanced use of barriers, badly or
+wrongly or just not at all documented memory barriers, or ...
+
+Fact is that exceedingly most kernel hackers, and more so driver people, have no
+useful understanding of the Linux kernel's memory model, and should never be
+caught entertaining use of explicit memory barriers in production code.
+Personally I'm pretty good at spotting holes, but I've had to learn the hard way
+that I'm not even close to being able to positively prove correctness. And for
+better or worse, nothing short of that tends to cut it.
+
+For a still fairly cursory discussion read the [LWN series on lockless
+algorithms](https://lwn.net/Articles/844224/). Anything less than that and it's
+fairly safe to assume there's an issue.
+
+Now don't get me wrong, I love to read an article by Paul McKenney on RCU or
+watch a talk, but aside from extreme exceptions this kind of maintenance cost
+has simply no justification in a driver subsystem. At least unless it's packaged
+in a driver hacker proof library or core kernel service of some sorts and all
+the memory barriers are well hidden away were ordinary fools like me can't touch
+them.
+
+## Closing Thoughts
+
+I hope you enjoyed this little tour of propressively more worrying levels of
+locking engineering, with really just one key take away:
+
+Simple, dumb locking is good locking, since you have a fighting chance to make
+it correct locking.
