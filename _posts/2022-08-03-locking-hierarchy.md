@@ -564,7 +564,6 @@ Firstly, Linux atomics have two annoying properties just two start:
     non-atomic variants have he <code>__set_bit()</code> double underscores to
     scare you away from using them, despite that these are the ones you really
     want by default.
-  - 
 
 Those are a lot of unnecessary trap doors, but the real bad part is what people
 tend to build with atomic instructions:
@@ -589,7 +588,7 @@ tend to build with atomic instructions:
   you really want your <code>shrinker->count_objects()</code> to not have to
   acquire any locks. Otherwise in a memory intense workload all threads are
   stuck on the one thread doing actual reclaim holding the same lock in your
-  <code>shrinker->scan_objects()<code> function.
+  <code>shrinker->scan_objects()</code> function.
 
 In short, unless you're actually building a new locking or synchronization
 primitive in the core kernel, you most likely do not want to get seen even
