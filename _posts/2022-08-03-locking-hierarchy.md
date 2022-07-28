@@ -600,7 +600,9 @@ looking at atomic operations as an option.
 ### Locking Antipattern: <code>preempt/local_irq/bh_disable()</code> and Friends ...
 
 This one is simple: Lockdep doesn't understand them. The real-time folks hate
-them. Whatever it is you're doing, user proper primitives instead. If you need
+them. Whatever it is you're doing, use proper primitives instead, and at least
+read up on the [LWN coverage on why these are
+problematic what to do instead](https://lwn.net/Articles/828477/). If you need
 some kind of synchronization primitive - maybe to avoid the [lifetime vs.
 consistency antipattern
 pitfalls](#locking-antipattern-confusing-object-lifetime-and-data-consistency) -
