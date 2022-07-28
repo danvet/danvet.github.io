@@ -536,7 +536,7 @@ Yeah RCU is really awesome and impressive, but it comes at serious costs:
   locking antipatterns. Worse RCU tends to spread them to ever more objects and
   ever more fields within them.
  
-All together all freely using RCU achieves is proofing that there really is no
+All together all freely using RCU achieves is proving that there really is no
 bottom on the code maintainability scale. It is not a great day when your driver
 dies in <code>synchronize_rcu()</code> and lockdep has no idea what's going on,
 and I've seen such days.
@@ -549,7 +549,7 @@ down it's hole and have not realized it yet.
 
 ### Locking Antipattern: Atomics
 
-Firstly, Linux atomics have two annoying properties just two start:
+Firstly, Linux atomics have two annoying properties just to start:
 
 * Unlike e.g. C++ atomics in userspace they are unordered or weakly ordered
   by default in a lot of cases. A lot of people are surprised by that, and then
@@ -557,7 +557,7 @@ Firstly, Linux atomics have two annoying properties just two start:
   sprinkle over the code to make it work correctly.
 
 * Worse, many atomic functions neither operate on the atomic types
-  <code>atomic_t</code> and <code>atomic65_t</code> nor have <code>atomic</code>
+  <code>atomic_t</code> and <code>atomic64_t</code> nor have <code>atomic</code>
   anywhere in their names, and so pose serious pitfalls to reviewers:
   - <code>READ_ONCE()</code> and <code>WRITE_ONCE</code> for volatile stores and
     loads.
