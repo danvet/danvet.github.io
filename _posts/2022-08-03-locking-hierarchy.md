@@ -623,8 +623,8 @@ algorithms](https://lwn.net/Articles/844224/). If the code comments and commit
 message are anything less rigorous than that it's fairly safe to assume there's
 an issue.
 
-Now don't get me wrong, I love to read an article by Paul McKenney on RCU or
-watch a talk like anyone else to get my brain fried properly. But aside from
+Now don't get me wrong, I love to read an article or watch a talk by Paul
+McKenney on RCU like anyone else to get my brain fried properly. But aside from
 extreme exceptions this kind of maintenance cost has simply no justification in
 a driver subsystem. At least unless it's packaged in a driver hacker proof
 library or core kernel service of some sorts with all the memory barriers well
