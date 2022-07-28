@@ -15,8 +15,8 @@ progressively more crispy red indicating how close to the burning fire you are!
 Think of it as Dante's Inferno, but for locking.
 
 As a reminder from the intro of the first part, with locking engineering I mean
-the art of ensure that there's sufficient consistency in reading and
-manipulating data structures, and not just sprinklock <code>mutex_lock()</code>
+the art of ensuring that there's sufficient consistency in reading and
+manipulating data structures, and not just sprinkling <code>mutex_lock()</code>
 and <code>mutex_unlock()</code> calls around until the result looks reasonable
 and lockdep has gone quiet.
 <!--more-->
@@ -28,7 +28,7 @@ extremely clever lockless tricks for a "look, no calls to
 <code>mutex_lock()</code>" feint, but an overall design which guarantees that
 any writers cannot exist concurrently with any other access at all. This
 removes the need for consistency guarantees while accessing an object at the
-architecturaly level.
+architectural level.
 
 There's a few standard patterns to achieve locking nirvana.
 
@@ -47,20 +47,19 @@ The usual pattern is:
 anything else you might need. Often subsytems provide initialization helpers for
 objects that driver can subclass through embedding, e.g.
 <code>drm_connector_init()</code> for initializing a kernel modesetting output
-object. Often the subsystem provides additional functions to set up different
-or optional aspects of an object, e.g.
-<code>drm_connector_attach_encoder()</code> sets up the invariant links to the
-preceding element in a kernel modesetting display chain.
+object. Additional functions can set up different or optional aspects of an
+object, e.g.  <code>drm_connector_attach_encoder()</code> sets up the invariant
+links to the preceding element in a kernel modesetting display chain.
 
 2. The fully formed object is published to the world, in the kernel this often
 happens by registering it under some kind of identifier. This could be a global
 identifier like <code>register_chrdev()</code> for character devices, something attached to a device like
-registering on a driver like <code>drm_connector_register()</code> or some
-<code>struct xarray</code> in the file private structure. Note that this step
-here requires memory barriers of some sort. This means if you hand roll the data
-structure like a list or lookup tree with your own fancy locking scheme instead
-of using existing standard interfaces you are on a fast path to level 3 locking
-hell. Don't do that.
+registering a new display output on a driver with
+<code>drm_connector_register()</code> or some <code>struct xarray</code> in the
+file private structure. Note that this step here requires memory barriers of
+some sort. If you hand roll the data structure like a list or lookup
+tree with your own fancy locking scheme instead of using existing standard
+interfaces you are on a fast path to level 3 locking hell. Don't do that.
 
 3. From this point on there are no consistency issues anymore and all threads
 can access the object without any locking.
@@ -90,17 +89,18 @@ interfaces like <code>struct completion</code> or even better libraries like the
 workqueue subsystem here.
 
 Note that the handover can also be chained or split up, e.g. for a nonblocking
-atomic kernel modeset request there's three asynchronous processing pieces
+atomic kernel modeset requests there's three asynchronous processing pieces
 involved:
 
-* The main worker, which pushes the display state update to the hardware.
+* The main worker, which pushes the display state update to the hardware and
+  which is enqueued with <code>queue_work()</code>.
 
 * The userspace completion event handling built around <code>struct
   drm_pending_event</code> and generally handed off to the interrupt handler of
   the driver from the main worker and processed in the interrupt handler.
 
-* The cleanup of the no longer used old scannout buffers from the preceeding
-  update. The synchronization between the preceeding update and the cleanup is
+* The cleanup of the no longer used old scannout buffers from the preceding
+  update. The synchronization between the preceding update and the cleanup is
   done through <code>struct completion</code> to ensure that there's only ever a
   single worker which owns a state structure and is allowed to change it.
 
@@ -115,7 +115,7 @@ the rescue!
   exists for as long as the pointer is in use. Usually that's done by calling
   <code>kref_get()</code> when making a copy of the pointer, but implied
   references by e.g. continuing to hold a lock that protects a different pointer
-  are fine too.
+  are often good enough too for a temporary pointer.
 
 * The cleanup code runs when the last reference is released with
   <code>kref_put()</code>. Note that this again requires memory barriers to work
@@ -125,9 +125,9 @@ the rescue!
 Note that this scheme falls apart when released objects are put into some kind
 of cache and can be resurrected. In that case your cleanup code needs to somehow
 deal with these zombies and ensure there's no confusion, and vice versa any code
-that resurrects a zombie needs to deal wooden spikes the cleanup code might
+that resurrects a zombie needs to deal the wooden spikes the cleanup code might
 throw at an inopportune time. The worst example of this kind is
-<code>SLAB_TYPESAFE_BY_RCU</code>, where readers only protected with
+<code>SLAB_TYPESAFE_BY_RCU</code>, where readers that are only protected with
 <code>rcu_read_lock()</code> may need to deal with objects potentially going
 through simultaneous zombie resurrections, potentially multiple times, while
 the readers are trying to figure out what is going on. This generally leads to 
@@ -165,23 +165,23 @@ neither too big nor too small:
   big vma tree has its own private lock. Or when a structure has a lot of
   different locks for different member fields.
 
-  On one hand locks aren't free, the overhead of fine-grained locking can
+  One issue is that locks aren't free, the overhead of fine-grained locking can
   seriously hurt, especially when common operations have to take most of the
-  locks anyway and so there's no chance of any concurrence benefit. Furthermore
+  locks anyway and so there's no chance of any concurrency benefit. Furthermore
   fine-grained locking leads to the temption of solving locking overhead with
   ever more clever lockless tricks, instead of radically simplifying the
-  approach.
+  design.
 
-  The other main issue is that more locks improve the odds for lockiing
-  inversions, and those can be tough nuts to crack. Again trying to solve this
-  with more lockless tricks to avoid inversions is tempting, and again in most
-  cases the wrong approach.
+  The other issue is that more locks improve the odds for locking inversions,
+  and those can be tough nuts to crack. Again trying to solve this with more
+  lockless tricks to avoid inversions is tempting, and again in most cases the
+  wrong approach.
 
-Ideally, your big dumb would always be right-sized, even everytime the
-requirements on the datastructures changes. But magic 8 balls tend to be on
-short supply, and you tend to only find out that your guess was wrong when the
-pain if the lock being too big or too small is already substantial, and the
-inherit struggles of resizing a lock as the code evolves keeps pushing you
+Ideally, your big dumb lock would always be right-sized everytime the
+requirements on the datastructures changes. But working magic 8 balls tend to be
+on short supply, and you tend to only find out that your guess was wrong when
+the pain of the lock being too big or too small is already substantial. The
+inherit struggles of resizing a lock as the code evolves then keeps pushing you
 further away from the optimum instead of closer. Good luck!
 
 <h2 style="background:yellow;"> Level 2: Fine-grained Locking</h2>
@@ -221,9 +221,9 @@ protect the list with all the objects, but this does not always work:
   virtual address spaces of different processes.
 
 * The constraints of calling contexts for adding or removing objects from the
-  list are different and incompatible from the requirements when walking the
-  list itself. The main example here are LRU lists where the shrinker needs to
-  be able to walk the list from reclaim context, whereas the superior object
+  list could be different and incompatible from the requirements when walking
+  the list itself. The main example here are LRU lists where the shrinker needs
+  to be able to walk the list from reclaim context, whereas the superior object
   locks often have a need to allocate memory while holding each lock. Those
   object locks the shrinker can then only trylock, which is generally good
   enough, but only being able to trylock the LRU list lock itself is not.
@@ -308,7 +308,7 @@ Note that in some cases the superior lock doesn't need to exist, e.g.
 owner pattern](#locking-pattern-single-owner), but drivers might have some need
 for some further decoupled asynchronous processing, e.g. for handling the
 content protect or link training machinery. In that case only the sublock for
-the mutable state shared with the worker exists.
+the mutable driver private state shared with the worker exists.
 
 ### Locking Pattern: Weak References
 
@@ -323,18 +323,18 @@ way to break them than to make some of the references weak.
 Since weak references are such a standard pattern <code>struct kref</code> has
 ready-made support for them. The simple approach is using
 <code>kref_put_mutex()</code> with the same lock that also protects the
-structure with the weak reference. This guarantees that either the weak
+structure containing the weak reference. This guarantees that either the weak
 reference pointer is gone too, or there is at least somewhere still a strong
 reference around and it is therefore safe to call <code>kref_get()</code>. But
 there are some issues with this approach:
 
 * It doesn't compose to multiple weak references, at least if they are protected
   by different locks - all the locks need to be taken before the final
-  <code>kref_put()</code> is called, which means minimally pain with lock
-  nesting and you get to hand-roll it all.
+  <code>kref_put()</code> is called, which means minimally some pain with lock
+  nesting and you get to hand-roll it all to boot.
 
 * The mutex required to be held during the final put is the one which protects
-  the structure with the weak reference, and often has littel to do with the
+  the structure with the weak reference, and often has little to do with the
   object that's being destroyed. So a pretty nasty violation of the [big dumb
   lock pattern](#level-1-big-dumb-lock). Furthermore the lock is held
   over the entire cleanup function, which defeats the point of the [reference
@@ -342,7 +342,7 @@ there are some issues with this approach:
   enable "no locking" cleanup code. It becomes very tempting to stuff random
   other pieces of code under the protection of this look, making it a sprawling
   mess and violating the [principle to protect data, not
-  code](/2022/07/locking-engineering.html#protect-data-not-code) because the
+  code](/2022/07/locking-engineering.html#protect-data-not-code): The
   lock held during the entire cleanup operation is protecting against that
   cleanup code doing things, and not anymore a specific data structure.
 
@@ -370,24 +370,24 @@ With this all the issues are resolved:
 
 * In the object's cleanup function the same spinlock only needs to be held right
   around when the weak references are removed from the lookup structure. The
-  lock critical section is no longer needlessly enlarged.
+  lock critical section is no longer needlessly enlarged, we're back to
+  protecting data instead of code.
 
-
-The locking does not leak beyond the lookup structure and it's associated code
-any more, unlike with <code>kref_put_mutex()</code> and similar approaches.
-Thankfully <code>kref_get_unless_zero()</code> has become the much more popular
-approach since it was added 10 years ago!
+With both together the locking does no longer leak beyond the lookup structure
+and it's associated code any more, unlike with <code>kref_put_mutex()</code> and
+similar approaches.  Thankfully <code>kref_get_unless_zero()</code> has become
+the much more popular approach since it was added 10 years ago!
 
 ## Locking Antipattern: Confusing Object Lifetime and Data Consistency
 
-We've now seen a few examples where the [no locking patterns from level
+We've now seen a few examples where the ["no locking" patterns from level
 0](#level-0-no-locking) collide in annoying ways when more locking is added to
 the point where we seem to violate the [principle to protect data, not
 code](/2022/07/locking-engineering.html#protect-data-not-code). It's worth to
 look at this a bit closer, since we can generalize what's going on here to a
-fairly abstract antipattern.
+fairly high-level antipattern.
 
-The key insight is that the no locking patterns all rely memory barrier
+The key insight is that the "no locking" patterns all rely on memory barrier
 primitives in disguise, not classic locks, to synchronize access between
 multiple threads. In the case of the [single owner
 pattern](#locking-pattern-single-owner) there might also be blocking semantics
@@ -399,7 +399,7 @@ various wait functions like <code>wait_event()</code> or
 Calling these barrier functions while holding locks commonly leads to issues:
 
 * Blocking functions like <code>flush_work()</code> pull in every lock or other
-  dependency the work we wait on, or more generally, any of the previous owner
+  dependency the work we wait on, or more generally, any of the previous owners
   of an object needed as a so called cross-release dependency. Unfortuantely
   lockdep does not understand these natively, and the usual tricks to add manual
   annotations have severe limitations. There's work ongoing to add
@@ -415,15 +415,16 @@ Calling these barrier functions while holding locks commonly leads to issues:
   serious confusion about it's lifetime state - not just whether it's still
   alive or getting destroyed, but also who exactly owns it or whether it's maybe
   a resurrected zombie representing a different instance now. This encourages
-  that the lock morphes from a "protects some specific data" to "protects
+  that the lock morphes from a "protects some specific data" to a "protects
   specific code from running" design, leading to all the code maintenance issues
   discussed in the [protect data, not code
   principle](/2022/07/locking-engineering.html#protect-data-not-code).
 
 For these reasons try as hard as possible to not hold any locks, or as few as
 feasible, when calling any of these memory barriers in disguise functions used
-to manage object lifetime or ownership in general. Or the inverted antipattern,
-when this is not the case. We have seen two specific instances thus far:
+to manage object lifetime or ownership in general. The antipattern here is
+abusing locks to fix lifetime issues. We have seen two specific instances thus
+far:
 
 * <code>kref_put_mutex</code> instead of <code>kref_get_unless_zero()</code> in
   the [weak reference pattern](#locking-pattern-weak-reference). This is a
@@ -574,7 +575,7 @@ tend to build with atomic instructions:
   what they built. That's an impressive violation of the ["Make it Correct"
   principle](/2022/07/locking-engineering.html#2-make-it-correct).
 
-* It seems also very tempting to build terrible variations of the [no lock
+* It seems also very tempting to build terrible variations of the ["no locking"
   patterns](#level-0-no-locking). It's very easy to screw them up by extending
   them in a bad way, e.g. reference counting with weak reference or RCU
   optimizations done wrong very quickly leads to a complete mess. There's a
