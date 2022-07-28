@@ -181,7 +181,7 @@ Ideally, your big dumb lock would always be right-sized everytime the
 requirements on the datastructures changes. But working magic 8 balls tend to be
 on short supply, and you tend to only find out that your guess was wrong when
 the pain of the lock being too big or too small is already substantial. The
-inherit struggles of resizing a lock as the code evolves then keeps pushing you
+inherent struggles of resizing a lock as the code evolves then keeps pushing you
 further away from the optimum instead of closer. Good luck!
 
 <h2 style="background:yellow;"> Level 2: Fine-grained Locking</h2>
@@ -191,7 +191,7 @@ functional reasons that force us to go beyond the single lock for each logical
 object approach. This section will go through a few of the common examples, and
 the usual pitfalls to avoid.
 
-But before we dwelve into details remember to document in kerneldoc with the
+But before we delve into details remember to document in kerneldoc with the
 inline per-member kerneldoc comment style once you go beyond a simple single
 lock per object approach. It's the best place for future bug fixers and
 reviewers - meaning you - to find the rules for how at least things were meant
@@ -415,7 +415,7 @@ Calling these barrier functions while holding locks commonly leads to issues:
   serious confusion about it's lifetime state - not just whether it's still
   alive or getting destroyed, but also who exactly owns it or whether it's maybe
   a resurrected zombie representing a different instance now. This encourages
-  that the lock morphes from a "protects some specific data" to a "protects
+  that the lock morphs from a "protects some specific data" to a "protects
   specific code from running" design, leading to all the code maintenance issues
   discussed in the [protect data, not code
   principle](/2022/07/locking-engineering.html#protect-data-not-code).
@@ -513,32 +513,33 @@ Yeah RCU is really awesome and impressive, but it comes at serious costs:
   consistency
   concerns](#locking-antipattern-confusing-object-lifetime-and-data-consistency)
   to a virtue. <code>rcu_read_lock()</code> gives you both a read-side critical
-  section and it extends the lifetime of any RCU protected object. There's
+  section *and* it extends the lifetime of any RCU protected object. There's
   absolutely no way you can avoid that antipattern, it's built in.
 
   Worse, RCU read-side critical section nest rather freely, which means unlike
-  real locks abusing locks to keep objects alive won't run into nasty locking
-  inversion issues when you pull that stunt over different objects or classes of
-  objects. Using locks to paper over lifetime issues is bad, but with RCU it's
-  weapons-grade levels of dangerous.
+  with real locks abusing them to keep objects alive won't run into nasty locking
+  inversion issues when you pull that stunt with nesting different objects or
+  classes of objects. Using locks to paper over lifetime issues is bad, but with
+  RCU it's weapons-grade levels of dangerous.
 
-* Equally badly, RCU practically forces you to deal with zombie objects, which
+* Equally nasty, RCU practically forces you to deal with zombie objects, which
   breaks the [reference counting pattern](#locking-pattern-reference-counting)
   in annoying ways.
 
-* The fuel that feeds the RCU pain on top is that breaking out of RCU is costly
-  and kinda defeats the point, and hence there's a huge temptation to delay this
-  as far as possible. Meaning check as many things quickly and derefence as many
-  pointers under RCU protection as you can, before you take a real lock or
-  upgrade to a proper reference with <code>kref_get_unless_zero()</code>.
+* On top of all this breaking out of RCU is costly and kinda defeats the point,
+  and hence there's a huge temptation to delay this as long as possible. Meaning
+  check as many things and derefence as many pointers under RCU protection as
+  you can, before you take a real lock or upgrade to a proper reference with
+  <code>kref_get_unless_zero()</code>.
 
-  Unless extreme restraint is applied this means that the issues RCU has on
-  leading you towards locking antipatterns tend to spread to ever more objects
-  and ever more fields within them.
+  Unless extreme restraint is applied this results in RCU leading you towards
+  locking antipatterns. Worse RCU tends to spread them to ever more objects and
+  ever more fields within them.
  
-All together all freely using RCU achieves is proof that there really is no
+All together all freely using RCU achieves is proofing that there really is no
 bottom on the code maintainability scale. It is not a great day when your driver
-dies in <code>synchronize_rcu()</code> and lockdep has no idea what's going on.
+dies in <code>synchronize_rcu()</code> and lockdep has no idea what's going on,
+and I've seen such days.
 
 Personally I think in driver subsytem the most that's still a legit and
 justified use of RCU is for object lookup with <code>struct xarray</code> and
@@ -550,20 +551,20 @@ down it's hole and have not realized it yet.
 
 Firstly, Linux atomics have two annoying properties just two start:
 
-* Unlike atomics in userspace like in C++ they are unordered or weakly ordered
+* Unlike e.g. C++ atomics in userspace they are unordered or weakly ordered
   by default in a lot of cases. A lot of people are surprised by that, and then
   have an even harder time understanding the memory barriers they need to
   sprinkle over the code to make it work correctly.
 
 * Worse, many atomic functions neither operate on the atomic types
   <code>atomic_t</code> and <code>atomic65_t</code> nor have <code>atomic</code>
-  anywhere in their names, and so pose serious pitfalls:
+  anywhere in their names, and so pose serious pitfalls to reviewers:
   - <code>READ_ONCE()</code> and <code>WRITE_ONCE</code> for volatile stores and
     loads.
-  - <code>cmpxchg</code> and the various variants of atomic exchange with or
+  - <code>cmpxchg()</code> and the various variants of atomic exchange with or
     without a compare operation.
   - Atomic bitops like <code>set_bit()</code> are all atomic. Worse, their
-    non-atomic variants have he <code>__set_bit()</code> double underscores to
+    non-atomic variants have the <code>__set_bit()</code> double underscores to
     scare you away from using them, despite that these are the ones you really
     want by default.
 
@@ -571,26 +572,26 @@ Those are a lot of unnecessary trap doors, but the real bad part is what people
 tend to build with atomic instructions:
 
 * I've seen at least three different, incomplete and ill-defined
-  reimplementation of read write semaphores without lockdep support. Reinventing
+  reimplementations of read write semaphores without lockdep support. Reinventing
   completions is also pretty popular. Worse, the folks involved didn't realize
   what they built. That's an impressive violation of the ["Make it Correct"
   principle](/2022/07/locking-engineering.html#2-make-it-correct).
 
-* It seems also very tempting to build terrible variations of the ["no locking"
+* It seems very tempting to build terrible variations of the ["no locking"
   patterns](#level-0-no-locking). It's very easy to screw them up by extending
   them in a bad way, e.g. reference counting with weak reference or RCU
-  optimizations done wrong very quickly leads to a complete mess. There's a
-  reasons why you really should never deviate from these.
+  optimizations done wrong very quickly leads to a complete mess. There are 
+  reasons why you should never deviate from these.
 
-* What looks innocent are statistics counters in atomics, but almost always
-  there's already a lock you could take instead of free floating counters. Often
-  with better code organization to boot since the statistics for a list and it's
-  manipulation are then closer together. There are some exceptions with real
-  performance justification, a recent one I've seen are memory shrinkers where
-  you really want your <code>shrinker->count_objects()</code> to not have to
-  acquire any locks. Otherwise in a memory intense workload all threads are
-  stuck on the one thread doing actual reclaim holding the same lock in your
-  <code>shrinker->scan_objects()</code> function.
+* What looks innocent are statistical counters with atomics, but almost always
+  there's already a lock you could take instead of unordered counter updates.
+  Often resulting in better code organization to boot since the statistics for a
+  list and it's manipulation are then closer together. There are some exceptions
+  with real performance justification, a recent one I've seen is memory
+  shrinkers where you really want your <code>shrinker->count_objects()</code> to
+  not have to acquire any locks.  Otherwise in a memory intense workload all
+  threads are stuck on the one thread doing actual reclaim holding the same lock
+  in your <code>shrinker->scan_objects()</code> function.
 
 In short, unless you're actually building a new locking or synchronization
 primitive in the core kernel, you most likely do not want to get seen even
@@ -623,11 +624,11 @@ message are anything less rigorous than that it's fairly safe to assume there's
 an issue.
 
 Now don't get me wrong, I love to read an article by Paul McKenney on RCU or
-watch a talk like anyone else to get my brain fried properly, but aside from
+watch a talk like anyone else to get my brain fried properly. But aside from
 extreme exceptions this kind of maintenance cost has simply no justification in
 a driver subsystem. At least unless it's packaged in a driver hacker proof
-library or core kernel service of some sorts and all the memory barriers are
-well hidden away were ordinary fools like me can't touch them.
+library or core kernel service of some sorts with all the memory barriers well
+hidden away where ordinary fools like me can't touch them.
 
 ## Closing Thoughts
 
