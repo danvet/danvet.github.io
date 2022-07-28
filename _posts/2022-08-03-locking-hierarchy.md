@@ -99,7 +99,7 @@ involved:
   drm_pending_event</code> and generally handed off to the interrupt handler of
   the driver from the main worker and processed in the interrupt handler.
 
-* The cleanup of the no longer used old scannout buffers from the preceding
+* The cleanup of the no longer used old scanout buffers from the preceding
   update. The synchronization between the preceding update and the cleanup is
   done through <code>struct completion</code> to ensure that there's only ever a
   single worker which owns a state structure and is allowed to change it.
@@ -141,7 +141,7 @@ trying to implement clever caching of any kind.
 
 It would be great if nothing ever changes, but sometimes that cannot be avoided.
 At that point you add a single lock for each logical object. An object could be
-just a single structure, but it could also be multiple structure that are
+just a single structure, but it could also be multiple structures that are
 dynamically allocated and freed under the protection of that single big dumb
 lock, e.g. when managing GPU virtual address space with different mappings.
 
@@ -443,14 +443,14 @@ troubles.
 <h2 style="background:orange;"> Level 2.5: Splitting Locks for Performance
 Reasons</h2>
 
-We've locked at a pile of functional reasons for complicating the locking
+We've looked at a pile of functional reasons for complicating the locking
 design, but sometimes you need to add more fine-grained locking for performance
 reasons. This is already getting dangerous, because it's very tempting to tune
 some microbenchmark just because we can, or maybe delude ourselves that it will
 be needed in the future. Therefore only complicate your locking if:
 
 * You have actual real world benchmarks with workloads relevant to users that
-  show measurbale gains outside of statistical noise.
+  show measurable gains outside of statistical noise.
 
 * You've fully exhausted architectural changes to outright avoid the overhead,
   like io_uring pre-registering file descriptors locally to avoid manipulating
@@ -461,25 +461,26 @@ be needed in the future. Therefore only complicate your locking if:
 
 Only then make your future maintenance pain guaranteed worse by applying more
 tricky locking than the bare minimum necessary for correctness. Still, go with the simplest approach, often converting a lock to its read-write
-variant is good enough. Sometimes this isn't enough, and you actually have to
-split up a lock into more fine-grained locks to achieve more parallelism and
-less contention among threads. Note that doing so blindly will backfire because
-locks are not free. When common operations still have to take most of the locks
-anyway, even if it's only for short time and in strict succession, the
-performance hit on single threaded workloads will not justify any benefit in
-more threaded use-cases.
+variant is good enough.
+
+Sometimes this isn't enough, and you actually have to split up a lock into more
+fine-grained locks to achieve more parallelism and less contention among
+threads. Note that doing so blindly will backfire because locks are not free.
+When common operations still have to take most of the locks anyway, even if it's
+only for short time and in strict succession, the performance hit on single
+threaded workloads will not justify any benefit in more threaded use-cases.
 
 Another issue with more fine-grained locking is that often you cannot define a
 strict nesting hierarchy, or worse might need to take multiple locks of the same
-object or lock class. I've written previously about this specific issues, and
+object or lock class. I've written previously about this specific issue, and
 more importantly, [how to teach lockdep about lock nesting, the bad and the
 good ways](/2020/08/lockdep-false-positives.html#fighting-lockdep-badly).
 
-One really entertaining, for bystanders, story from the GPU subsystem is that we
-really screwed this up for good by defacto allowing userspace to control the
-lock order of all the objects invovled, and furthermore expecting that disjoint
-operations can actually proceed without contention. If you ever manage to repeat
-this feat you can take a look at the [wait-wound
+One really entertaining story from the GPU subsystem, for bystanders at least,
+is that we really screwed this up for good by defacto allowing userspace to
+control the lock order of all the objects involved in an IOCTL. Furthermore
+disjoint operations should actually proceed without contention. If
+you ever manage to repeat this feat you can take a look at the [wait-wound
 mutexes](https://www.kernel.org/doc/html/latest/locking/ww-mutex-design.html).
 Or if you just want some pretty graphs, [LWN has an old article about wait-wound
 mutexes too](https://lwn.net/Articles/548909/).
