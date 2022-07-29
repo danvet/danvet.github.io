@@ -639,3 +639,5 @@ locking engineering, with really just one key take away:
 
 Simple, dumb locking is good locking, since with that you have a fighting chance
 to make it correct locking.
+
+Thanks to Daniel Stone for reading and commenting on drafts of this text.
