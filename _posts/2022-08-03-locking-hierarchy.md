@@ -282,6 +282,13 @@ work_fn(work)
 }
 ```
 
+Do not worry if you don't spot the deadlock, because it is a cross-release
+dependency between the entire <code>work_fn()</code> and
+<code>cancel_work_sync()</code> and these are a lot trickier to spot. Since
+cross-release dependencies are a entire huge topic on themselves I won't go into
+more details, a good starting point is [this LWN
+article](https://lwn.net/Articles/709849/).
+
 There's a bunch of variations of this theme, with problems in different
 scenarios:
 
@@ -318,7 +325,9 @@ reference. This could be for lookup caches, or because your userspace API
 mandates that some references do not keep the object alive - we've unfortunately
 committed that mistake in the GPU world. Or because holding full references
 everywhere would lead to unreclaimable references loops and there's no better
-way to break them than to make some of the references weak.
+way to break them than to make some of the references weak. In languages with a
+garbage collector weak references are implemented by the runtime, and so no real
+worry. But in the kernel the concept has to be implemented by hand.
 
 Since weak references are such a standard pattern <code>struct kref</code> has
 ready-made support for them. The simple approach is using
@@ -640,4 +649,4 @@ locking engineering, with really just one key take away:
 Simple, dumb locking is good locking, since with that you have a fighting chance
 to make it correct locking.
 
-Thanks to Daniel Stone for reading and commenting on drafts of this text.
+Thanks to Daniel Stone and Jason Ekstrand for reading and commenting on drafts of this text.
