@@ -219,7 +219,7 @@ design later on:
   take the per-object locks in opposite order, which often can only be resolved
   through a large-scale rewrite of all impacted subsystems.
 
-  Worse, as long as the big subsystem lock continues to be in us no one is
+  Worse, as long as the big subsystem lock continues to be in use no one is
   spotting these design issues in the code flow. Hence they will slowly get
   worse instead of the code moving towards a better structure.
 
