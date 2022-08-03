@@ -60,7 +60,7 @@ need tools to automate this, and in the Linux kernel this is lockdep.
 Therefore if lockdep doesn't understand your locking design your design is at
 fault, not lockdep. Adjust accordingly.
 
-A corrollary is that you actually need to teach lockdep your locking rules,
+A corollary is that you actually need to teach lockdep your locking rules,
 because otherwise different drivers or subsystems will end up with defacto
 incompatible nesting and dependencies. Which, as long as you never exercise them
 on the same kernel boot-up, much less same machine, wont make lockdep grumpy.
@@ -182,7 +182,7 @@ because the code-first approach tends to have a lot of issues:
   place to document the rules - in the kerneldoc of each structure or member
   field. 
 
-* A consequnce for code review is that to recheck the locking design for a code
+* A consequence for code review is that to recheck the locking design for a code
   first approach every function and flow has to be checked against all others,
   and changes need to be checked against all the existing code. If this is not
   done you might miss a corner cases where the locking falls apart with a race
@@ -214,7 +214,7 @@ design later on:
 
 * Also often subsystems have different entry points, e.g. consoles can be
   reached through the console subsystem directly, through vt, tty subsystems and
-  also through an enourmous pile of driver specific interfaces with the fbcon
+  also through an enormous pile of driver specific interfaces with the fbcon
   IOCTLs as an example. Attempting to split the big lock into smaller
   per-structure locks pretty much guarantees that different entry points have to
   take the per-object locks in opposite order, which often can only be resolved
@@ -233,4 +233,4 @@ make the situation worse.
 
 Stay tuned for next week's installment, which will cover what these principles
 mean when applying to practice: Going through a large pile of locking design
-patterns from the most desireable to the most hair raising complex.
+patterns from the most desirable to the most hair raising complex.
