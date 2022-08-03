@@ -7,7 +7,7 @@ tags:
 ---
 The first part of this series covered [principles of locking
 engineering](/2022/07/locking-engineering.html). This part goes through a pile
-of locking pattern and designs, from most favourable and easiest to adjust and
+of locking patterns and designs, from most favourable and easiest to adjust and
 hence resulting in a long term maintainable code base, to the least favourable
 since hardest to ensure it works correctly and stays that way while the code
 evolves. For convenience even color coded, with the dangerous levels getting
@@ -34,7 +34,7 @@ There's a few standard patterns to achieve locking nirvana.
 
 ### Locking Pattern: Immutable State
 
-_The_ lesson in graphics API design over the last decide is that immutable state
+_The_ lesson in graphics API design over the last decade is that immutable state
 objects rule, because they both lead to simpler driver stacks and also better
 performance. Vulkan instead of the OpenGL with it's ridiculous amount of
 mutable and implicit state is the big example, but atomic instead of legacy
@@ -44,7 +44,7 @@ assumption that immutable state objects are a Great Thing (tm).
 The usual pattern is:
 
 1. A single thread fully constructs an object, including any sub structures and
-anything else you might need. Often subsytems provide initialization helpers for
+anything else you might need. Often subsystems provide initialization helpers for
 objects that driver can subclass through embedding, e.g.
 <code>drm_connector_init()</code> for initializing a kernel modesetting output
 object. Additional functions can set up different or optional aspects of an
@@ -168,7 +168,7 @@ neither too big nor too small:
   One issue is that locks aren't free, the overhead of fine-grained locking can
   seriously hurt, especially when common operations have to take most of the
   locks anyway and so there's no chance of any concurrency benefit. Furthermore
-  fine-grained locking leads to the temption of solving locking overhead with
+  fine-grained locking leads to the temptation of solving locking overhead with
   ever more clever lockless tricks, instead of radically simplifying the
   design.
 
@@ -409,7 +409,7 @@ Calling these barrier functions while holding locks commonly leads to issues:
 
 * Blocking functions like <code>flush_work()</code> pull in every lock or other
   dependency the work we wait on, or more generally, any of the previous owners
-  of an object needed as a so called cross-release dependency. Unfortuantely
+  of an object needed as a so called cross-release dependency. Unfortunately
   lockdep does not understand these natively, and the usual tricks to add manual
   annotations have severe limitations. There's work ongoing to add
   [cross-release dependency tracking to
@@ -465,7 +465,7 @@ be needed in the future. Therefore only complicate your locking if:
   like io_uring pre-registering file descriptors locally to avoid manipulating
   the file descriptor table.
 
-* You've fully exhausted algorithim improvements like batching up operations to
+* You've fully exhausted algorithm improvements like batching up operations to
   amortize locking overhead better.
 
 Only then make your future maintenance pain guaranteed worse by applying more
@@ -537,7 +537,7 @@ Yeah RCU is really awesome and impressive, but it comes at serious costs:
 
 * On top of all this breaking out of RCU is costly and kinda defeats the point,
   and hence there's a huge temptation to delay this as long as possible. Meaning
-  check as many things and derefence as many pointers under RCU protection as
+  check as many things and dereference as many pointers under RCU protection as
   you can, before you take a real lock or upgrade to a proper reference with
   <code>kref_get_unless_zero()</code>.
 
@@ -550,7 +550,7 @@ bottom on the code maintainability scale. It is not a great day when your driver
 dies in <code>synchronize_rcu()</code> and lockdep has no idea what's going on,
 and I've seen such days.
 
-Personally I think in driver subsytem the most that's still a legit and
+Personally I think in driver subsystem the most that's still a legit and
 justified use of RCU is for object lookup with <code>struct xarray</code> and
 <code>kref_get_unless_zero()</code>, and cleanup handled entirely by
 <code>kfree_rcu()</code>. Anything more and you're very likely chasing a rabbit
@@ -643,7 +643,7 @@ hidden away where ordinary fools like me can't touch them.
 
 ## Closing Thoughts
 
-I hope you enjoyed this little tour of propressively more worrying levels of
+I hope you enjoyed this little tour of progressively more worrying levels of
 locking engineering, with really just one key take away:
 
 Simple, dumb locking is good locking, since with that you have a fighting chance
