@@ -15,9 +15,10 @@ two part is the writeup of the same. There are some GPU specific rules, but I
 think the key points should apply to at least apply to kernel drivers in
 general.
 
-The first part here lays out some principles, the second part builds a locking
-engineering design pattern hierarchy from the most easiest to understand and
-maintain to the most nightmare inducing approaches.
+The first part here lays out some principles, the [second part builds a locking
+engineering design pattern hierarchy](/2022/08/locking-hierarchy.html) from the
+most easiest to understand and maintain to the most nightmare inducing
+approaches.
 
 Also with locking engineering I mean the general problem of protecting data
 structures against concurrent access by multiple threads and trying to ensure
