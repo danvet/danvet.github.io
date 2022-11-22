@@ -13,26 +13,19 @@ margin-right: 1em;"><img alt="Daniel Vetter" border="0" height="320"
 src="/img/bw.jpg"
 title="" width="284" /></a>
 
-Currently I work at Intel OTC on the graphics team,
-mostly creating havoc in the kernel driver part of our stack and tightly related
-parts.
+Currently I work at Intel's Linux Cloud SE group, mostly creating havoc in
+kernel driver's given my more than a decade of work in the graphics subsystem.
+I'm also co-maintaining the graphics subsystem. I also have been drm/i915 kernel
+maintainer for a few years, but handed that all off to a great new team.
 
-I have been drm/i915 kernel maintainer for a few years, but handed that all off
-to a great new team. Still, the official git repo I maintain is at:
-[http://cgit.freedesktop.org/drm-intel](http://cgit.freedesktop.org/drm-intel)
+Most of my own code and development about all things graphic can be found on
+[gitlab.fd.o](https://gitlab.freedesktop.org/danvet).
 
-All the low-level tooling and especially all the kernel driver testcases can be
-found at:
-[http://cgit.freedesktop.org/xorg/app/intel-gpu-tools/](http://cgit.freedesktop.org/xorg/app/intel-gpu-tools/)
-
-Most of my own code and development about all things graphic can be found at:
-[http://cgit.freedesktop.org/~danvet](http://cgit.freedesktop.org/%7Edanvet)
-
-I occasionally post nonsense on twitter as [@danvet](https://twitter.com/danvet)
-but the more reliable way to contact me is to send a mail to: daniel PUNGGT
-vetter ÄT ffwll PUNGGT ch. Or ping me on IRC, I'm `danvet` on
-[OFTC](https://oftc.net/) and generally hang around on `#dri-devel` and
-`#intel-gfx`.
+I occasionally post nonsense on mastodon as <a rel="me"
+href="https://chaos.social/@sima">@sima</a>, but the more reliable way to
+contact me is to send a mail to: daniel PUNGGT vetter ÄT ffwll PUNGGT ch. Or
+ping me on IRC, I'm `danvet` on [OFTC](https://oftc.net/) and generally hang
+around on `#dri-devel` and `#intel-gfx`.
 
 Legal boilerplate: The opinions expressed on this site are mine alone and do not
 necessarily reflect the opinions or strategies of Intel Corporation or its
