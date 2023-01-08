@@ -9,7 +9,7 @@ redirect_from:
 <a
 href="/img/bw.jpg"
 imageanchor="1" style="clear: left; float: left; margin-bottom: 1em;
-margin-right: 1em;"><img alt="Daniel Vetter" border="0" height="320"
+margin-right: 1em;"><img alt="me" border="0" height="320"
 src="/img/bw.jpg"
 title="" width="284" /></a>
 

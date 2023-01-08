@@ -50,10 +50,6 @@ Comments, flames and suggestions highly welcome.
 
 
 
-Yours, Daniel
-
-
-
 PS: Quick version for people with too short attentation spans:
 
 
