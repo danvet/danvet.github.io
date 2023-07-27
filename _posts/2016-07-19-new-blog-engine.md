@@ -12,7 +12,7 @@ an archive section, and that's about all that's really needed.
 
 Comments are gone too, because I couldn't be bothered, and because everything
 seems to add Orwellian amounts of trackers. Ping [me on IRC, by mail](/about) or
-[on twitter](https://twitter.com/danvet) instead. The share buttons are also
+[on fedi](https://chaos.social/@sima) instead. The share buttons are also
 just plain links now without tracking for Twitter (because I'm there) and G+
 (because all the cool kernel hackers are there, but I'm not cool enough).
 

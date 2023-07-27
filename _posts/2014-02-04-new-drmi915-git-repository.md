@@ -2,7 +2,7 @@
 layout: post
 title: New drm/i915 Git Repository
 date: '2014-02-04T15:02:00.000-08:00'
-author: danvet
+author: sima
 tags:
 - Maintainer-Stuff
 modified_time: '2014-02-04T15:02:24.507-08:00'

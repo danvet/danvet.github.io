@@ -2,7 +2,7 @@
 layout: post
 title: ARM kernel cross compiling
 date: '2016-02-10T08:01:00.000-08:00'
-author: danvet
+author: sima
 tags:
 - Maintainer-Stuff
 modified_time: '2016-02-10T08:01:34.700-08:00'

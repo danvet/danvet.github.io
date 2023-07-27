@@ -2,7 +2,7 @@
 layout: post
 title: VT Switching with Atomic Modeset
 date: '2016-01-14T05:55:00.000-08:00'
-author: danvet
+author: sima
 tags:
 - In-Depth Tech
 modified_time: '2016-01-14T05:55:36.328-08:00'

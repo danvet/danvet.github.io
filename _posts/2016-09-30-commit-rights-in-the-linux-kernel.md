@@ -2,7 +2,7 @@
 layout: post
 title: Commit Rights in the Linux Kernel?!
 date: '2016-09-30T06:32:00.001+01:00'
-author: danvet
+author: sima
 tags: 
 - Maintainer-Stuff
 - Conferences

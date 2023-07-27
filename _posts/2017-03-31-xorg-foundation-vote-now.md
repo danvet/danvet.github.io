@@ -2,7 +2,7 @@
 layout: post
 title: X.org Foundation Election - Vote Now!
 date: '2017-03-31'
-author: danvet
+author: sima
 tags:
 - X.org
 ---

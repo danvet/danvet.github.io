@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Locking Engineering Hierarchy
-author: danvet
+author: sima
 tags:
 - In-Depth Tech
 ---

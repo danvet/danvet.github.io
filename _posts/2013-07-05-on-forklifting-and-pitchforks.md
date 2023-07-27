@@ -2,7 +2,7 @@
 layout: post
 title: On Forklifting and Pitchforks
 date: '2013-07-05T02:41:00.000-07:00'
-author: danvet
+author: sima
 tags:
 - Maintainer-Stuff
 modified_time: '2013-07-21T06:55:34.737-07:00'
@@ -51,7 +51,7 @@ For preparation the first thing to do is enable git rerere. Then it's also a
 good idea to steal all the merge resolutions from your maintainer, since
 otherwise you'll have to reconstruct them from merge commits by hand. For my
 drm-intel branches they're all getting auto-pushed to my <a
-href="http://cgit.freedesktop.org/~danvet/drm-intel/log/?h=rerere-cache">rerere-cache
+href="http://cgit.freedesktop.org/~sima/drm-intel/log/?h=rerere-cache">rerere-cache
 branch</a>. Then we need a branch based on the kernel we want to forklift
 everything onto (I tend to call that branch <b>forklift</b>/<baseline>). Plus a
 bunch of throwaway branches to prepare different backported branches so that we

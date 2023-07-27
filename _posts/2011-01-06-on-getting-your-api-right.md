@@ -2,7 +2,7 @@
 layout: post
 title: On Getting Your API Right
 date: '2011-01-06T10:42:00.000-08:00'
-author: danvet
+author: sima
 tags:
 - In-Depth Tech
 modified_time: '2011-01-06T10:42:24.725-08:00'

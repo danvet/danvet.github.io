@@ -2,7 +2,7 @@
 layout: post
 title: X.org Foundation Election - Vote Now!
 date: '2016-04-20T00:24:00.002-07:00'
-author: danvet
+author: sima
 tags:
 - X.org
 modified_time: '2016-04-20T00:24:39.792-07:00'

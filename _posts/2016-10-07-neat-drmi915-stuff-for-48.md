@@ -2,7 +2,7 @@
 layout: post
 title: Neat drm/i915 Stuff for 4.8
 date: '2016-10-07T10:00-0200'
-author: danvet
+author: sima
 tags: 
 - Kernel Relnotes
 ---

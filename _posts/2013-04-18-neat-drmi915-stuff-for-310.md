@@ -2,7 +2,7 @@
 layout: post
 title: Neat drm/i915 stuff for 3.10
 date: '2013-04-18T14:29:00.003-07:00'
-author: danvet
+author: sima
 tags:
 - Kernel RelNotes
 modified_time: '2013-07-21T06:50:00.722-07:00'
@@ -86,4 +86,4 @@ without resulting in deadlocks. And the best part is that we have full coverage
 for all these corner cases in our kernel test suite, so these bugs should be
 gone for good.
 
-Last but not least there's been the usual big pile of small&amp;large improvements all over: More vlv patches, backlight improvements and tons of bugfixes all over. For amusement maybe take a look at Chris Wilson's <b>bring a bigger gun</b> [coherence fix](http://cgit.freedesktop.org/~danvet/drm-intel/commit/?h=drm-intel-next-queued&amp;id=6ef2ba0d558e55312af8406093c62bd61216b991).
+Last but not least there's been the usual big pile of small&amp;large improvements all over: More vlv patches, backlight improvements and tons of bugfixes all over. For amusement maybe take a look at Chris Wilson's <b>bring a bigger gun</b> [coherence fix](http://cgit.freedesktop.org/~sima/drm-intel/commit/?h=drm-intel-next-queued&amp;id=6ef2ba0d558e55312af8406093c62bd61216b991).

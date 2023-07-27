@@ -2,7 +2,7 @@
 layout: post
 title: Testing Requirements for drm/i915 Features and Patches
 date: '2013-11-12T15:49:00.002-08:00'
-author: danvet
+author: sima
 tags:
 - Maintainer-Stuff
 modified_time: '2013-11-12T15:49:44.988-08:00'

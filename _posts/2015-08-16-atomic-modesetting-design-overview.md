@@ -2,7 +2,7 @@
 layout: post
 title: Atomic Modesetting Design Overview
 date: '2015-08-16T06:52:00.003-07:00'
-author: danvet
+author: sima
 tags:
 - In-Depth Tech
 modified_time: '2015-08-16T06:52:37.045-07:00'

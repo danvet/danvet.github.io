@@ -2,7 +2,7 @@
 layout: post
 title: Recent drm/i915 Testsuite Improvements
 date: '2013-08-28T02:56:00.001-07:00'
-author: danvet
+author: sima
 tags:
 - In-Depth Tech
 modified_time: '2013-08-29T09:54:33.765-07:00'

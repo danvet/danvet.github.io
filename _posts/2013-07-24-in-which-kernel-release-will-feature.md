@@ -2,7 +2,7 @@
 layout: post
 title: In Which Kernel Release Will $FEATURE Land In?
 date: '2013-07-24T14:43:00.000-07:00'
-author: danvet
+author: sima
 tags:
 - Maintainer-Stuff
 modified_time: '2013-07-24T14:43:41.802-07:00'

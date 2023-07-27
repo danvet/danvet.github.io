@@ -2,7 +2,7 @@
 layout: post
 title: Update for Atomic Display Updates
 date: '2015-01-28T09:18:00.000-08:00'
-author: danvet
+author: sima
 tags:
 - In-Depth Tech
 modified_time: '2015-01-28T09:18:55.513-08:00'

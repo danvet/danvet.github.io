@@ -2,7 +2,7 @@
 layout: post
 title: Should the X.org Foundation join SPI? Vote Now!
 date: '2016-04-24T02:14:00.001-07:00'
-author: danvet
+author: sima
 tags: 
 modified_time: '2016-04-24T02:14:48.547-07:00'
 thumbnail: /img/vote_now.jpg

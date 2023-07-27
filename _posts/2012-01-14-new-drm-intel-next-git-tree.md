@@ -2,7 +2,7 @@
 layout: post
 title: New drm-intel-next Git Tree
 date: '2012-01-14T05:33:00.000-08:00'
-author: danvet
+author: sima
 tags:
 - Maintainer-Stuff
 modified_time: '2013-07-21T06:56:15.364-07:00'
@@ -36,9 +36,9 @@ Last but not least, the new tree is available at
 
 
 
-[http://cgit.freedesktop.org/~danvet/drm-intel](http://cgit.freedesktop.org/%7Edanvet/drm-intel)
+[http://cgit.freedesktop.org/~sima/drm-intel](http://cgit.freedesktop.org/%7Edanvet/drm-intel)
 
-git://people.freedesktop.org/~danvet/drm-intel
+git://people.freedesktop.org/~sima/drm-intel
 
 
 
@@ -60,4 +60,4 @@ PS: Quick version for people with too short attentation spans:
 
 
 
-git://people.freedesktop.org/~danvet/drm-intel
+git://people.freedesktop.org/~sima/drm-intel

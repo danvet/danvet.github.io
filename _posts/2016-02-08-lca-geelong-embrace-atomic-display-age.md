@@ -2,7 +2,7 @@
 layout: post
 title: 'LCA Geelong: Embrace the Atomic Display Age'
 date: '2016-02-08T01:32:00.001-08:00'
-author: danvet
+author: sima
 tags: 
 - Conferences
 modified_time: '2016-02-08T01:32:06.305-08:00'

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Why Github can't host the Linux Kernel Community
-author: danvet
+author: sima
 tags:
 - Maintainer-Stuff
 ---

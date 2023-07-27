@@ -2,7 +2,7 @@
 layout: post
 title: drm/i915 Branches Explained
 date: '2013-07-02T06:14:00.000-07:00'
-author: danvet
+author: sima
 tags:
 - Maintainer-Stuff
 modified_time: '2014-05-26T00:13:51.456-07:00'

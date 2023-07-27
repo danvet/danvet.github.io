@@ -2,7 +2,7 @@
 layout: post
 title: Botching up ioctls
 date: '2013-11-22T01:23:00.002-08:00'
-author: danvet
+author: sima
 tags:
 - In-Depth Tech
 modified_time: '2013-11-22T01:24:24.973-08:00'

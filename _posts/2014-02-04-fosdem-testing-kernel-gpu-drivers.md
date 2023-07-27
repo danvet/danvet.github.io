@@ -2,7 +2,7 @@
 layout: post
 title: 'FOSDEM: Testing Kernel GPU Drivers'
 date: '2014-02-04T01:42:00.000-08:00'
-author: danvet
+author: sima
 tags: Conferences
 modified_time: '2014-02-13T15:32:35.886-08:00'
 blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-5608395435030887397

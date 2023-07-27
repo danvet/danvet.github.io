@@ -2,7 +2,7 @@
 layout: post
 title: GEM Overview
 date: '2011-05-04T12:11:00.000-07:00'
-author: danvet
+author: sima
 tags:
 - In-Depth Tech
 modified_time: '2013-07-21T06:58:51.484-07:00'

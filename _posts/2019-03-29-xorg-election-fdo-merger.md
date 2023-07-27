@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'X.org Elections: freedesktop.org Merger - Vote Now!'
-author: danvet
+author: sima
 ---
 <div style="text-align: center">
 <img border="0" height="320" src="/img/vote_now.jpg" width="320" />

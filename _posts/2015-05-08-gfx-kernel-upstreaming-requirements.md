@@ -2,7 +2,7 @@
 layout: post
 title: GFX Kernel Upstreaming Requirements
 date: '2015-05-08T06:21:00.001-07:00'
-author: danvet
+author: sima
 tags:
 - Maintainer-Stuff
 modified_time: '2015-05-08T06:21:08.637-07:00'
@@ -14,4 +14,4 @@ Upstreaming requirements for the DRM subsystem are a bit special since Dave Airl
 
 
 
-Any here's the [slides for my gfx kernel upstreaming requirements training](https://secure.freedesktop.org/~danvet/presentations/gfx_kmd_upstream_abi_requirements.pdf).
+Any here's the [slides for my gfx kernel upstreaming requirements training](https://secure.freedesktop.org/~sima/presentations/gfx_kmd_upstream_abi_requirements.pdf).

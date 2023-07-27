@@ -2,7 +2,7 @@
 layout: post
 title: New Kernel Modesetting Locking
 date: '2013-02-07T06:42:00.000-08:00'
-author: danvet
+author: sima
 tags:
 - In-Depth Tech
 modified_time: '2013-07-21T06:58:51.506-07:00'

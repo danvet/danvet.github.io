@@ -6,14 +6,14 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: stuff by danvet
+title: stuff by sima
 email: daniel.vetter@ffwll.ch
 description: > # this means to ignore newlines until "baseurl:"
   Vetter's ramblings on code, bugs, graphics, hw and the utter lack of
   sanity in all this.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://blog.ffwll.ch" # the base hostname & protocol for your site
-twitter_username: danvet
+fedi_username: "@sima@choas.social"
 github_username:  danvet
 permalink: /:year/:month/:title.html
 

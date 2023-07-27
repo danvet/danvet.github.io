@@ -2,7 +2,7 @@
 layout: post
 title: Better Markup for the Kernel GPU DocBook
 date: '2016-01-10T15:00:00.000-08:00'
-author: danvet
+author: sima
 tags:
 - Maintainer-Stuff
 modified_time: '2016-01-10T15:00:00.050-08:00'

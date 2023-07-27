@@ -2,7 +2,7 @@
 layout: post
 title: Awesome Atomic Advances
 date: '2016-06-06T02:41:00.002-07:00'
-author: danvet
+author: sima
 tags:
 - In-Depth Tech
 modified_time: '2016-06-06T12:06:56.307-07:00'

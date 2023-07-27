@@ -2,7 +2,7 @@
 layout: post
 title: Documentation for drm/i915
 date: '2014-06-11T11:51:00.001-07:00'
-author: danvet
+author: sima
 tags: Maintainer-Stuff
 modified_time: '2014-06-11T11:51:32.241-07:00'
 blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-6079091040906080615
@@ -13,7 +13,7 @@ So over the past few years the drm subsystem gained some very nice
 documentation. And recently we've started to follow suite with the Intel
 graphics driver. All the kernel documenation is integrated into one big DocBook
 and I regularly upload latest HTML builds of the <a
-href="http://people.freedesktop.org/~danvet/drm/">Linux DRM Developer's
+href="http://people.freedesktop.org/~sima/drm/">Linux DRM Developer's
 Guide</a>. This is built from drm-intel-nightly so has slightly fresher
 documentation (hopefully) than the usual documentation builds from Linus' main branch
 which can be found all over the place. If you want to build these yourself
@@ -22,7 +22,7 @@ simply run
 	$ make htmldocs
 
 For testing we now also have neat <a
-href="http://people.freedesktop.org/~danvet/igt/">documentation for the
+href="http://people.freedesktop.org/~sima/igt/">documentation for the
 infrastructure and helper libraries found in intel-gpu-tools</a>. The README in
 the i-g-t repository has detailed build instructions - gtkdoc is a bit more of a
 fuzz to integrate.

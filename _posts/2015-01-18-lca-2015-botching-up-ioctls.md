@@ -2,7 +2,7 @@
 layout: post
 title: 'LCA 2015: Botching Up IOCTLs'
 date: '2015-01-18T21:55:00.003-08:00'
-author: danvet
+author: sima
 tags: 
 - Conferences
 modified_time: '2015-01-18T21:55:25.511-08:00'

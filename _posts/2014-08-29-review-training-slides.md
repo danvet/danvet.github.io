@@ -2,7 +2,7 @@
 layout: post
 title: Review Training Slides
 date: '2014-08-29T09:14:00.000-07:00'
-author: danvet
+author: sima
 tags: Maintainer-Stuff
 modified_time: '2014-08-29T09:14:46.642-07:00'
 blogger_id: tag:blogger.com,1999:blog-8047628228132312466.post-5773001722969153808

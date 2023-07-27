@@ -2,7 +2,7 @@
 layout: post
 title: Precomputing the CRTC Configuration in drm/i915
 date: '2013-07-23T00:03:00.000-07:00'
-author: danvet
+author: sima
 tags:
 - In-Depth Tech
 modified_time: '2013-07-23T01:08:07.778-07:00'

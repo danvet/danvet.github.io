@@ -2,7 +2,7 @@
 layout: post
 title: git for Bug Reporters
 date: '2012-05-19T09:51:00.000-07:00'
-author: danvet
+author: sima
 tags:
 - Maintainer-Stuff
 modified_time: '2013-07-21T06:56:09.025-07:00'

@@ -2,7 +2,7 @@
 layout: post
 title: How do you do docs?
 date: '2016-12-22T06:00'
-author: danvet
+author: sima
 tags: 
 - Maintainer-Stuff
 ---

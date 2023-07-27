@@ -2,7 +2,7 @@
 layout: post
 title: i915/GEM Crashcourse, Part 2
 date: '2012-11-01T07:09:00.000-07:00'
-author: danvet
+author: sima
 tags:
 - In-Depth Tech
 modified_time: '2013-07-21T06:58:51.486-07:00'

@@ -2,7 +2,7 @@
 layout: post
 title: New Modeset Code
 date: '2012-08-19T14:04:00.001-07:00'
-author: danvet
+author: sima
 tags:
 - In-Depth Tech
 modified_time: '2013-07-21T06:58:51.499-07:00'

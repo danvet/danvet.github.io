@@ -2,7 +2,7 @@
 layout: post
 title: Neat drm/i915 stuff for 4.3
 date: '2015-09-07T02:40:00.000-07:00'
-author: danvet
+author: sima
 tags:
 - Kernel RelNotes
 modified_time: '2015-09-07T02:40:13.541-07:00'

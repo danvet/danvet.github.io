@@ -2,7 +2,7 @@
 layout: post
 title: Overclocking your Intel GPU on Linux
 date: '2013-03-24T08:59:00.000-07:00'
-author: danvet
+author: sima
 tags:
 - In-Depth Tech
 modified_time: '2013-07-21T07:00:33.241-07:00'
@@ -26,7 +26,7 @@ You need a few ingredients:
 - A "enthusiast" motherboard which allows you to set gpu overclocking settings
   (higher frequency and voltage).
 - Lastet drm-intel-nightly kernel branch from <a
-  href="http://cgit.freedesktop.org/~danvet/drm-intel">drm-intel git</a> or at
+  href="http://cgit.freedesktop.org/~sima/drm-intel">drm-intel git</a> or at
   least a kernel built with <a
   href="https://patchwork.kernel.org/patch/2305081/">this patch</a> from Ben
   Widawsky. The patch should apply to pretty much any recent stable kernel.

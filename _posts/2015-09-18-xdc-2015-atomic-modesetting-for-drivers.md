@@ -2,7 +2,7 @@
 layout: post
 title: 'XDC 2015: Atomic Modesetting for Drivers'
 date: '2015-09-18T08:27:00.000-07:00'
-author: danvet
+author: sima
 tags: 
 - Conferences
 modified_time: '2015-09-18T08:27:19.744-07:00'

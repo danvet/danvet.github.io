@@ -2,7 +2,7 @@
 layout: post
 title: Atomic Modeset Support for KMS Drivers
 date: '2014-11-02T10:49:00.002-08:00'
-author: danvet
+author: sima
 tags:
 - In-Depth Tech
 modified_time: '2014-11-03T14:23:30.264-08:00'

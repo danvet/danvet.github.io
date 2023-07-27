@@ -2,7 +2,7 @@
 layout: post
 title: X.Org Foundation Election Results
 date: '2016-04-27T23:37:00.002-07:00'
-author: danvet
+author: sima
 tags:
 - X.org
 modified_time: '2016-04-27T23:37:44.312-07:00'

@@ -2,7 +2,7 @@
 layout: post
 title: More drm/i915 Testsuite Infrastructure
 date: '2013-09-21T09:27:00.002-07:00'
-author: danvet
+author: sima
 tags:
 - In-Depth Tech
 modified_time: '2013-09-25T03:16:53.544-07:00'

@@ -2,7 +2,7 @@
 layout: post
 title: On Getting Patches Merged
 date: '2016-06-04T04:11:00.000-07:00'
-author: danvet
+author: sima
 tags:
 - Maintainer-Stuff
 modified_time: '2016-06-12T13:45:05.243-07:00'

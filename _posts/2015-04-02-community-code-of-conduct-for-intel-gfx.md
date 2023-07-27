@@ -2,7 +2,7 @@
 layout: post
 title: Community Code of Conduct for intel-gfx
 date: '2015-04-02T00:53:00.001-07:00'
-author: danvet
+author: sima
 tags:
 - Maintainer-Stuff
 modified_time: '2015-04-02T00:53:32.319-07:00'
