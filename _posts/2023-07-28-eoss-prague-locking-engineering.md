@@ -4,8 +4,8 @@ title: "EOSS Prague: Kernel Locking Engineering"
 tags:
 - Conferences
 ---
-EOSS in Prague was great, lots of hallway track, some good talks, good food,
-excellent [tea at meetea](https://www.meetea.cz/) - first time I had proper tea
+EOSS in Prague was great, lots of hallway track, good talks, good food,
+[excellent tea at meetea](https://www.meetea.cz/) - first time I had proper tea
 in my life, quite an experience. And also my first talk since covid, pack room
 with standing audience, [apparently one of the top ten most attended talks per
 LF's conference
