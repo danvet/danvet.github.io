@@ -5,7 +5,7 @@ tags:
 - Maintainer-Stuff
 ---
 In a different epoch, before the pandemic, I've done a [presentation about
-upstream first](/2019/05/upstream-first.html) at the Simenes Linux Community
+upstream first](/2019/05/upstream-first.html) at the Siemens Linux Community
 Event 2018, where I've tried to explain the fundamentals of open source using
 microeconomics. Unfortunately that talk didn't work out too well with an
 audience that isn't well-versed in upstream and open source concepts, largely
