@@ -23,10 +23,10 @@ function MastodonShare(e){
     }
 
     // Build the URL
-    url = "https://" + domain + "/share?text=" + src;
+    url = "https://" + domain + "/share?text=" + encodeURIComponent(src);
 
     // Open a window on the share page
-    window.open(url);
+    e.href=url;
 }
   </script>
 </head>

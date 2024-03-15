@@ -22,7 +22,13 @@ layout: default
 	{{ post.excerpt }}
 	</article>
 
-	{% include share-page.html %}
+	<div class="share-page">
+	    Share this on &rarr;
+	    <a onclick="MastodonShare(this);"
+	       data-src="{{ post.title }} by {{ site.fedi_username }}: {{site.url}}{{ post.url }}"
+	       href=""
+	       title="Share on Mastodon">Mastodon</a>
+	</div>
 
         {% include post-tags.html %}
       </li>
