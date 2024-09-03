@@ -7,9 +7,9 @@
 
 # Site settings
 title: stuff by sima
-email: daniel.vetter@ffwll.ch
+email: simona.vetter@ffwll.ch
 description: > # this means to ignore newlines until "baseurl:"
-  Vetter's ramblings on code, bugs, graphics, hw and the utter lack of
+  Simona Vetter's ramblings on code, bugs, graphics, hw and the utter lack of
   sanity in all this.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://blog.ffwll.ch" # the base hostname & protocol for your site

@@ -26,7 +26,10 @@ Which doesn't mean we want to sacrifice quality to be nice. Striving for technic
 
 
 
-Unfortunately things go south occasionally. So if you feel threatened, personally abused or otherwise uncomfortable, even and especially when you didn't participate in a discussion yourself, then please raise this in private with the drm/i915 maintainers (currently Daniel Vetter and Jani Nikula, see [MAINTAINERS](https://www.kernel.org/doc/linux/MAINTAINERS) for contact information). And the "in private" part is important: Humans screw up, disciplining minor fumbles by tarnishing someones google-able track record forever is out of proportion.
+Unfortunately things go south occasionally. So if you feel threatened,
+personally abused or otherwise uncomfortable, even and especially when you
+didn't participate in a discussion yourself, then please raise this in private
+with the drm/i915 maintainers (currently Simona Vetter and Jani Nikula, see [MAINTAINERS](https://www.kernel.org/doc/linux/MAINTAINERS) for contact information). And the "in private" part is important: Humans screw up, disciplining minor fumbles by tarnishing someones google-able track record forever is out of proportion.
 
 
 

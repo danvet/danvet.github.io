@@ -23,7 +23,7 @@ Most of my own code and development about all things graphic can be found on
 
 I occasionally post nonsense on mastodon as <a rel="me"
 href="https://chaos.social/@sima">@sima</a>, but the more reliable way to
-contact me is to send a mail to: daniel PUNGGT vetter ÄT ffwll PUNGGT ch. Or
+contact me is to send a mail to: sima PUNGGT vetter ÄT ffwll PUNGGT ch. Or
 ping me on IRC, I'm `sima` on [OFTC](https://oftc.net/) and generally hang
 around on `#dri-devel` and `#intel-gfx`.
 
